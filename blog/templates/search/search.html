@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load highlight %}
+{% load staticfiles %}
+{% block article %}
+    {% if query %}
+        {% for result in page.object_list %}
+            <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <div class="post-block" style="opacity: 1; display: block;">
+    <link itemprop="mainEntityOfPage" href="{{ post.get_absolute_url }}">
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liam Huang">
+      <meta itemprop="description" content="投其所好总有所成">
+      <meta itemprop="image" content="/images/avatar/avatar.webp">
+    </span>
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向东的笔记本">
+    </span>
+      <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
+          <h2 class="post-title" itemprop="name headline">
+                <a href="{{ result.object.get_absolute_url }}" class="post-title-link" itemprop="url"><b>{% highlight result.object.title with query %}</b></a>
+          </h2>
+
+      </header>
+    <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
+{#          <p>{{ result.object.excerpt }}</p>#}
+          <p>{% highlight result.object.body with query %}</p>
+
+    </div>
+              <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+{#              <span class="post-meta-item-text">发表于</span>#}
+              <time itemprop="dateCreated datePublished">{{ result.object.created_time }}</time>
+                <span class="post-meta-item-icon">
+                </span>
+          </span>
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+{#                <span class="post-meta-item-text">分类于</span>#}
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="http://127.0.0.1:8000/category/{{ result.object.category_id }}" itemprop="url" rel="index"><span itemprop="name">{{ result.object.category }}</span></a></span>
+            </span>
+
+           {#显示所属标签#}
+           <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>
+               <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+               <span class="busuanzi-value" id="busuanzi_value_page_pv">
+                  {% for tag in result.object.tag.all %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                  {% endfor %}
+                </span>
+           </span>
+
+        </div>
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  </article>
+        {% empty %}
+            <div class="post-block" style="opacity: 1; display: block;">
+            没有找到任何结果
+            </div>
+        {% endfor %}
+
+
+<!--分页部分-->
+{#<nav class="pagination" style="opacity: 1; display: block;">#}
+{##}
+{#    {% if page.has_previous or page.has_next %}#}
+{#    <div>#}
+{#        {% if page.has_previous %}#}
+{#            <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous#}
+{#        {% if page.has_previous %}</a>{% endif %}#}
+{#        |#}
+{#        {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next#}
+{#        &raquo;{% if page.has_next %}</a>{% endif %}#}
+{#    </div>#}
+{#    {% endif %}#}
+{#{% else %}#}
+{#        请输入搜索关键词，例如 django#}
+{##}
+{#{% endif %}#}
+{#</nav>#}
+
+
+
+{% if page.has_previous or page.has_next%}
+<nav class="pagination" style="opacity: 1; display: block;">
+ <a href="?q={{ query }}&amp;page={{page.previous_page_number }}">上一页</a>
+ {% endif %}
+{# <span class="current">第{{ page.number }}页/共{{ paget.paginator.num_pages }}页</span>#}
+ {% if paget.has_next %} <a href="?page={{ page.next_page_number }}">下一页</a>
+ {% endif %}
+{% else %}
+        <div class="post-block" style="opacity: 1; display: block;height: 620px;">
+            请输入关键词再进行搜索~
+        </div>
+  </nav>
+{% endif %}
+
+{% endblock %}

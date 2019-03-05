@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block article %}
+<div class="post-block archive" style="opacity: 2; display: block;">
+    {% regroup posts by category as posts %}
+    {% for post in posts %}
+    <h4>{{ post.grouper }} ({{ post.list | length }})</h4>
+        {% for post in post.list %}
+            <ul style="list-style-type:none">
+                <span>{{ post.created_time | date:"Y-m-d" }}</span>&nbsp;&nbsp;&nbsp;
+                <a href="{{ post.get_absolute_url }}">{{ post.title|slice:":30"}}</a>
+                <span style="float: right">{{ post.views }}&nbsp; views</span></span>
+            </ul>
+        {% endfor %}
+    {% endfor %}
+
+</div>
+<!--分页部分-->
+{#<nav class="pagination" style="opacity: 1; display: block;">#}
+{#    {% if posts.has_previous %}#}
+{#        <a href="?page={{posts.previous_page_number }}">上一页</a>#}
+{#    {% endif %}#}
+{##}
+{#    <span class="current">第{{ posts.number }}页/共{{ posts.paginator.num_pages }}页</span>#}
+{##}
+{#    {% if posts.has_next %}#}
+{#        <a href="?page={{ posts.next_page_number }}">下一页</a>#}
+{#    {% endif %}#}
+{#</nav>#}
+{% endblock %}

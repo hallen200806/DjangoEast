@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block article %}
+<div class="post-block archive" style="opacity: 2; display: block;">
+    {% for tag in tags %}
+        <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
+    {% endfor %}
+</div>
+{% endblock %}

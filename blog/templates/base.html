@@ -1,0 +1,232 @@
+{#{% extends request.is_ajax|yesno:"fancybox/base.html,blog/base.html" %}#}
+{% load staticfiles %}
+{#自定义模板标签，修改地址为blog/templatetags/blog_tags.py#}
+{% load blog_tags %}
+<!DOCTYPE html>
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+{% include "fancybox/fancybox_css.html" %}
+<link rel="stylesheet" href="{% static '/blog/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static '/blog/css/main.css' %}">
+<link rel="stylesheet" href="{% static '/blog/css/highlights/github.css' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static '/blog/image/favi.ico' %}">
+<!--控制siderbar页面固定页面顶部-->
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+{% block meta %}
+<title>向东的笔记本—壹个IT技术爱好者的网络收藏夹</title>
+<meta name="description" content=" 向东的笔记本是一个IT技术爱好者的博客网站，主要分享笔者向东收藏的一些精品软件，视频教程，技术文章等。向东的笔记本也会记录笔者向东的学习总结与感悟！" />
+<meta name="keywords" content="向东的笔记本,向东,技术博客" />
+{% endblock %}
+</head>
+
+<body lang="zh-CN">
+  <div class="container sidebar-position-left page-home">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="{% base_url %}" class="brand" rel="start" style="opacity: 1;">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title" style="opacity: 1; top: 0px;">向东的笔记本</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description" style="opacity: 1; top: 0px;">投其所好</h1>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+    <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
+    <a href="{% base_url %}" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    </li>
+    <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
+    <a href="{% base_url %}/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章归档 <span class="badge">{% get_total_posts %}</span> </a>
+    </li>
+
+    <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
+    <a href="{% base_url %}/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类目录<span class="badge">{% get_total_categories %}</span></a>
+    </li>
+
+    <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+    <a href="{% base_url %}/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签大全<span class="badge">{% get_total_tags %}</span></a>
+    </li>
+    <li class="menu-item menu-item-札记-&amp;-留言板" style="opacity: 1; transform: translateY(0px);">
+    <a href="{% base_url %}/notes/" rel="section"><i class="menu-item-icon fa fa-fw fa-sticky-note"></i> <br>给我留言</a>
+    </li>
+
+    <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
+    <a href="{% base_url %}/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于网站</a>
+    </li>
+
+
+    <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
+    <form action="{% url 'haystack_search' %}"/>
+        <input type="hidden"  />
+        <span class="search"><input type="text" name="q"  placeholder="请输入关键词" autocomplete="off"/></span>
+        <span class="button"><input type="submit"  value="搜索" /></span>
+    </form>
+    </li>
+        </ul>
+</nav>
+</div>
+</header>
+
+<main id="main" class="main">
+  <div class="main-inner">
+    <div class="content-wrap">
+      <div id="content" class="content">
+  <!--文章列表-->
+{% block article %}
+{% for post in posts %}
+  <section id="posts" class="posts-expand">
+  <article class="post post-type-normal">
+  <div class="post-block" style="opacity: 1; display: block;">
+    <link itemprop="mainEntityOfPage" href="{{ post.get_absolute_url }}">
+    <span hidden="" itemprop="publisher">
+      <meta itemprop="name" content="向东的笔记本">
+    </span>
+      <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
+          <h2 class="post-title" itemprop="name headline">
+                <a title="{{ post.title }}" href="{{ post.get_absolute_url }}" class="post-title-link" itemprop="url"><b>{{ post.title | slice:":30" }}</b></a>
+          </h2>
+
+      </header>
+    <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
+          <p>{{ post.excerpt}}</p>
+    </div>
+              <div class="post-meta">
+          {#发表时间#}
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              <a href="">{{ post.created_time }}</a>
+                <span class="post-meta-item-icon">
+                </span>
+          </span>
+
+          {# 文章分类 #}
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                <span itemprop="about"><a href="{% base_url %}/category/{{ post.category_id }}" itemprop="url" rel="index"><span itemprop="name">{{ post.category }}</span></a></span>
+            </span>
+
+           {#显示所属标签#}
+           <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>
+               <span itemprop="about">
+               <span class="busuanzi-value" id="busuanzi_value_page_pv">
+                  {% for tag in post.tag.all %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                  {% endfor %}
+                </span>
+           </span>
+
+        </div>
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  </article>
+  </section>
+{% endfor %}
+<!--分页部分-->
+  <nav class="pagination" style="opacity: 1; display: block;">
+{% if posts.has_previous %}
+ <a href="?page={{posts.previous_page_number }}">上一页</a>
+ {% endif %}
+ <span class="current">第{{ posts.number }}页/共{{ posts.paginator.num_pages }}页</span>
+ {% if posts.has_next %} <a href="?page={{ posts.next_page_number }}">下一页</a>
+ {% endif %}
+  </nav>
+{% endblock %}
+
+      </div>
+    </div>
+{# 左下角部分#}
+{% block sidebar %}
+  <aside id="sidebar" class="sidebar" style="margin-top: 486px; margin-left: auto;">
+    <div class="sidebar-inner affix-top" style="opacity: 1; display: block; transform: initial;">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview" style="width: calc(100% + 17px); max-height: 427px;">
+          <div class="site-author motion-element">
+              <img class="site-author-image" itemprop="image" src="{% static '/blog/image/touxiang.jpg' %}" alt="向东的笔记本">
+              <p class="site-author-name" itemprop="name">向东的笔记本</p>
+              <p class="site-description motion-element" itemprop="description">投其所好，终有所成。</p>
+          </div>
+            <nav class="site-state motion-element">
+                <div class="site-state-item site-state-posts">
+                  <a href="https://liam.page/archives/">
+                    <span class="site-state-item-count">{% get_total_posts %}</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+                <div class="site-state-item site-state-categories">
+                  <a href="https://liam.page/categories/index.html">
+                    <span class="site-state-item-count">{% get_total_categories %}</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+                <div class="site-state-item site-state-tags">
+                  <a href="https://liam.page/tags/index.html">
+                    <span class="site-state-item-count">{% get_total_tags %}</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+            </nav>
+        </div>
+      </div>
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+{% endblock %}
+  </div>
+</main>
+
+<!--底部信息-->
+<footer id="footer" class="footer">
+    <div class="footer-inner">
+        <div class="copyright">© <span itemprop="copyrightYear">2019</span>
+            <span class="post-meta-divider">|</span>
+            <span class="with-love" id="animate"><i class="fa fa-user"></i></span>
+            <span class="author" itemprop="copyrightHolder">向东的笔记本</span>
+        </div>
+    </div>
+</footer>
+
+</div>
+<script src="{% static '/blog/js/index.js' %}"></script>
+<script src="{% static '/blog/js/velocity.ui.min.js' %}"></script>
+<script src="{% static '/blog/js/utils.js' %}"></script>
+<script src="{% static '/blog/js/affix.js' %}"></script>
+<script src="{% static '/blog/js/pisces.js' %}"></script>
+{% include "fancybox/fancybox_js.html" %}
+</body>
+</html>
