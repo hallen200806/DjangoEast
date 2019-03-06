@@ -101,8 +101,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'www_eastnotes_c',
-        'USER':'www_eastnotes_c',
-        'PASSWORD':'yrzNsBdd5NPsdDBh',
+        'USER':'root',
+        'PASSWORD':'asd10000',
         'PORT':'3306',
         'HOST':'localhost'
     }
