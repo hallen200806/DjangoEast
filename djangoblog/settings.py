@@ -102,16 +102,28 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'www_eastnotes_c',
+#         'USER':'www_eastnotes_c',
+#         'PASSWORD':'yrzNsBdd5NPsdDBh',
+#         'PORT':'3306',
+#         'HOST':'118.89.245.71'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'www_eastnotes_c',
-        'USER':'www_eastnotes_c',
-        'PASSWORD':'yrzNsBdd5NPsdDBh',
+        'USER':'root',
+        'PASSWORD':'asd10000',
         'PORT':'3306',
-        'HOST':'118.89.245.71'
+        'HOST':'localhost'
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
