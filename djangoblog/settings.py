@@ -25,9 +25,9 @@ sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
 SECRET_KEY = 'v8_ce#n3lleuhl(t4p^x)bd18_aarlmd$e!f*^4edjlm@*=9&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.www.eastnotes.com']
 
 
 # Application definition
@@ -100,9 +100,9 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
-        'USER':'root',
-        'PASSWORD':'asd100',
+        'NAME': 'www_eastnotes_c',
+        'USER':'www_eastnotes_c',
+        'PASSWORD':'yrzNsBdd5NPsdDBh',
         'PORT':'3306',
         'HOST':'localhost'
     }
@@ -145,5 +145,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
-# STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
+# STATIC_ROOT = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
