@@ -26,5 +26,5 @@ def get_total_tags():
 
 @register.simple_tag
 def base_url():
-    base_url = 'http://127.0.0.1:8000'
+    base_url = 'http://www.eastnotes.com'
     return base_url
