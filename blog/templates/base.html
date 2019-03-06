@@ -50,7 +50,7 @@
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     <div class="custom-logo-site-title">
-      <a href="http://{{ request.get_host }}" class="brand" rel="start" style="opacity: 1;">
+      <a href="{% url 'blog:index' %}" class="brand" rel="start" style="opacity: 1;">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title" style="opacity: 1; top: 0px;">向东的笔记本</span>
         <span class="logo-line-after"><i></i></span>
@@ -69,25 +69,25 @@
 <nav class="site-nav">
     <ul id="menu" class="menu">
     <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
-    <a href="http://{{ request.get_host }}" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="{% url 'blog:index' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
     </li>
     <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
-    <a href="http://{{ request.get_host }}/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章归档 <span class="badge">{% get_total_posts %}</span> </a>
+    <a href="{% url 'blog:archives' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章归档 <span class="badge">{% get_total_posts %}</span> </a>
     </li>
 
     <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
-    <a href="http://{{ request.get_host }}/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类目录<span class="badge">{% get_total_categories %}</span></a>
+    <a href="{% url 'blog:categories' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类目录<span class="badge">{% get_total_categories %}</span></a>
     </li>
 
     <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-    <a href="http://{{ request.get_host }}/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签大全<span class="badge">{% get_total_tags %}</span></a>
+    <a href="{% url 'blog:tags' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签大全<span class="badge">{% get_total_tags %}</span></a>
     </li>
     <li class="menu-item menu-item-札记-&amp;-留言板" style="opacity: 1; transform: translateY(0px);">
-    <a href="http://{{ request.get_host }}/notes/" rel="section"><i class="menu-item-icon fa fa-fw fa-sticky-note"></i> <br>给我留言</a>
+    <a href="" rel="section"><i class="menu-item-icon fa fa-fw fa-sticky-note"></i> <br>给我留言</a>
     </li>
 
     <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
-    <a href="http://{{ request.get_host }}/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于网站</a>
+    <a href="" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于网站</a>
     </li>
 
 
