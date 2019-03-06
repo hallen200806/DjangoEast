@@ -27,7 +27,7 @@ SECRET_KEY = 'v8_ce#n3lleuhl(t4p^x)bd18_aarlmd$e!f*^4edjlm@*=9&)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.eastnotes.com','118.89.245.71','eastnotes.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
