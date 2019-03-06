@@ -110,7 +110,8 @@ DATABASES = {
         'USER':'root',
         'PASSWORD':'asd10000',
         'PORT':'3306',
-        'HOST':'118.89.245.71'
+        # 'HOST':'118.89.245.71',
+        'HOST':'localhost',
     }
 }
 
