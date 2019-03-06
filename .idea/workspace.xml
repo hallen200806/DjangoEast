@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba700b76-8e31-450b-addb-d143860d2b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/migrations/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoblog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoblog/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-969">
-              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="280">
+              <caret line="48" column="15" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
               </folding>
@@ -45,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/migrations/1.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -114,8 +112,8 @@
         <option value="$PROJECT_DIR$/blog/templates/blog/article.html" />
         <option value="$PROJECT_DIR$/blog/admin.py" />
         <option value="$PROJECT_DIR$/blog/models.py" />
-        <option value="$PROJECT_DIR$/djangoblog/settings.py" />
         <option value="$PROJECT_DIR$/blog/migrations/1.txt" />
+        <option value="$PROJECT_DIR$/djangoblog/settings.py" />
       </list>
     </option>
   </component>
@@ -285,12 +283,12 @@
       <workItem from="1550995809645" duration="43456000" />
       <workItem from="1551524219520" duration="10238000" />
       <workItem from="1551667597570" duration="4878000" />
-      <workItem from="1551841277252" duration="2630000" />
+      <workItem from="1551841277252" duration="2907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66071000" />
+    <option name="totallyTimeSpent" value="66348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="0" />
@@ -586,20 +584,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding>
-            <element signature="e#311#320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/migrations/1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="48" column="15" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
+          <folding>
+            <element signature="e#311#320#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

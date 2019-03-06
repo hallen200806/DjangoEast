@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # 'DjangoUeditor'
     'mdeditor', #富文本编辑器
     'fancybox', #图片弹窗插件
+    'gunicorn',
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  #uploads必须存在，且在项目目录下
