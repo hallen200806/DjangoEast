@@ -25,6 +25,10 @@ sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
 SECRET_KEY = 'v8_ce#n3lleuhl(t4p^x)bd18_aarlmd$e!f*^4edjlm@*=9&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+#
+# ALLOWED_HOSTS = []
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
@@ -102,10 +106,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'www_eastnotes_c',
-        'USER':'root',
-        'PASSWORD':'asd10000',
+        'USER':'www_eastnotes_c',
+        'PASSWORD':'yrzNsBdd5NPsdDBh',
         'PORT':'3306',
-        'HOST':'localhost'
+        'HOST':'118.89.245.71'
     }
 }
 
@@ -148,3 +152,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = 'static'
 STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
+
+# SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+# STATICFILES_DIRS = (
+#   os.path.join(SITE_ROOT, 'static/'),
+# )
