@@ -25,13 +25,7 @@ sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
 SECRET_KEY = 'v8_ce#n3lleuhl(t4p^x)bd18_aarlmd$e!f*^4edjlm@*=9&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-#
-# ALLOWED_HOSTS = []
 
-DEBUG = False
-
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -114,6 +108,14 @@ DATABASES = {
         'HOST':'localhost',
     }
 }
+
+# DEBUG = True
+#
+# ALLOWED_HOSTS = []
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['*']
 
 
 # Password validation
