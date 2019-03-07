@@ -66,7 +66,7 @@ def tag_list(request,pk):
 #分类下的所有文章
 def category(request,pk):
     cate = get_object_or_404(Category, pk=pk)
-    posts = Post.objects.filter(category=cate).order_by('created_time')
+    posts = Post.objects.filter(category=cate).order_by('-created_time')
     paginator = Paginator(posts, 5)  # 每页显示1条数据
     page = request.GET.get('page')
     try:
