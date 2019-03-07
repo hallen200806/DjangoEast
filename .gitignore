@@ -20,3 +20,6 @@
 /uploads/
 /media/
 /whoosh_index/
+/djangoblog/settings.py
+/__pycache__/
+/fabfile.py
