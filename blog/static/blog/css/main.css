@@ -2124,6 +2124,11 @@ pre .javascript .function {
   list-style: none;
   font-size: 14px;
 }
+
+.post-toc li{
+  list-style-type: none;
+}
+
 .post-toc ol > ol {
   padding-left: 0;
 }
@@ -3450,6 +3455,6 @@ background:#222222;color:#fff;
 }
 
 /*文章目录样式修改*/
-.toc li{
-  list-style-type: none;
-}
+/*.toc li{*/
+  /*list-style-type: none;*/
+/*}*/
