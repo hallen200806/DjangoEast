@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba700b76-8e31-450b-addb-d143860d2b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djangoblog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoblog/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+            <state relative-caret-position="513">
+              <caret line="114" column="5" lean-forward="true" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
               </folding>
@@ -73,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/blog/templatetags/blog_tags.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="417">
-              <caret line="28" column="40" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="40" />
+              <caret line="28" column="40" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="40" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -110,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/blog/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="63" />
+              <caret line="7" column="63" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="63" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -121,11 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoblog/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-              <folding>
-                <element signature="e#634#674#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="242">
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -230,11 +225,6 @@
               <item name="djangoblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="djangoblog" type="462c0819:PsiDirectoryNode" />
               <item name="djangoblog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="djangoblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="djangoblog" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -360,24 +350,24 @@
       <workItem from="1550995809645" duration="43456000" />
       <workItem from="1551524219520" duration="10238000" />
       <workItem from="1551667597570" duration="4878000" />
-      <workItem from="1551841277252" duration="10871000" />
+      <workItem from="1551841277252" duration="11824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74312000" />
+    <option name="totallyTimeSpent" value="75265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16452074" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16452074" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" weight="0.32930514" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.60027474" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7460658" visible="true" weight="0.24216868" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7460658" visible="true" weight="0.1746988" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -617,7 +607,7 @@
     <entry file="file://$PROJECT_DIR$/blog/templatetags/blog_tags.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
-          <caret line="28" column="40" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="40" />
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="40" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
@@ -634,16 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoblog/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-          <folding>
-            <element signature="e#634#674#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-200">
@@ -651,16 +631,6 @@
           <folding>
             <element signature="e#0#53#0" expanded="true" />
             <marker date="1551583365786" expanded="true" signature="1844:2467" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -688,10 +658,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blog/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoblog/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+        <state relative-caret-position="513">
+          <caret line="114" column="5" lean-forward="true" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
           <folding>
             <element signature="e#311#320#0" expanded="true" />
           </folding>
