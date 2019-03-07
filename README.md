@@ -8,3 +8,4 @@
 - 取消git对项目下的upload与media文件夹的跟踪
 - 去除文章摘要中的">"字符，在结尾添加"......"
 - 文章目录去掉无序列表的圆点
+- 修改了STATIC_ROOT的参数，使collectstatic操作正常
