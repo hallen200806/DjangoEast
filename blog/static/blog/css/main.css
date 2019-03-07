@@ -3433,10 +3433,11 @@ background:#222222;color:#fff;
 ::-webkit-input-placeholder {color:#ccc;}
     /*--设置输入框内默认文字的颜色--*/
 
+/*文章页底部相关文章样式*/
 .relative_posts{
   list-style-type: none;
   float: left;
-  width: 65%;
+  width: 100%;
   height: 30px;
   overflow: hidden;
   line-height: 30px;
@@ -3446,4 +3447,9 @@ background:#222222;color:#fff;
 /*对搜索结果进行高亮*/
 .highlighted {
    color: red;
+}
+
+/*文章目录样式修改*/
+.toc li{
+  list-style-type: none;
 }
