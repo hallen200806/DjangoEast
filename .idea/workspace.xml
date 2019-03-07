@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba700b76-8e31-450b-addb-d143860d2b09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/blog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoblog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoblog/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,10 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
+            <state relative-caret-position="939">
               <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
@@ -32,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -189,8 +188,8 @@
         <option value="$PROJECT_DIR$/blog/static/blog/css/main.css" />
         <option value="$PROJECT_DIR$/blog/templates/blog/article.html" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/blog/templates/base.html" />
         <option value="$PROJECT_DIR$/djangoblog/settings.py" />
+        <option value="$PROJECT_DIR$/blog/templates/base.html" />
       </list>
     </option>
   </component>
@@ -390,12 +389,12 @@
       <workItem from="1550995809645" duration="43456000" />
       <workItem from="1551524219520" duration="10238000" />
       <workItem from="1551667597570" duration="4878000" />
-      <workItem from="1551841277252" duration="15246000" />
+      <workItem from="1551841277252" duration="15312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78687000" />
+    <option name="totallyTimeSpent" value="78753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -702,6 +701,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="939">
+          <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
+          <folding>
+            <element signature="e#311#320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -720,16 +729,6 @@
             <element signature="n#style#0;n#div#0;n#article#0;n#section#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#header#0;n#div#0;n#article#0;n#section#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#article#0;n#section#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
-          <folding>
-            <element signature="e#311#320#0" expanded="true" />
           </folding>
         </state>
       </provider>
