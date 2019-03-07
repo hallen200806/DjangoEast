@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba700b76-8e31-450b-addb-d143860d2b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
+            <state relative-caret-position="915">
               <caret line="156" selection-start-line="156" selection-end-line="156" selection-end-column="10" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
@@ -77,11 +76,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+            <state relative-caret-position="532">
+              <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
-                <marker date="1551949243248" expanded="true" signature="1844:2467" ph="..." />
+                <marker date="1551949547502" expanded="true" signature="1844:2493" ph="..." />
               </folding>
             </state>
           </provider>
@@ -373,18 +372,18 @@
       <workItem from="1550995809645" duration="43456000" />
       <workItem from="1551524219520" duration="10238000" />
       <workItem from="1551667597570" duration="4878000" />
-      <workItem from="1551841277252" duration="20124000" />
+      <workItem from="1551841277252" duration="20273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83565000" />
+    <option name="totallyTimeSpent" value="83714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13733906" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13733906" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" weight="0.32930514" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -399,7 +398,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="DB Execution Console" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" visible="true" weight="0.16987951" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" visible="true" weight="0.18915662" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5035765" side_tool="true" weight="0.25903615" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.5269168" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -686,16 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="156" selection-start-line="156" selection-end-line="156" selection-end-column="10" />
-          <folding>
-            <element signature="e#311#320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -706,13 +695,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/djangoblog/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="156" selection-start-line="156" selection-end-line="156" selection-end-column="10" />
+          <folding>
+            <element signature="e#311#320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="68" column="58" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+        <state relative-caret-position="532">
+          <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
-            <marker date="1551949243248" expanded="true" signature="1844:2467" ph="..." />
+            <marker date="1551949547502" expanded="true" signature="1844:2493" ph="..." />
           </folding>
         </state>
       </provider>
