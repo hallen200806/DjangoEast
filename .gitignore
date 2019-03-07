@@ -17,3 +17,6 @@
 =======
 >>>>>>> b0ae2baa56829c697c10e0e4a6cfeb54ac4ccb82
 /extra_apps/xadmin/migrations/__pycache__/
+/uploads/
+/media/
+/whoosh_index/
