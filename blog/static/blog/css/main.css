@@ -3454,7 +3454,6 @@ background:#222222;color:#fff;
    color: red;
 }
 
-/*文章目录样式修改*/
-/*.toc li{*/
-  /*list-style-type: none;*/
-/*}*/
+.post-block a:link{
+  color: #00CCFF !important;
+}
