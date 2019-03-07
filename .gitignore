@@ -20,4 +20,4 @@
 /uploads/
 /media/
 /whoosh_index/
-/djangoblog/setting.py/
+/djangoblog/settings.py
