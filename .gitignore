@@ -21,5 +21,8 @@
 /media/
 /whoosh_index/
 /djangoblog/settings.py
+<<<<<<< HEAD
 /__pycache__/
 /fabfile.py
+=======
+>>>>>>> 1fcfcbcfda77424e2a12bbc534857770fbd3bf29
