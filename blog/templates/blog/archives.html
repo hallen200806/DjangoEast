@@ -13,7 +13,7 @@
                 {% for post in month.list %}
                     <li style="list-style-type:none">
                         <span>{{ post.created_time | date:"d" }}日</span>&nbsp;&nbsp;&nbsp;
-                        <a href="{{ post.get_absolute_url }}">{{ post.title | slice:":30"}}</a>
+                        <a href="{{ post.get_absolute_url }}">{{ post.title | slice:":50"}}</a>
                         <span style="float: right">{{ post.views }}&nbsp; views</span></span>
                     </li>
                {% endfor %}

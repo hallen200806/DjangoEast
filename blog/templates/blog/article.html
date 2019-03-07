@@ -81,7 +81,7 @@
     <div class="post-nav">
       <div class="post-nav-next post-nav-item">
           {% for relative_post in relativa_posts %}
-             <li class="relative_posts"><a class="relative_posts" href="{{ relative_post.get_absolute_url }}"><i class="fa fa-minus" aria-hidden="true"></i>{{ relative_post }}</a></li>
+             <li class="relative_posts"><a class="relative_posts" href="{{ relative_post.get_absolute_url }}" title="{{ relative_post.title }}"><i class="fa fa-minus" aria-hidden="true"></i>{{ relative_post }}</a></li>
           {% endfor %}
       </div>
     </div>
