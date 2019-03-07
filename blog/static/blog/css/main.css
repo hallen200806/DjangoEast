@@ -2126,7 +2126,7 @@ pre .javascript .function {
 }
 
 .post-toc li{
-  list-style-type: none;
+  list-style-type: none !important;
 }
 
 .post-toc ol > ol {
