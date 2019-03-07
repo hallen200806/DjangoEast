@@ -3454,10 +3454,7 @@ background:#222222;color:#fff;
    color: red;
 }
 
-<<<<<<< HEAD
-=======
 /*文章目录样式修改*/
->>>>>>> a38500fa9517d77cb5f4fb5248ef74526fc8a336
-.toc li{
-  list-style-type: none;
-}
+/*.toc li{*/
+  /*list-style-type: none;*/
+/*}*/
