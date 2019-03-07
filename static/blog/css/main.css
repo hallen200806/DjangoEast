@@ -3436,7 +3436,7 @@ background:#222222;color:#fff;
 .relative_posts{
   list-style-type: none;
   float: left;
-  width: 49%;
+  width: 100%;
   height: 30px;
   overflow: hidden;
   line-height: 30px;
@@ -3446,4 +3446,8 @@ background:#222222;color:#fff;
 /*对搜索结果进行高亮*/
 .highlighted {
    color: red;
+}
+
+.toc li{
+  list-style-type: none;
 }
