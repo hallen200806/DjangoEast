@@ -4,10 +4,10 @@
 
 {% block article %}
 <div class="post-block archive" style="opacity: 2; display: block;">
-    {% regroup posts by category as posts %}
-    {% for post in posts %}
-    <h4>{{ post.grouper }} ({{ post.list | length }})</h4>
-        {% for post in post.list %}
+    {% regroup posts|dictsort:"category_id" by category.name as category_list %}
+    {% for cate in category_list %}
+    <h4>{{ cate.grouper }} ({{ cate.list | length }})</h4>
+        {% for post in cate.list %}
             <ul style="list-style-type:none">
                 <span>{{ post.created_time | date:"Y-m-d" }}</span>&nbsp;&nbsp;&nbsp;
                 <a href="{{ post.get_absolute_url }}">{{ post.title|slice:":50"}}</a>
@@ -15,7 +15,9 @@
             </ul>
         {% endfor %}
     {% endfor %}
-
+{#{% for category in category_list %}#}
+{#    <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>#}
+{#{% endfor %}#}
 </div>
 <!--分页部分-->
 {#<nav class="pagination" style="opacity: 1; display: block;">#}

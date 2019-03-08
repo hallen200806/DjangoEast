@@ -80,12 +80,12 @@ def category(request,pk):
 
 def categories(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 5)  # 每页显示1条数据
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)  # 1是指当前现实的是第一页
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
+    # paginator = Paginator(posts, 1000)  # 每页显示1条数据
+    # page = request.GET.get('page')
+    # try:
+    #     posts = paginator.page(page)  # 1是指当前现实的是第一页
+    # except PageNotAnInteger:
+    #     posts = paginator.page(1)
+    # except EmptyPage:
+    #     posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
     return render(request,'blog/categories.html',context={'posts':posts})

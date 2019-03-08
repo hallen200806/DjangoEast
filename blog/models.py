@@ -16,6 +16,8 @@ class Category(models.Model):
 	class Meta:
 		verbose_name="分类目录"
 		verbose_name_plural = verbose_name
+	def get_absolute_url(self):
+		return reverse('blog:category', kwargs={'pk': self.pk})
 
 
 
