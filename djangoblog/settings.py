@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'gunicorn',
 ]
 
-MEDIA_URL = '/media/'   #你上传的文件和图片会默认存在/uploads/editor下
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #uploads必须存在，且在项目目录下
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 HAYSTACK_CONNECTIONS = {
@@ -100,18 +100,14 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'www_eastnotes_c',
-        'USER':'root',
-        'PASSWORD':'asd10000',
+        'NAME': 'Database Name',
+        'USER':'MySQL User Name',
+        'PASSWORD':'MySQL Password',
         'PORT':'3306',
-        # 'HOST':'118.89.245.71',
         'HOST':'localhost',
     }
 }
 
-# DEBUG = True
-#
-# ALLOWED_HOSTS = []
 
 DEBUG = False
 
@@ -156,7 +152,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static/')
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static/"),
-# ]
