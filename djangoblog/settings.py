@@ -108,10 +108,13 @@ DATABASES = {
     }
 }
 
-
+# 部署时使用下面的配置
 DEBUG = False
-
 ALLOWED_HOSTS = ['*']
+
+# 本地开发使用下面的配置
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
 
 # Password validation
