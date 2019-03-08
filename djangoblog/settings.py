@@ -108,7 +108,7 @@ DATABASES = {
         'HOST':'localhost',
     }
 }
-
+# test
 # DEBUG = True
 #
 # ALLOWED_HOSTS = []
