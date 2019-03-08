@@ -107,8 +107,16 @@ DATABASES = {
         'HOST':'localhost',
     }
 }
+<<<<<<< HEAD
 
 # 部署时使用下面的配置
+=======
+# test
+# DEBUG = True
+#
+# ALLOWED_HOSTS = []
+
+>>>>>>> 6c053499419c371ca35c83fdeb0cb8955c8f9921
 DEBUG = False
 ALLOWED_HOSTS = ['*']
 
