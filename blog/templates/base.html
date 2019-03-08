@@ -142,7 +142,8 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                <span itemprop="about"><a href="http://{{ request.get_host }}/category/{{ post.category_id }}" itemprop="url" rel="index"><span itemprop="name">{{ post.category }}</span></a></span>
+{#                <span itemprop="about"><a href="http://{{ request.get_host }}/category/{{ post.category_id }}" itemprop="url" rel="index"><span itemprop="name">{{ post.category }}</span></a></span>#}
+                <span itemprop="about"><a href="{% url 'blog:category' post.category.id %}" itemprop="url" rel="index"><span itemprop="name">{{ post.category }}</span></a></span>
             </span>
 
            {#显示所属标签#}
