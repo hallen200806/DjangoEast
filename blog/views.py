@@ -8,7 +8,8 @@ import markdown
 
 def index(request):
     posts = Post.objects.all().order_by('-created_time')
-    paginator = Paginator(posts,10) #每页显示几条数据
+    boxposts = posts.filter(category_id__in=[1,2]).order_by('category_id') #首页文章框中的文章聚合
+    paginator = Paginator(posts,5) #每页显示几条数据
     page = request.GET.get('page')
     try:
         posts = paginator.page(page) # 1是指当前现实的是第一页
@@ -16,7 +17,7 @@ def index(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages) #paginator.num_pages为分页后的总页数
-    return render(request, 'blog/index.html', context={'posts': posts})
+    return render(request, 'blog/index.html', context={'posts': posts,'boxposts':boxposts})
 
 def article(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -32,7 +33,7 @@ def article(request, pk):
     post.toc = md.toc
 
     #获取相关文章
-    relative_posts = Post.objects.filter(category_id=post.category_id).exclude(pk = pk).order_by('?')[:8]
+    relative_posts = Post.objects.filter(category_id=post.category_id).exclude(pk = pk).order_by('?')[:4]
     return render(request, 'blog/article.html', context={'post': post,'author': author,'category': category,'relativa_posts':relative_posts})
 
 def archives(request):

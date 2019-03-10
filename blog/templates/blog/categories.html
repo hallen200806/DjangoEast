@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-
 {% block article %}
 <div class="post-block archive" style="opacity: 2; display: block;">
     {% regroup posts|dictsort:"category_id" by category.name as category_list %}
     {% for cate in category_list %}
-    <h4>{{ cate.grouper }} ({{ cate.list | length }})</h4>
-        {% for post in cate.list %}
+    <h4 id="{{ cate.grouper }}">{{ cate.grouper }} ({{ cate.list | length }})</h4>
+        {% for post in cate.list reversed%}
             <ul style="list-style-type:none">
                 <span>{{ post.created_time | date:"Y-m-d" }}</span>&nbsp;&nbsp;&nbsp;
                 <a href="{{ post.get_absolute_url }}">{{ post.title|slice:":50"}}</a>

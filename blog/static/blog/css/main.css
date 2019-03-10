@@ -3228,7 +3228,7 @@ ul.breadcrumb li+li:last-child {
   display: none !important;
 }
 .pagination {
-  margin: 12px 0 0;
+  margin: 0;
   border-top: initial;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
@@ -3454,6 +3454,128 @@ background:#222222;color:#fff;
    color: red;
 }
 
-/*.post-block a:link{*/
-  /*color: #00CCFF !important;*/
-/*}*/
+/*以下是首页文章列表块的css*/
+.newsbox {
+    margin: 20px 10px
+}
+
+@media only screen and (max-width: 767px) {
+  .newsbox {
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  .newsbox section {
+    width: 100% !important;
+  }
+  .newsbox .news {
+    margin: 0px!important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  .newsbox {
+    margin: 0;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1023px) {
+  .newsbox .news {
+    margin: 0 5px 0 0
+  }
+}
+@media only screen and (max-width: 767px) {
+  .newsbox .news {
+    margin: 0
+  }
+}
+
+.newsbox .news {
+    background: #fff;
+    border: 1px solid #E1E1E1;
+    margin: 10px;
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  .newsbox .news {
+    margin: 0
+  }
+}
+
+/*newsbox*/
+.newsbox {
+  margin:11px -11px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display:flex;
+}
+
+.newsbox section {
+    width: 50%;
+    float: left;
+}
+
+.newsbox .news {
+    background: #fff;
+    border: 1px solid #E1E1E1;
+    /*margin: 0 10px*/
+}
+
+.newstitle {
+    line-height: 40px;
+    font-size: 15px;
+    border-bottom: 1px solid #E1E1E1;
+    background: #F8F8F8 url(../image/newslist.png) no-repeat left 14px center;
+    padding: 0 20px 0 46px;
+    font-weight: normal
+}
+
+.newstitle span {
+    float: right;
+    font-size: 14px
+}
+
+.newstitle span a {
+    color: #666
+}
+
+.newstitle b {
+    display: block;
+    border-left: 1px solid #E1E1E1;
+    padding-left: 10px
+}
+
+.newsbox .news ul {
+    padding: 10px
+}
+
+.newsbox .news ul li {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 28px;
+    width: 96%;
+    line-height: 28px;
+    font-size: 14px;
+    background: url(../image/li.png) no-repeat left center;
+    padding-left: 15px;
+}
+
+.newsbox .news ul li span {
+    float: right;
+    color: #999;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.newsbox .news ul li a:hover {
+    color: #09B1B9;
+}
+.newsbox .news h2,ul {
+  margin: 0!important;
+}
+
+.articlebox{
+  width: 1396px;
+}

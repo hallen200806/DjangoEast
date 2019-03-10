@@ -108,6 +108,7 @@
     <div class="content-wrap">
       <div id="content" class="content">
   <!--文章列表-->
+
 {% block article %}
 {% for post in posts %}
   <section id="posts" class="posts-expand">
@@ -165,19 +166,27 @@
   </article>
   </section>
 {% endfor %}
+{% block articlebox %}
+
+{% endblock %}
 <!--分页部分-->
-  <nav class="pagination" style="opacity: 1; display: block;">
-{% if posts.has_previous %}
- <a href="?page={{posts.previous_page_number }}">上一页</a>
- {% endif %}
- <span class="current">第{{ posts.number }}页/共{{ posts.paginator.num_pages }}页</span>
- {% if posts.has_next %} <a href="?page={{ posts.next_page_number }}">下一页</a>
- {% endif %}
-  </nav>
+<div class="pagination" style="opacity: 1; display: block;">
+    {% if posts.has_previous %}
+        <a href="?page={{posts.previous_page_number }}">上一页</a>
+    {% endif %}
+
+    <span class="current">第{{ posts.number }}页/共{{ posts.paginator.num_pages }}页</span>
+
+    {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">下一页</a>
+    {% endif %}
+</div>
 {% endblock %}
 
       </div>
+
     </div>
+
 {# 左下角部分#}
 {% block sidebar %}
   <aside id="sidebar" class="sidebar" style="margin-top: 486px; margin-left: auto;">
