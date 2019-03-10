@@ -3469,12 +3469,12 @@ background:#222222;color:#fff;
   .newsbox {
     /*margin-top: 10px!important;*/
     padding: 0 10px;
-    display: flow-root!important;
-    /*display: none!important;*/
+    /*display: flow-root!important;*/
+    display: none!important;
   }
 
   .newsbox section {
-    width: 362px !important;
+    width: 100% !important;
     margin-top: 10px;
     float:left;
   }
