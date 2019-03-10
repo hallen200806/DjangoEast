@@ -3461,12 +3461,14 @@ background:#222222;color:#fff;
 
 @media only screen and (max-width: 767px) {
   .newsbox {
-    margin: 0;
+    /*margin-top: 10px!important;*/
     padding: 0 10px;
+    display: flow-root!important;
   }
 
   .newsbox section {
     width: 100% !important;
+    margin-top: 10px;
   }
   .newsbox .news {
     margin: 0px!important;
@@ -3475,12 +3477,14 @@ background:#222222;color:#fff;
 
 @media screen and (min-width: 768px) and (max-width: 959px) {
   .newsbox {
-    margin: 0;
+    /*margin-top: 10px!important;*/
     padding: 0 10px;
+    display: flow-root!important;
   }
 
   .newsbox section {
     width: 100% !important;
+    margin-top: 10px;
   }
   .newsbox .news {
     margin: 0px!important;
@@ -3489,12 +3493,14 @@ background:#222222;color:#fff;
 
 @media screen and (min-width: 960px) and (max-width: 1023px) {
   .newsbox {
-    margin: 0;
+    /*margin-top: 10px!important;*/
     padding: 0 10px;
+    display: flow-root!important;
   }
 
   .newsbox section {
     width: 100% !important;
+    margin-top: 10px;
   }
   .newsbox .news {
     margin: 0px!important;
@@ -3523,13 +3529,14 @@ background:#222222;color:#fff;
 }
 @media screen and (min-width: 768px) and (max-width: 959px) {
   .newsbox {
-    margin: 0;
+    /*margin-top: 10px!important;*/
     padding: 0 10px;
-    display: block!important;
+    display: flow-root!important;
   }
 
   .newsbox section {
     width: 100% !important;
+    margin-top: 10px;
   }
   .newsbox .news {
     margin: 0px!important;
