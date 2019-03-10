@@ -18,7 +18,7 @@ hgroup,
 main,
 menu,
 nav,
-section,
+/*section,*/
 summary {
   display: block;
 }
@@ -3459,7 +3459,7 @@ background:#222222;color:#fff;
     margin: 20px 10px
 }
 
-@media only screen and (max-width: 767px) {
+@media  (max-width: 767px) {
   .newsbox {
     /*margin-top: 10px!important;*/
     padding: 0 10px;
@@ -3469,6 +3469,7 @@ background:#222222;color:#fff;
   .newsbox section {
     width: 100% !important;
     margin-top: 10px;
+    float:left;
   }
   .newsbox .news {
     margin: 0px!important;
@@ -3501,6 +3502,7 @@ background:#222222;color:#fff;
   .newsbox section {
     width: 100% !important;
     margin-top: 10px;
+
   }
   .newsbox .news {
     margin: 0px!important;
@@ -3553,7 +3555,7 @@ background:#222222;color:#fff;
 
 .newsbox section {
     width: 50%;
-    float: left;
+    /*float: left;*/
 }
 
 .newsbox .news {
