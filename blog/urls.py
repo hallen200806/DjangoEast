@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^tags/', views.tags,name='tags'),
     url(r'^tag_list/(?P<pk>[0-9]+)/$', views.tag_list, name='tag_list'),
     url(r'^books/', views.books, name='books'),
-    # url(r'^book_detail/(?P<pk>[0-9]+)/$', views.book_detail, name='book_detail'),
+    url(r'^book_detail/(?P<pk>[0-9]+)/$', views.book_detail, name='book_detail'),
 ]
