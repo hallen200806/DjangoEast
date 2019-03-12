@@ -96,6 +96,6 @@ def books(request):
     books = Book.objects.all()
     return render(request,'blog/books.html',context={'books':books})
 
-def book_detail(request,pk):
-
-    return render(request,'blog/book_detail.html')
+# def book_detail(request):
+#
+#     return render(request,'blog/book_detail.html')
