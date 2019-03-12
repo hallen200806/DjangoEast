@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.core.paginator import PageNotAnInteger
 from django.core.paginator import EmptyPage
 import markdown
+from django.views.decorators.cache import cache_page
 
 def index(request):
     posts = Post.objects.all().order_by('-created_time')
@@ -90,3 +91,7 @@ def categories(request):
     # except EmptyPage:
     #     posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
     return render(request,'blog/categories.html',context={'posts':posts})
+
+def books(request):
+
+    return render(request,'blog/books.html')

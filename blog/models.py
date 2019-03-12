@@ -90,3 +90,33 @@ class Post(models.Model):
 	class Meta:
 		verbose_name="文章列表"
 		verbose_name_plural = verbose_name
+
+class BookCategory(models.Model):
+	name = models.CharField(max_length=100,verbose_name="分类名称")
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name = "图书分类"
+		verbose_name_plural = verbose_name
+
+class Book(models.Model):
+	name = models.CharField(max_length=100,verbose_name="书名")
+	category = models.ForeignKey(BookCategory,on_delete=models.CASCADE,verbose_name="书籍分类")
+	cover = models.ImageField(upload_to='books',verbose_name="封面图")
+	score = models.DecimalField(max_digits=2,decimal_places=1,verbose_name="豆瓣评分")
+	author = models.CharField(max_length=100,verbose_name="作者")
+	created_time = models.DateField(null=True,default = timezone.now,verbose_name="添加时间")
+	time_consuming = models.CharField(max_length=100,verbose_name="阅读初始时间")
+
+
+	# def get_absolute_url(self):
+	# 	return reverse('blog:article', kwargs={'pk': self.pk})
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name="我的阅读"
+		verbose_name_plural = verbose_name
