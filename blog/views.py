@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import Post,Category,Tag
+from .models import *
 from django.contrib.auth.models import User, Group
 from django.core.paginator import Paginator
 from django.core.paginator import PageNotAnInteger
@@ -93,5 +93,9 @@ def categories(request):
     return render(request,'blog/categories.html',context={'posts':posts})
 
 def books(request):
+    books = Book.objects.all()
+    return render(request,'blog/books.html',context={'books':books})
 
-    return render(request,'blog/books.html')
+def book_detail(request,pk):
+
+    return render(request,'blog/book_detail.html')
