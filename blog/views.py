@@ -96,6 +96,15 @@ def books(request):
     books = Book.objects.all()
     return render(request,'blog/books.html',context={'books':books})
 
-def book_detail(request):
+def book_detail(request,pk):
+    book = get_object_or_404(Book,pk=pk)
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
+    book.detail = md.convert(book.detail)
+    book.toc = md.toc
+    book.increase_views()  # 阅读量加1
 
-    return render(request,'blog/book_detail.html')
+    return render(request,'blog/book_detail.html',context={'book':book})

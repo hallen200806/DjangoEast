@@ -1,5 +1,4 @@
-{% extends request.is_ajax|yesno:"fancybox/base.html,base.html" %}
-{#{% extends 'base.html' %}#}
+{% extends 'base.html' %}
 {% load blog_tags %}
 
 {% block meta %}
@@ -28,7 +27,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="https://liam.page/categories/LaTeX/" itemprop="url" rel="index"><span itemprop="name">{{ category.name }}</span></a></span>
+                <span itemprop="about" ><a href="{% url 'blog:category' post.category.id %}" itemprop="url" rel="index"><span itemprop="name">{{ category.name }}</span></a></span>
             </span>
 
             {#文本字数#}

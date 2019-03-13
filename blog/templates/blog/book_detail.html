@@ -1,5 +1,112 @@
-{#{% extends 'base.html' %}#}
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block meta %}
+<title>{{ book.name }}</title>
+{% endblock %}
 
 {% block article %}
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <div class="post-block" style="opacity: 1; display: block;">
+      <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
+          <h2 class="post-title" itemprop="name headline">《{{ post.name }}》</h2>
+        <div class="post-meta">
 
+            {#发布时间#}
+            <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              <span itemprop="dateCreated datePublished" >{{ book.created_time }}</span>
+
+            {#文章分类#}
+            <span class="post-category">
+              <span class="post-meta-divider">    </span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+                <span itemprop="about"><a href="" itemprop="url" rel="index"><span itemprop="name">{{ book.category }}</span></a></span>
+            </span>
+
+            {#文本字数#}
+            <span class="post-meta-divider">    </span>
+            <span class="post-symbolscount">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+{#                  <span class="post-meta-item-text">本文字数：</span>#}
+                <span title="本文字数">{{ post.words }} 字</span>
+            </span>
+
+
+            {#阅读次数：#}
+            <span class="post-meta-divider">    </span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv">{{ post.views }}</span>
+            </span>
+
+            {#显示标签#}
+            <span class="post-meta-divider">    </span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv">
+            {% for tag in post.tag.all %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+            {% endfor %}
+            </span>
+            </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
+        <!--自动解析html代码-->
+        {% autoescape off %}
+            {{ post.body }}
+        {% endautoescape %}
+    </div>
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author"><strong>本文作者： </strong><a href="{% base_url %}">向东的笔记本</a></li>
+  <li class="post-copyright-link"><strong>本文链接：</strong><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{% base_url %}{{ post.get_absolute_url }}</a></li>
+  <li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+<footer class="post-footer">
+    <div class="post-nav">
+      <div class="post-nav-next post-nav-item">
+          {% for relative_post in relativa_posts %}
+             <li class="relative_posts"><a class="relative_posts" href="{{ relative_post.get_absolute_url }}" title="{{ relative_post.title }}"><i class="fa fa-minus" aria-hidden="true"></i>{{ relative_post }}</a></li>
+          {% endfor %}
+      </div>
+    </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+  {% endblock %}
+
+{% block sidebar %}
+  <aside id="sidebar" class="sidebar" style="margin-top: 486px; margin-left: auto;">
+    <div class="sidebar-inner affix-top" style="opacity: 1; display: block; transform: initial;">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+        </ul>
+
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc" style="max-height: 448px;">
+            {% autoescape off %}
+               {{ post.toc }}
+            {% endautoescape %}
+          </div>
+        </div>
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
 {% endblock %}

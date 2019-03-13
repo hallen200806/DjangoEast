@@ -110,13 +110,27 @@ class Book(models.Model):
 	author = models.CharField(max_length=100,verbose_name="作者")
 	created_time = models.DateField(null=True,default = timezone.now,verbose_name="添加时间")
 	time_consuming = models.CharField(max_length=100,verbose_name="阅读初始时间")
+	views = models.PositiveIntegerField(default=0,verbose_name="阅读量")
+	words = models.PositiveIntegerField(default=0,verbose_name="字数")
+	excerpt = models.CharField(max_length=300, blank=True, verbose_name='摘要')
 
 
-	# def get_absolute_url(self):
-	# 	return reverse('blog:article', kwargs={'pk': self.pk})
+	def get_absolute_url(self):
+		return reverse('blog:book_detail', kwargs={'pk': self.pk})
 
 	def __str__(self):
 		return self.name
+
+	# 阅读量增加1
+	def increase_views(self):
+		self.views += 1
+		self.save(update_fields=['views'])
+
+	def save(self, *args, **kwargs):
+		if not self.excerpt:
+			self.excerpt = strip_tags(self.detail).replace("&nbsp;","")[:150] #strip_tags是去除html标签
+		self.words = len(strip_tags(self.detail).replace(" ","").replace('\n',""))	# 统计文章字数
+		super(Book, self).save(*args, **kwargs) # 调用父类的 save 方法将数据保存到数据库中
 
 	class Meta:
 		verbose_name="我的阅读"
