@@ -106,5 +106,4 @@ def book_detail(request,pk):
     book.detail = md.convert(book.detail)
     book.toc = md.toc
     book.increase_views()  # 阅读量加1
-
     return render(request,'blog/book_detail.html',context={'book':book})

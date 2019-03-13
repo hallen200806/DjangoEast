@@ -103,11 +103,12 @@ class BookCategory(models.Model):
 
 class Book(models.Model):
 	name = models.CharField(max_length=100,verbose_name="书名")
+	author = models.CharField(max_length=100, verbose_name="作者")
 	category = models.ForeignKey(BookCategory,on_delete=models.CASCADE,verbose_name="书籍分类")
-	detail = MDTextField(verbose_name="读书笔记",null=True)
 	cover = models.ImageField(upload_to='books',verbose_name="封面图")
 	score = models.DecimalField(max_digits=2,decimal_places=1,verbose_name="豆瓣评分")
-	author = models.CharField(max_length=100,verbose_name="作者")
+	title = models.CharField(max_length=100, verbose_name="标题")
+	detail = MDTextField(verbose_name="读书笔记", null=True)
 	created_time = models.DateField(null=True,default = timezone.now,verbose_name="添加时间")
 	time_consuming = models.CharField(max_length=100,verbose_name="阅读初始时间")
 	views = models.PositiveIntegerField(default=0,verbose_name="阅读量")

@@ -13,10 +13,11 @@
                         <div class="metacat">
                         <a class="metacat" href="">{{ book.category }}</a>
                         </div>
-                        <a href="" title="{{ book.name }}">
-                        <img class="thumb" style="width: 190px; height: 260px; display: inline;"  alt="{{ book.name }}" src="{% url 'blog:index' %}media/{{ book.cover }}"></a>
+                        <a href="{{ book.get_absolute_url }}" target="_blank" title="{{ book.name }}">
+                        <img class="thumb" style="width: 190px; height: 260px; display: inline;"  alt="{{ book.name }}" src="{% url 'blog:index' %}media/{{ book.cover }}">
+                        </a>
                     </div>
-                    <h3> <a href="" title="{{ book.name }}" target="_blank">{{ book.name }}</a> </h3>
+                    <h3> <a href="{{ book.get_absolute_url }}" title="{{ book.name }}" target="_blank">{{ book.name }}</a> </h3>
                     <p> 作者：<a href="">{{ book.author }}</a><br>
                         豆瓣评分：{{ book.score }}<br></p>
                 </div>
