@@ -108,7 +108,7 @@ class Book(models.Model):
 	cover = models.ImageField(upload_to='books',verbose_name="封面图",blank=True)
 	score = models.DecimalField(max_digits=2,decimal_places=1,verbose_name="豆瓣评分")
 	title = models.CharField(max_length=100, verbose_name="标题",blank=True)
-	detail = MDTextField(verbose_name="读书笔记", null=True)
+	detail = MDTextField(verbose_name="读书笔记", null=True,blank=True)
 	created_time = models.DateField(null=True,default = timezone.now,verbose_name="添加时间")
 	time_consuming = models.CharField(max_length=100,verbose_name="阅读初始时间")
 	views = models.PositiveIntegerField(default=0,verbose_name="阅读量")
