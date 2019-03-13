@@ -58,7 +58,6 @@ class Post(models.Model):
         定文章可以没有标签，因此为标签 tags 指定了 blank=True
 	'''
 	category = models.ForeignKey(Category,verbose_name='文章分类',on_delete=models.CASCADE)
-	# tags = models.ManyToManyField(Tag,verbose_name='标签类型')
 	tag = models.ManyToManyField(Tag,verbose_name='标签类型')
 
 	'''
@@ -101,10 +100,25 @@ class BookCategory(models.Model):
 		verbose_name = "图书分类"
 		verbose_name_plural = verbose_name
 
+class BookTag(models.Model):
+	name = models.CharField(max_length=100,verbose_name="标签")
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse('blog:book_list', kwargs={'pk': self.pk})
+
+	class Meta:
+		verbose_name = "书籍标签"
+		verbose_name_plural = verbose_name
+
+
 class Book(models.Model):
 	name = models.CharField(max_length=100,verbose_name="书名")
 	author = models.CharField(max_length=100, verbose_name="作者")
 	category = models.ForeignKey(BookCategory,on_delete=models.CASCADE,verbose_name="书籍分类")
+	tag = models.ManyToManyField(BookTag,verbose_name="本书标签")
 	cover = models.ImageField(upload_to='books',verbose_name="封面图",blank=True)
 	score = models.DecimalField(max_digits=2,decimal_places=1,verbose_name="豆瓣评分")
 	title = models.CharField(max_length=100, verbose_name="标题",blank=True)

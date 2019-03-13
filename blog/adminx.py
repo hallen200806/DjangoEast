@@ -47,6 +47,12 @@ class BookAdmin(object):
     search_fields = ['name']
     model_icon = 'fa fa-book'
 
+# 图书标签
+class BookTagAdmin(object):
+    list_display = ['id', 'name']
+    search_fields = ['name']
+    model_icon = 'fa fa-book'
+
 # admin.site.register(Article, admin_class=ArticleAdmin)
 
 xadmin.site.register(Post,PostAdmin)
@@ -54,6 +60,7 @@ xadmin.site.register(Category,CategoryAdmin)
 xadmin.site.register(Tag,TagAdmin)
 xadmin.site.register(BookCategory,BookCategoryAdmin)
 xadmin.site.register(Book,BookAdmin)
+xadmin.site.register(BookTag,BookTagAdmin)
 
 # 修改xadmin的基础配置
 class BaseSetting(object):
