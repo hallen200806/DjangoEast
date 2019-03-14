@@ -48,16 +48,16 @@
             <span class="busuanzi-value" id="busuanzi_value_page_pv">{{ book.views }}</span>
             </span>
 
-            {#显示标签#}
-{#            <span class="post-meta-divider">    </span>#}
-{#            <span class="post-meta-item-icon">#}
-{#            <i class="fa fa-tags" aria-hidden="true"></i>#}
-{#            <span class="busuanzi-value" id="busuanzi_value_page_pv">#}
-{#            {% for tag in post.tag.all %}#}
-{#                <a href="">{{ book.category }}</a>#}
-{#            {% endfor %}#}
-{#            </span>#}
-{#            </span>#}
+{#            显示标签#}
+            <span class="post-meta-divider">    </span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv">
+            {% for tag in book.tag.all %}
+                <a href="">{{ tag.name }}</a>
+            {% endfor %}
+            </span>
+            </span>
         </div>
       </header>
     <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
@@ -90,26 +90,59 @@
   </div>
   {% endblock %}
 
-{% block sidebar %}
-  <aside id="sidebar" class="sidebar" style="margin-top: 486px; margin-left: auto;">
-    <div class="sidebar-inner affix-top" style="opacity: 1; display: block; transform: initial;">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-        </ul>
-
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc" style="max-height: 448px;">
-            {% autoescape off %}
-               {{ book.toc }}
-            {% endautoescape %}
-          </div>
-        </div>
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+{% block tag_sidebar %}
+    <div class="tag_siderbar" >
+        <div class="widget git_tag">
+            <div class="title">
+                <h3>热门标签</h3>
+            </div>
+            <div class="git_tags">
+                {% for tag in tags %}
+                <a title="" target="_blank" href="https://sobooks.cc/books/tag/%e5%b0%8f%e8%af%b4" data-original-title="1304个话题">{{ tag.name }}  ( {{ tag.posts_count }} )</a>
+                {% endfor %}
+            </div>
         </div>
     </div>
-  </aside>
 {% endblock %}
+
+{% block toc_sidebar %}
+    <div class="toc_siderbar" >
+        <div class="widget git_tag">
+            <div class="title">
+                <h3>文章目录</h3>
+            </div>
+                <div class="post-toc" style="max-height: 448px;">
+                    {% autoescape off %}
+                    {{ book.toc }}
+                    {% endautoescape %}
+                </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+{#          <aside id="sidebar" class="sidebar" style="margin-top: 486px; margin-left: auto;">#}
+{#    <div class="sidebar-inner affix-top" style="opacity: 1; display: block; transform: initial;">#}
+{#        <ul class="sidebar-nav motion-element">#}
+{#          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">#}
+{#            文章目录#}
+{#          </li>#}
+{#        </ul>#}
+{##}
+{#        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">#}
+{#          <div class="post-toc" style="max-height: 448px;">#}
+{#            {% autoescape off %}#}
+{#               {{ book.toc }}#}
+{#            {% endautoescape %}#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="back-to-top">#}
+{#          <i class="fa fa-arrow-up"></i>#}
+{#            <span id="scrollpercent"><span>0</span>%</span>#}
+{#        </div>#}
+{#    </div>#}
+{#  </aside>#}

@@ -90,26 +90,17 @@
   </div>
   {% endblock %}
 
-{% block sidebar %}
-  <aside id="sidebar" class="sidebar" style="margin-top: 486px; margin-left: auto;">
-    <div class="sidebar-inner affix-top" style="opacity: 1; display: block; transform: initial;">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-        </ul>
-
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc" style="max-height: 448px;">
-            {% autoescape off %}
-               {{ post.toc }}
-            {% endautoescape %}
-          </div>
-        </div>
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+{% block toc_sidebar %}
+    <div class="toc_siderbar" >
+        <div class="widget git_tag">
+            <div class="title">
+                <h3>文章目录</h3>
+            </div>
+                <div class="post-toc" style="max-height: 448px;">
+                    {% autoescape off %}
+                    {{ post.toc }}
+                    {% endautoescape %}
+                </div>
         </div>
     </div>
-  </aside>
 {% endblock %}

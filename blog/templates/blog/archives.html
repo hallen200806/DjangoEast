@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
 {% block article %}
 <div class="post-block archive" style="opacity: 2; display: block;">
     {% regroup posts by created_time|date:"Y" as years %}

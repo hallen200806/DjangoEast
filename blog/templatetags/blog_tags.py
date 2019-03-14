@@ -1,5 +1,6 @@
 from ..models import *
 from django import template
+from django.db.models import Count
 
 register = template.Library()
 
@@ -28,3 +29,9 @@ def get_total_tags():
 def base_url():
     base_url = 'http://www.eastnotes.com'
     return base_url
+
+@register.simple_tag
+def get_posts_tags():
+    tags = Tag.objects.annotate(posts_count=Count('post')).order_by('-posts_count')
+    # tags = 123
+    return tags

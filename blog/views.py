@@ -5,8 +5,8 @@ from django.core.paginator import Paginator
 from django.core.paginator import PageNotAnInteger
 from django.core.paginator import EmptyPage
 import markdown
-from django.views.decorators.cache import cache_page
-
+# from django.views.decorators.cache import cache_page
+from django.db.models import Count
 def index(request):
     posts = Post.objects.all().order_by('-created_time')
     boxposts = posts.filter(category_id__in=[1,2]).order_by('category_id') #首页文章框中的文章聚合
@@ -18,7 +18,8 @@ def index(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages) #paginator.num_pages为分页后的总页数
-    return render(request, 'blog/index.html', context={'posts': posts,'boxposts':boxposts})
+
+    return render(request, 'blog/index.html', context={'posts': posts,'boxposts':boxposts,})
 
 def article(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -42,7 +43,7 @@ def archives(request):
     post_count = Post.objects.all().count()
     category_count = Category.objects.all().count()
     tag_count = Tag.objects.all().count()
-    return render(request,'blog/archives.html',context={'posts':posts,'post_count':post_count,'category_count':category_count,'tag_count':tag_count})
+    return render(request,'blog/archives.html',context={'posts':posts,'post_count':post_count,'category_count':category_count,'tag_count':tag_count,})
 
 #全站所有的标签
 def tags(request):
@@ -63,7 +64,7 @@ def tag_list(request,pk):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
-    return render(request,'blog/tag_list.html',context={'posts':posts})
+    return render(request,'blog/tag_list.html',context={'posts':posts,})
 
 #分类下的所有文章
 def category(request,pk):
@@ -77,7 +78,7 @@ def category(request,pk):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
-    return render(request,'blog/category.html',context={'posts':posts})
+    return render(request,'blog/category.html',context={'posts':posts,})
 
 
 def categories(request):
@@ -90,11 +91,12 @@ def categories(request):
     #     posts = paginator.page(1)
     # except EmptyPage:
     #     posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
-    return render(request,'blog/categories.html',context={'posts':posts})
+    return render(request,'blog/categories.html',context={'posts':posts,})
 
 def books(request):
     books = Book.objects.all()
-    return render(request,'blog/books.html',context={'books':books})
+    tags = BookTag.objects.annotate(posts_count = Count('book')).order_by('-posts_count')
+    return render(request,'blog/books.html',context={'books':books,'tags':tags})
 
 def book_detail(request,pk):
     book = get_object_or_404(Book,pk=pk)
@@ -106,4 +108,6 @@ def book_detail(request,pk):
     book.detail = md.convert(book.detail)
     book.toc = md.toc
     book.increase_views()  # 阅读量加1
-    return render(request,'blog/book_detail.html',context={'book':book})
+
+    tags = BookTag.objects.annotate(posts_count = Count('book')).order_by('-posts_count')
+    return render(request,'blog/book_detail.html',context={'book':book,'tags':tags,})
