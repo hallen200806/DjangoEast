@@ -3,29 +3,34 @@
 
 {% block article %}
     <div class="post-block" style="opacity: 40; display: block;">
-    <h1 align="center">我的阅读</h1>
+        <h1 align="center">我的阅读</h1>
         <div class="pagewrapper" style="padding-top:.1px;">
-        <div id="cardslist" class="cardlist" role="main">
-        {% for book in books %}
-            <div class="card col span_1_of_4" role="main">
-                <div class="card-item">
-                    <div class="thumb-img focus">
-                        <div class="metacat">
-                        <a class="metacat" href="">{{ book.category }}</a>
+            <div id="cardslist" class="cardlist" role="main">
+            {% for book in books %}
+                <div class="card col span_1_of_4" role="main">
+                    <div class="card-item">
+                        <div class="thumb-img focus">
+                            <div class="metacat">
+                            <a class="metacat" href="">{{ book.category }}</a>
+                            </div>
+
+                            <a href="{{ book.get_absolute_url }}" target="_blank" title="{{ book.name }}">
+                            <img class="thumb" style="width: 190px; height: 260px; display: inline;"  alt="{{ book.name }}" src="{% url 'blog:index' %}media/{{ book.cover }}">
+                            </a>
                         </div>
-                        <a href="{{ book.get_absolute_url }}" target="_blank" title="{{ book.name }}">
-                        <img class="thumb" style="width: 190px; height: 260px; display: inline;"  alt="{{ book.name }}" src="{% url 'blog:index' %}media/{{ book.cover }}">
-                        </a>
+                        <h3> <a href="{{ book.get_absolute_url }}" title="{{ book.name }}" target="_blank">{{ book.name }}</a> </h3>
+                        <p> 作者：<a href="">{{ book.author }}</a><br>
+                            豆瓣评分：{{ book.score }}<br></p>
                     </div>
-                    <h3> <a href="{{ book.get_absolute_url }}" title="{{ book.name }}" target="_blank">{{ book.name }}</a> </h3>
-                    <p> 作者：<a href="">{{ book.author }}</a><br>
-                        豆瓣评分：{{ book.score }}<br></p>
                 </div>
+            {% endfor %}
             </div>
         </div>
-        </div>
+
+
     </div>
-        {% endfor %}
+
+
 {% endblock %}
 
 {% block tag_sidebar %}
