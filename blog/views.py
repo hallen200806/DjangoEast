@@ -111,3 +111,8 @@ def book_detail(request,pk):
 
     tags = BookTag.objects.annotate(posts_count = Count('book')).order_by('-posts_count')
     return render(request,'blog/book_detail.html',context={'book':book,'tags':tags,})
+
+def book_list(request,pk):
+    tag = get_object_or_404(BookTag,pk=pk)
+    books = Book.objects.filter(tag = tag)
+    return render(request,'blog/book_list.html',context={"books":books})

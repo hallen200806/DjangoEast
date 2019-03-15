@@ -33,5 +33,9 @@ def base_url():
 @register.simple_tag
 def get_posts_tags():
     tags = Tag.objects.annotate(posts_count=Count('post')).order_by('-posts_count')
-    # tags = 123
+    return tags
+
+@register.simple_tag
+def get_books_tags():
+    tags = BookTag.objects.annotate(books_count=Count('book')).order_by('-books_count')
     return tags

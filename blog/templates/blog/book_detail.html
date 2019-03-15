@@ -23,7 +23,6 @@
 
             {#文章分类#}
             <span class="post-category">
-              <span class="post-meta-divider">    </span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -31,7 +30,6 @@
             </span>
 
             {#文本字数#}
-            <span class="post-meta-divider">    </span>
             <span class="post-symbolscount">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
@@ -42,14 +40,12 @@
 
 
             {#阅读次数：#}
-            <span class="post-meta-divider">    </span>
             <span class="post-meta-item-icon">
             <i class="fa fa-eye"></i>
             <span class="busuanzi-value" id="busuanzi_value_page_pv">{{ book.views }}</span>
             </span>
 
 {#            显示标签#}
-            <span class="post-meta-divider">    </span>
             <span class="post-meta-item-icon">
             <i class="fa fa-tags" aria-hidden="true"></i>
             <span class="busuanzi-value" id="busuanzi_value_page_pv">
@@ -93,12 +89,11 @@
 {% block tag_sidebar %}
     <div class="tag_siderbar" >
         <div class="widget git_tag">
-            <div class="title">
-                <h3>热门标签</h3>
-            </div>
+            <div class="title"><h3>热门标签</h3></div>
             <div class="git_tags">
+                {% get_books_tags as tags %}
                 {% for tag in tags %}
-                <a title="" target="_blank" href="https://sobooks.cc/books/tag/%e5%b0%8f%e8%af%b4" data-original-title="1304个话题">{{ tag.name }}  ( {{ tag.posts_count }} )</a>
+                    <a href="{{ tag.get_absolute_url  }}" data-original-title="1304个话题">{{ tag.name }}</a>
                 {% endfor %}
             </div>
         </div>

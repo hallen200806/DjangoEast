@@ -47,10 +47,7 @@
             </div>
         </div>
     </div>
-
-
 {% endblock %}
-
 
 {% block tag_sidebar %}
     <div class="tag_siderbar" >
@@ -59,7 +56,7 @@
             <div class="git_tags">
                 {% get_books_tags as tags %}
                 {% for tag in tags %}
-                    <a href="{{ tag.get_absolute_url  }}" data-original-title="1304个话题">{{ tag.name }}</a>
+                    <a target="_self" href="{{ tag.get_absolute_url  }}" >{{ tag.name }}</a>
                 {% endfor %}
             </div>
         </div>
