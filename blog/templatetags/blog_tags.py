@@ -7,23 +7,25 @@ register = template.Library()
 # 返回文章总量
 @register.simple_tag
 def get_total_posts():
-    posts = Post.objects.all()
-    posts_number = posts.count()
+    posts_number = Post.objects.all().count()
     return posts_number
 
 # 返回分类总量
 @register.simple_tag
 def get_total_categories():
-    categories = Category.objects.all()
-    category_number = categories.count()
+    category_number = Category.objects.all().count()
     return category_number
 
 # 返回标签总量
 @register.simple_tag
 def get_total_tags():
-    tags = Tag.objects.all()
-    tags_number = tags.count()
+    tags_number = Tag.objects.all().count()
     return tags_number
+
+@register.simple_tag
+def get_total_books():
+    books_number = Book.objects.all().count()
+    return books_number
 
 @register.simple_tag
 def base_url():
