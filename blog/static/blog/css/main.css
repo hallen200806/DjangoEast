@@ -3657,8 +3657,8 @@ background:#222222;color:#fff;
   }
 }
 .card .thumb-img img {
-	width:100%!important;
-	height:auto!important
+	/*width:100%!important;*/
+	/*height:auto!important*/
 }
 
 .card,.related_box,.span_1_of_4 {
@@ -3692,6 +3692,11 @@ background:#222222;color:#fff;
 	border-bottom:0 none;
 	background-color:#FFF;
 	box-shadow:0 1px 1px 0 rgba(0,0,0,.15)
+}
+
+.thumb{
+    width: 100px;
+    height: 200px;
 }
 
 .metacat a{font-size:12px;position:absolute;top:0;left:0;display:inline-block;padding:4px;width:60px;text-align:center}
