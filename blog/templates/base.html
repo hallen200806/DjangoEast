@@ -224,7 +224,17 @@
                         {% endblock %}
                         
                         {% block toc_sidebar %}
-                        
+                        {% endblock %}
+
+                        {% block wechat_sidebar %}
+                            <div class="wechat_siderbar" >
+                                <div class="widget git_tag">
+                                    <div class="title"><h3>微信公众号</h3></div>
+                                    <div class="git_tags">
+                                        <img class="wechat_img" src="{% static 'blog/image/wechat.jpg' %}" alt="微信公众号">
+                                    </div>
+                                </div>
+                            </div>
                         {% endblock %}
                     {% endblock %}
                 </div>

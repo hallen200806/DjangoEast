@@ -27,7 +27,6 @@ class PostAdmin(object):
 class CategoryAdmin(object):
     list_display = ['id','name']
     search_fields = ['name']
-    # list_filter = ['name']
     model_icon = 'fa fa-briefcase'
 
 class TagAdmin(object):
@@ -53,14 +52,35 @@ class BookTagAdmin(object):
     search_fields = ['name']
     model_icon = 'fa fa-book'
 
-# admin.site.register(Article, admin_class=ArticleAdmin)
+# 电影分类
+class MovieCategoryAdmin(object):
+    list_display = ['id', 'name']
+    search_fields = ['name']
+    model_icon = 'fa fa-film'
+
+# 电影
+class MovieAdmin(object):
+    list_display = ['id', 'name']
+    search_fields = ['name']
+    model_icon = 'fa fa-film'
+
+# 电影标签
+class MovieTagAdmin(object):
+    list_display = ['id', 'name']
+    search_fields = ['name']
+    model_icon = 'fa fa-film'
 
 xadmin.site.register(Post,PostAdmin)
 xadmin.site.register(Category,CategoryAdmin)
 xadmin.site.register(Tag,TagAdmin)
+
 xadmin.site.register(BookCategory,BookCategoryAdmin)
 xadmin.site.register(Book,BookAdmin)
 xadmin.site.register(BookTag,BookTagAdmin)
+
+xadmin.site.register(MovieCategory,MovieCategoryAdmin)
+xadmin.site.register(Movie,MovieAdmin)
+xadmin.site.register(MovieTag,MovieTagAdmin)
 
 # 修改xadmin的基础配置
 class BaseSetting(object):

@@ -148,5 +148,68 @@ class Book(models.Model):
 		super(Book, self).save(*args, **kwargs) # 调用父类的 save 方法将数据保存到数据库中
 
 	class Meta:
-		verbose_name="我的阅读"
+		verbose_name="我的书单"
+		verbose_name_plural = verbose_name
+
+
+class MovieCategory(models.Model):
+	name = models.CharField(max_length=100,verbose_name="电影分类")
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name="电影分类"
+		verbose_name_plural = verbose_name
+
+class MovieTag(models.Model):
+	name = models.CharField(max_length=100,verbose_name="标签名称",blank=True)
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse('blog:movie_list',kwargs={'pk':self.pk})
+
+	class Meta:
+		verbose_name="电影标签"
+		verbose_name_plural=verbose_name
+
+class Movie(models.Model):
+	name = models.CharField(max_length=100,verbose_name="电影名称")
+	director = models.CharField(max_length=100,verbose_name="导演")
+	actor = models.CharField(max_length=100,verbose_name="主演")
+	category = models.ForeignKey(MovieCategory,on_delete=models.CASCADE,verbose_name="电影分类",)
+	tag = models.ManyToManyField(MovieTag,verbose_name="电影标签")
+	cover = models.ImageField(upload_to='movies',verbose_name="上传封面")
+	score = models.DecimalField(max_digits=2,decimal_places=1,verbose_name="豆瓣评分")
+	release_time = models.DateField(verbose_name="上映时间")
+	created_time = models.DateField(default=timezone.now,verbose_name="添加时间")
+	length_time = models.PositiveIntegerField(default=0,verbose_name="电影时长")
+	watch_time = models.DateField(default=timezone.now,verbose_name="观看时间")
+	title = models.CharField(max_length=100,verbose_name="标题",blank=True)
+	detail = models.TextField(blank=True,null=True,verbose_name="观影后感")
+	views = models.PositiveIntegerField(default=0, verbose_name="阅读量")
+	words = models.PositiveIntegerField(default=0, verbose_name="字数")
+	excerpt = models.CharField(max_length=300, blank=True, verbose_name='摘要')
+
+	def __str__(self):
+		return self.name
+
+	# 阅读量增加1
+	def increase_views(self):
+		self.views += 1
+		self.save(update_fields=['views'])
+
+	def save(self, *args, **kwargs):
+		if not self.excerpt:
+			self.excerpt = strip_tags(self.detail).replace("&nbsp;","")[:150] #strip_tags是去除html标签
+		self.words = len(strip_tags(self.detail).replace(" ","").replace('\n',""))	# 统计文章字数
+		super(Movie, self).save(*args, **kwargs) # 调用父类的 save 方法将数据保存到数据库中
+
+	def get_absolute_url(self):
+		return reverse('blog:movie_detail', kwargs={'pk': self.pk})
+
+	class Meta:
+		verbose_name="我的影单"
 		verbose_name_plural = verbose_name
