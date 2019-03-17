@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load blog_tags %}
+
+{% block article %}
+    <div class="post-block" style="opacity: 40; display: block;">
+        <h1 align="center">我的影单(共{{ movies_number }}本)</h1>
+        <div class="pagewrapper" style="padding-top:.1px;">
+            <div id="cardslist" class="cardlist" role="main">
+
+            {% for movie in movies %}
+                <!--根据本书有无读书笔记来选择是否进行跳转-->
+                {% if movie.detail != "" %}
+                    <div class="card col span_1_of_4" role="main">
+                    <div class="card-item">
+                        <div class="thumb-img focus">
+                            <div class="metacat">
+                            <a class="metacat" href="">{{ movie.category }}</a>
+                            </div>
+                            <a href="{{ movie.get_absolute_url }}" target="_blank" title="{{ movie.name }}">
+                            <img class="thumb" style="width: 190px; height: 260px; display: inline;"  alt="{{ movie.name }}" src="{% url 'blog:index' %}media/{{ movie.cover }}">
+                            </a>
+                        </div>
+                        <h3> <a href="{{ movie.get_absolute_url }}" title="{{ movie.name }}" target="_blank">{{ movie.name }}</a> </h3>
+                        <p> 主演：<a href="">{{ movie.actor }}</a><br>
+                            豆瓣评分：{{ movie.score }}<br></p>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="card col span_1_of_4" role="main">
+                    <div class="card-item">
+                        <div class="thumb-img focus">
+                            <div class="metacat">
+                            <a class="metacat" href="">{{ movie.category }}</a>
+                            </div>
+                            <a href="" title="{{ movie.name }}">
+                            <img class="thumb" style="width: 190px; height: 260px; display: inline;"  alt="{{ movie.name }}" src="{% url 'blog:index' %}media/{{ movie.cover }}">
+                            </a>
+                        </div>
+                        <h3> <a href="" title="{{ movie.name }}" >{{ movie.name }}</a> </h3>
+                        <p> 主演：<a href="">{{ movie.actor }}</a><br>
+                            豆瓣评分：{{ movie.score }}<br></p>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block tag_sidebar %}
+    <div class="tag_siderbar" >
+        <div class="widget git_tag">
+            <div class="title"><h3>热门标签</h3></div>
+            <div class="git_tags">
+                {% get_movies_tags as tags %}
+                {% for tag in tags %}
+                    <a href="{{ tag.get_absolute_url  }}" data-original-title="1304个话题">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

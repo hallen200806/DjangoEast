@@ -18,4 +18,8 @@ urlpatterns = [
     url(r'^books/', views.books, name='books'),
     url(r'^book_detail/(?P<pk>[0-9]+)/$', views.book_detail, name='book_detail'),
     url(r'^book_list/(?P<pk>[0-9]+)/$', views.book_list, name='book_list'),
+
+    url(r'movies/', views.movies, name ='movies' ),
+    url(r'^movie_detail/(?P<pk>[0-9]+)/$', views.movie_detail, name='movie_detail'),
+    url(r'^movie_list/(?P<pk>[0-9]+)/$', views.movie_list, name='movie_list'),
 ]

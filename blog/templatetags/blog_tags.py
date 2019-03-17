@@ -41,3 +41,12 @@ def get_posts_tags():
 def get_books_tags():
     tags = BookTag.objects.annotate(books_count=Count('book')).order_by('-books_count')
     return tags
+
+@register.simple_tag
+def get_total_movies():
+    books_number = Movie.objects.all().count()
+    return books_number
+@register.simple_tag
+def get_movies_tags():
+    tags = MovieTag.objects.annotate(movies_count=Count('movie')).order_by('-movies_count')
+    return tags

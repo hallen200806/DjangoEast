@@ -118,3 +118,30 @@ def book_list(request,pk):
     tag_name = tag.name
     books_number = books.count()
     return render(request,'blog/book_list.html',context={"books":books,'tag_name':tag_name,'books_number':books_number})
+
+
+def movies(request):
+    movies = Movie.objects.all()
+    tags = MovieTag.objects.annotate(movies_count = Count('movie')).order_by("-movies_count")
+    return render(request,'blog/movies.html',context={'movies':movies,'tags':tags,})
+
+def movie_list(request,pk):
+    tag = get_object_or_404(MovieTag,pk=pk)
+    movies = Movie.objects.filter(tag=tag)
+    tag_name = tag.name
+    movies_number = movies.count()
+    return render(request,'blog/movie_list.html',context={'movies':movies,'tag_name':tag_name,'movies_number':movies_number})
+
+def movie_detail(request,pk):
+    movie = get_object_or_404(Movie,pk=pk)
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
+    movie.detail = md.convert(movie.detail)
+    movie.toc = md.toc
+    movie.increase_views()  # 阅读量加1
+
+    tags = MovieTag.objects.annotate(movies_count = Count('movie')).order_by('-movies_count')
+    return render(request,'blog/movie_detail.html',context={'movie':movie,'tags':tags,})
