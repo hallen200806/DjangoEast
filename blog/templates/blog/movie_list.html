@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% load blog_tags %}
 
+{% block meta %}
+<title>当前分类：{{ tag_name }}-我的影单</title>
+{% endblock %}
+
 {% block article %}
     <div class="post-block" style="opacity: 40; display: block;">
-        <h1 align="center">当前分类：{{ tag_name }}(共{{ movies_number }}本）</h1>
+        <h1 align="center">当前分类：{{ tag_name }}(共{{ movies | length }}部）</h1>
         <div class="pagewrapper" style="padding-top:.1px;">
             <div id="cardslist" class="cardlist" role="main">
 
@@ -43,7 +47,6 @@
                 </div>
                 {% endif %}
             {% endfor %}
-
             </div>
         </div>
     </div>

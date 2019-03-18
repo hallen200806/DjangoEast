@@ -3,6 +3,8 @@
 
 {% block meta %}
 <title>{{ movie.name }}</title>
+<meta name="description" content="{{ movie.excerpt }}"/>
+<meta name="keywords" content="{% for tag in movie.tag.all %}{{ tag.name }},{% endfor %}"/>
 {% endblock %}
 
 {% block article %}

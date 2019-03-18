@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% load blog_tags %}
 
+{% block meta %}
+<title>我的书单-向东的笔记本</title>
+{% endblock %}
+
 {% block article %}
     <div class="post-block" style="opacity: 40; display: block;">
-        <h1 align="center">我的书单(共{% get_total_books %}本)</h1>
+        <h1 align="center">我的书单(共{{ books|length }}本)</h1>
         <div class="pagewrapper" style="padding-top:.1px;">
             <div id="cardslist" class="cardlist" role="main">
 

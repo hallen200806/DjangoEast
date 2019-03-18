@@ -3,6 +3,8 @@
 
 {% block meta %}
 <title>{{ book.name }}</title>
+<meta name="description" content="{{ book.excerpt }}"/>
+<meta name="keywords" content="{% for tag in book.tag.all %}{{ tag.name }},{% endfor %}"/>
 {% endblock %}
 
 {% block article %}
