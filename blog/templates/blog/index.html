@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 
-{% block articlebox %}
-    {% regroup boxposts by category.name as post_list %}
-    <div class="newsbox">
-        {% for posts in post_list %}
-            <section>
-                <div class="news">
-                  <h2 class="newstitle"><span><a href="/categories/#{{ posts.grouper }}" target="_blank">更多</a></span><b>{{ posts.grouper }}</b></h2>
-                      <ul>
-                          {% for post  in posts.list reversed%}
-                              <li><a href="{{ post.get_absolute_url }}" target="_blank"><span>{{ post.created_time | date:"m-d" }}</span>{{ post.title }}</a> </li>
-                          {% endfor %}
-                      </ul>
-                </div>
-            </section>
-        {% endfor %}
-    </div>
-{% endblock %}
+{#{% block articlebox %}#}
+{#    {% regroup boxposts by category.name as post_list %}#}
+{#    <div class="newsbox">#}
+{#        {% for posts in post_list %}#}
+{#            <section>#}
+{#                <div class="news">#}
+{#                  <h2 class="newstitle"><span><a href="/categories/#{{ posts.grouper }}" target="_blank">更多</a></span><b>{{ posts.grouper }}</b></h2>#}
+{#                      <ul>#}
+{#                          {% for post  in posts.list reversed%}#}
+{#                              <li><a href="{{ post.get_absolute_url }}" target="_blank"><span>{{ post.created_time | date:"m-d" }}</span>{{ post.title }}</a> </li>#}
+{#                          {% endfor %}#}
+{#                      </ul>#}
+{#                </div>#}
+{#            </section>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}
 
 
 
