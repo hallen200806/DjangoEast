@@ -1,12 +1,12 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,HttpResponse,HttpResponseRedirect
 from .models import *
 from django.contrib.auth.models import User, Group
 from django.core.paginator import Paginator
 from django.core.paginator import PageNotAnInteger
 from django.core.paginator import EmptyPage
 import markdown
-# from django.views.decorators.cache import cache_page
 from django.db.models import Count
+
 def index(request):
     posts = Post.objects.all().order_by('-created_time')
     boxposts = posts.filter(category_id__in=[1,2]).order_by('category_id') #首页文章框中的文章聚合
@@ -143,3 +143,4 @@ def movie_detail(request,pk):
 
     tags = MovieTag.objects.annotate(movies_count = Count('movie')).order_by('-movies_count')
     return render(request,'blog/movie_detail.html',{'movie':movie,'tags':tags,})
+

@@ -82,7 +82,7 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.excerpt:
-			self.excerpt = strip_tags(self.body).replace("&nbsp;","")[:150] #strip_tags是去除html标签
+			self.excerpt = strip_tags(self.body).replace("&nbsp;","").replace("#","")[:150] #strip_tags是去除html标签
 		self.words = len(strip_tags(self.body).replace(" ","").replace('\n',""))	# 统计文章字数
 		super(Post, self).save(*args, **kwargs) # 调用父类的 save 方法将数据保存到数据库中
 
@@ -143,7 +143,7 @@ class Book(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.excerpt:
-			self.excerpt = strip_tags(self.detail).replace("&nbsp;","")[:150] #strip_tags是去除html标签
+			self.excerpt = strip_tags(self.detail).replace("&nbsp;","").replace("#","")[:150] #strip_tags是去除html标签
 		self.words = len(strip_tags(self.detail).replace(" ","").replace('\n',""))	# 统计文章字数
 		super(Book, self).save(*args, **kwargs) # 调用父类的 save 方法将数据保存到数据库中
 
@@ -203,7 +203,7 @@ class Movie(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.excerpt:
-			self.excerpt = strip_tags(self.detail).replace("&nbsp;","")[:150] #strip_tags是去除html标签
+			self.excerpt = strip_tags(self.detail).replace("&nbsp;","").replace("#","")[:150] #strip_tags是去除html标签
 		self.words = len(strip_tags(self.detail).replace(" ","").replace('\n',""))	# 统计文章字数
 		super(Movie, self).save(*args, **kwargs) # 调用父类的 save 方法将数据保存到数据库中
 

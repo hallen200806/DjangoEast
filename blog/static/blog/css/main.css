@@ -180,7 +180,7 @@ th {
   padding: 0;
 }
 ::selection {
-  background: #262a30;
+  background: #d23f31;
   color: #fff;
 }
 body {
@@ -313,7 +313,7 @@ h6 code {
 p {
   /*margin: 0 0 0px 0;*/
   display: block;
-  line-height: 28px;
+  line-height: 24px;
 }
 a,
 span.exturl {
@@ -1141,7 +1141,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #222;
+  background: #d23f31;
 }
 .site-meta {
   margin: 0;
@@ -1180,7 +1180,7 @@ pre .javascript .function {
 .site-subtitle {
   margin-top: 10px;
   font-size: 13px;
-  color: #ddd;
+  /*color: #ddd;*/
 }
 .use-motion .brand {
   opacity: 0;
@@ -1508,42 +1508,42 @@ pre .javascript .function {
   overflow-wrap: break-word;
   word-wrap: break-word;
   text-align: left;
-  font-weight: 400;
+  font-weight: 500;
 }
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: #555;
+  color: #00a67c;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
 }
-.posts-expand .post-title-link::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 10;
-  background-color: #000;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  -moz-transform: scaleX(0);
-  -ms-transform: scaleX(0);
-  -o-transform: scaleX(0);
-  transform: scaleX(0);
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
-}
-.posts-expand .post-title-link:hover::before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  -moz-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  -o-transform: scaleX(1);
-  transform: scaleX(1);
-}
+/*.posts-expand .post-title-link::before {*/
+  /*content: "";*/
+  /*position: absolute;*/
+  /*width: 100%;*/
+  /*height: 2px;*/
+  /*bottom: 0;*/
+  /*left: 10;*/
+  /*background-color: #000;*/
+  /*visibility: hidden;*/
+  /*-webkit-transform: scaleX(0);*/
+  /*-moz-transform: scaleX(0);*/
+  /*-ms-transform: scaleX(0);*/
+  /*-o-transform: scaleX(0);*/
+  /*transform: scaleX(0);*/
+  /*transition-duration: 0.2s;*/
+  /*transition-timing-function: ease-in-out;*/
+  /*transition-delay: 0s;*/
+/*}*/
+/*.posts-expand .post-title-link:hover::before {*/
+  /*visibility: visible;*/
+  /*-webkit-transform: scaleX(1);*/
+  /*-moz-transform: scaleX(1);*/
+  /*-ms-transform: scaleX(1);*/
+  /*-o-transform: scaleX(1);*/
+  /*transform: scaleX(1);*/
+/*}*/
 .posts-expand .post-title-link .fa {
   font-size: 20px;
   margin-left: 5px;
@@ -1554,6 +1554,7 @@ pre .javascript .function {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: left;
+  line-height: 0px;
 }
 .posts-expand .post-meta .post-category-list {
   display: inline-block;
@@ -2900,7 +2901,7 @@ ul.breadcrumb li+li:last-child {
 .site-meta {
   padding: 20px 0;
   color: #fff;
-  background: #222;
+  background: #d23f31;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-meta {
@@ -2989,7 +2990,7 @@ ul.breadcrumb li+li:last-child {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #ccc;
+  background-color: #d23f31;
   border-radius: 10px;
   float: right;
   margin: 0.35em 0 0 0;
@@ -3202,9 +3203,12 @@ ul.breadcrumb li+li:last-child {
   border-radius: initial;
 }
 .post-block {
+
+
   padding: 40px;
   background: #fff;
-  box-shadow: -4px -4px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  margin-bottom: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
   border-radius: initial;
 }
 #posts > article + article .post-block {
@@ -3279,7 +3283,9 @@ ul.breadcrumb li+li:last-child {
   line-height: inherit;
 }
 .posts-expand .post-title {
-  font-size: 1.7em;
+  font-size: 23px;
+  line-height: 25px;
+  display: inline;
 }
 .post-body h1 {
   font-size: 1.6em;
@@ -3406,7 +3412,7 @@ width:140px;height:36px;
     /*--设置输入框的外层元素宽度和高度--*/
 background:#fafafa;color: #9e9c9c;
     /*--设置背景颜色和输入框文字颜色--*/
-border: 2px solid #222222;
+border: 2px solid #d23f31;
 border-top-left-radius:5px;
 border-bottom-left-radius:5px;
     /*--设置边框，并将左上角和左下角设置圆角--*/
@@ -3426,7 +3432,7 @@ span.button {float:left;
     /*--设置提交按钮放在span中并设置浮动--*/
 margin-top: 5px;
 padding:0;
-border: 2px solid #222222;
+border: 2px solid #d23f31;
 border-top-right-radius:5px;
 border-bottom-right-radius:5px;
     /*--设置边框，并将右上角和右下角设置圆角--*/
@@ -3438,7 +3444,7 @@ line-height:36px;
     /*--设置按钮本身的高度，行距和高度相等以便垂直居中--*/
 padding:0 12px;
     /*--为了美观，适当设置按钮文字的左右边距--*/
-background:#222222;color:#fff;
+background:#d23f31;color:#fff;
     /*--将提交按钮的背景颜色设置与边框颜色相同--*/
 }
 ::-webkit-input-placeholder {color:#ccc;}
@@ -3561,7 +3567,7 @@ background:#222222;color:#fff;
 /*newsbox*/
 .newsbox {
   margin:11px -11px;
-  margin-top: 0px;
+  margin-top: -10px;
   margin-bottom: 0px;
   display:flex;
 }
@@ -3805,33 +3811,33 @@ background:#222222;color:#fff;
 .git_tags {
 	padding:10px 10px 10px 20px
 }
-/*.git_tags a:nth-child(9n) {*/
-	/*background-color:#4a4a4a*/
-/*}*/
-/*.git_tags a:nth-child(9n+1) {*/
-	/*background-color:#15a287*/
-/*}*/
-/*.git_tags a:nth-child(9n+2) {*/
-	/*background-color:#5cb85c*/
-/*}*/
-/*.git_tags a:nth-child(9n+3) {*/
-	/*background-color:#d9534f*/
-/*}*/
-/*.git_tags a:nth-child(9n+4) {*/
-	/*background-color:#567e95*/
-/*}*/
-/*.git_tags a:nth-child(9n+5) {*/
-	/*background-color:#b433ff*/
-/*}*/
-/*.git_tags a:nth-child(9n+6) {*/
-	/*background-color:#00a67c*/
-/*}*/
-/*.git_tags a:nth-child(9n+7) {*/
-	/*background-color:#b37333*/
-/*}*/
-/*.git_tags a:nth-child(9n+8) {*/
-	/*background-color:#f60*/
-/*}*/
+.git_tags a:nth-child(9n) {
+	background-color:#4a4a4a
+}
+.git_tags a:nth-child(9n+1) {
+	background-color:#15a287
+}
+.git_tags a:nth-child(9n+2) {
+	background-color:#5cb85c
+}
+.git_tags a:nth-child(9n+3) {
+	background-color:#d9534f
+}
+.git_tags a:nth-child(9n+4) {
+	background-color:#567e95
+}
+.git_tags a:nth-child(9n+5) {
+	background-color:#b433ff
+}
+.git_tags a:nth-child(9n+6) {
+	background-color:#00a67c
+}
+.git_tags a:nth-child(9n+7) {
+	background-color:#b37333
+}
+.git_tags a:nth-child(9n+8) {
+	background-color:#f60
+}
 .git_tags a {
 	width: auto;
 	display:inline-block;
@@ -3840,7 +3846,7 @@ background:#222222;color:#fff;
 	background-color:#000000;
 	color:#fff;
 	line-height:1.3125rem;
-	opacity:.8;
+	opacity:.9;
 	filter:alpha(opacity=80);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
     border-radius: 5px;
@@ -3864,3 +3870,78 @@ background:#222222;color:#fff;
   margin-left: -6px;
 
 }
+
+.article_post{
+  padding: 40px;
+}
+
+.article-post-meta{
+  margin: 6px 0 6px 0;
+  color: #999;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+  text-align: left;
+}
+
+.posts-expand .article-post-meta>span{
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.posts-list{
+  padding: 20px 15px 20px 20px;
+}
+
+/*category label before post title*/
+.post-header header .label {
+  margin-right:5px;
+  position:relative;
+  top:-2px;
+  padding: 2px 6px 4px;
+}
+
+.label-important, .badge-important{
+  background: #d23f31;
+}
+
+.label{
+  position:relative;
+  display:inline-block;
+  padding:4px 6px 6px;
+  line-height:14px;
+  color:#ffffff;
+  vertical-align:baseline;
+  white-space:nowrap;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+
+.label-important .label-arrow, .badge-important .label-arrow{
+  border-left-color:#d23f31;
+}
+
+.label .label-arrow{
+  top:7px;
+  right:-4px;
+  border-left:4px solid #d23f31;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent
+}
+
+.label-arrow{
+  position:absolute;
+  width:0;height:0;
+  vertical-align:top;
+  content:""
+}
+
+.post-title a{
+  top: 5px;
+}
+
+
+.post-header>a:hover{
+  color: #ffffff;
+}
+
+
+

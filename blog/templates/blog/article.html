@@ -10,13 +10,13 @@
 {% block article %}
 <div id="posts" class="posts-expand">
     <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-        <div class="post-block" style="opacity: 1; display: block;">
+        <div class="post-block article_post" style="opacity: 1; display: block;">
             <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
                 <!--文章标题-->
                 <h2 class="post-title" itemprop="name headline">{{ post.title }}</h2>
 
                 <!--发布信息-->
-                <div class="post-meta">
+                <div class="article-post-meta">
                     <!--发布时间-->
                     <span class="post-time">
                         <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
@@ -98,3 +98,4 @@
         </div>
     </div>
 {% endblock %}
+
