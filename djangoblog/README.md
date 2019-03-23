@@ -1,4 +1,4 @@
-##后台文章页使用富文本编辑器Ueditor的方式
+## 后台文章页使用富文本编辑器Ueditor的方式
 
 1. 安装DjangoUeditor3-master
 
@@ -12,7 +12,7 @@
 
 6. adminx.py文件中的PostAdmin类中添加一个style_fields变量
 
-##后台文章页使用Markdown编辑器的方式
+## 后台文章页使用Markdown编辑器的方式
 
 1. 在Django项目环境中pip安装Markdown包
 
@@ -26,7 +26,7 @@
 
 6. 首页打开文章就可以看到渲染后的Markdown格式的文章
 
-##Markdown支持代码高亮
+## Markdown支持代码高亮
 
 1. pip安装pygments
 
@@ -38,7 +38,7 @@
 
 5. 后台文章页用``` python ```来引用样式
 
-##Django Haystack实现功能丰富的全文检索
+## Django Haystack实现功能丰富的全文检索
 
 1. pip安装 whoosh(搜索引擎) django-haystack(搜索框架) jieba(中文分词)三件套
 ```markdown

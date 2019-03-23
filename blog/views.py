@@ -33,10 +33,10 @@ def article(request, pk):
     ])
     post.body = md.convert(post.body)
     post.toc = md.toc
-
     #获取相关文章
+    domain = request.META['HTTP_HOST']
     relative_posts = Post.objects.filter(category_id=post.category_id).exclude(pk = pk).order_by('?')[:4]
-    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts})
+    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts,'domain':domain})
 
 def archives(request):
     posts = Post.objects.all().order_by('-created_time')
