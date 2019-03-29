@@ -1,25 +1,15 @@
 from django.shortcuts import render,get_object_or_404,HttpResponse,HttpResponseRedirect
 from .models import *
-from django.contrib.auth.models import User, Group
-from django.core.paginator import Paginator
-from django.core.paginator import PageNotAnInteger
-from django.core.paginator import EmptyPage
+from django.contrib.auth.models import User
 import markdown
 from django.db.models import Count
+from django.views.generic import ListView
 
-def index(request):
-    posts = Post.objects.all().order_by('-created_time')
-    boxposts = posts.filter(category_id__in=[1,2]).order_by('category_id') #首页文章框中的文章聚合
-    paginator = Paginator(posts,5) #每页显示几条数据
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page) # 1是指当前现实的是第一页
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages) #paginator.num_pages为分页后的总页数
-
-    return render(request, 'blog/index.html', {'posts': posts,'boxposts':boxposts,})
+class IndexView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    paginate_by = 5
 
 def article(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -34,70 +24,76 @@ def article(request, pk):
     post.body = md.convert(post.body)
     post.toc = md.toc
     #获取相关文章
-    domain = request.META['HTTP_HOST']
     relative_posts = Post.objects.filter(category_id=post.category_id).exclude(pk = pk).order_by('?')[:4]
-    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts,'domain':domain})
+    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts,})
 
-def archives(request):
-    posts = Post.objects.all().order_by('-created_time')
-    post_count = Post.objects.all().count()
-    category_count = Category.objects.all().count()
-    tag_count = Tag.objects.all().count()
-    return render(request,'blog/archives.html',{'posts':posts,'post_count':post_count,'category_count':category_count,'tag_count':tag_count,})
+class ArchivesView(ListView):
+    template_name = 'blog/archives.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.all().order_by('-created_time')
 
 #全站所有的标签
-def tags(request):
-    tags = Tag.objects.all()
-    return render(request, 'blog/tags.html', {'tags':tags})
+class TagsView(ListView):
+    model = Tag
+    template_name = 'blog/tags.html'
+    context_object_name = 'tags'
 
 #每个标签下的所有文章
-def tag_list(request,pk):
-    tag = get_object_or_404(Tag, pk=pk)
-    posts = Post.objects.filter(tag=tag).order_by('-created_time')
-    tag_name = tag.name
-    #分页
-    paginator = Paginator(posts, 5)  # 每页显示1条数据
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)  # 1是指当前现实的是第一页
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
-    return render(request,'blog/tag_list.html',{'posts':posts,'tag_name':tag_name})
+class TagListView(ListView):
+    template_name = 'blog/tag_list.html'
+    context_object_name = 'posts'
+    paginate_by = 5
 
-#分类下的所有文章
-def category(request,pk):
-    cate = get_object_or_404(Category, pk=pk)
-    cat_name = cate.name
-    posts = Post.objects.filter(category=cate).order_by('created_time')
-    paginator = Paginator(posts, 5)  # 每页显示1条数据
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)  # 1是指当前现实的是第一页
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
-    return render(request,'blog/category.html',{'posts':posts,'cate_name':cat_name})
+    def get_queryset(self):
+        tag = get_object_or_404(Tag,pk = self.kwargs.get('pk'))
+        return Post.objects.filter(tag=tag)
 
+    def get_context_data(self, **kwargs):
+        context = super(TagListView, self).get_context_data(**kwargs)
+        context['tag_name'] = Tag.objects.get(pk = self.kwargs.get('pk'))
+        return context
 
-def categories(request):
-    posts = Post.objects.all()
-    # paginator = Paginator(posts, 1000)  # 每页显示1条数据
-    # page = request.GET.get('page')
-    # try:
-    #     posts = paginator.page(page)  # 1是指当前现实的是第一页
-    # except PageNotAnInteger:
-    #     posts = paginator.page(1)
-    # except EmptyPage:
-    #     posts = paginator.page(paginator.num_pages)  # paginator.num_pages为分页后的总页数
-    return render(request,'blog/categories.html',{'posts':posts,})
+class CategoryView(ListView):
+    template_name = 'blog/category.html'
+    context_object_name = 'posts'
+    paginate_by = 5
 
-def books(request):
-    books = Book.objects.all()
-    tags = BookTag.objects.annotate(posts_count = Count('book')).order_by('-posts_count')
-    return render(request,'blog/books.html',{'books':books,'tags':tags})
+    def get_queryset(self):
+        cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
+        return Post.objects.filter(category=cate).order_by('created_time')
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryView, self).get_context_data(**kwargs)
+        context['cate_name'] = Category.objects.get(pk=self.kwargs.get('pk'))
+        return context
+
+# 按分类展示文章
+class Categories(ListView):
+    model = Post
+    template_name = 'blog/categories.html'
+    context_object_name = 'posts'
+
+class BooksView(ListView):
+    model = Book
+    template_name = 'blog/books.html'
+    context_object_name = 'books'
+    paginate_by = 8
+
+class BookListView(ListView):
+    template_name = 'blog/book_list.html'
+    context_object_name = 'books'
+    paginate_by = 8
+
+    def get_queryset(self):
+        tag = get_object_or_404(BookTag,pk = self.kwargs.get('pk'))
+        return Book.objects.filter(tag=tag)
+
+    def get_context_data(self, **kwargs):
+        context = super(BookListView, self).get_context_data(**kwargs)
+        context['tag_name'] = BookTag.objects.get(pk = self.kwargs.get('pk'))
+        return context
 
 def book_detail(request,pk):
     book = get_object_or_404(Book,pk=pk)
@@ -112,23 +108,25 @@ def book_detail(request,pk):
     tags = BookTag.objects.annotate(posts_count = Count('book')).order_by('-posts_count')
     return render(request,'blog/book_detail.html',{'book':book,'tags':tags,})
 
-def book_list(request,pk):
-    tag = get_object_or_404(BookTag,pk=pk)
-    books = Book.objects.filter(tag = tag)
-    tag_name = tag.name
-    return render(request,'blog/book_list.html',{"books":books,'tag_name':tag_name,})
+class MoviesView(ListView):
+    model = Movie
+    template_name = 'blog/movies.html'
+    context_object_name = 'movies'
+    paginate_by = 8
 
+class MovieListView(ListView):
+    template_name = 'blog/movies_list.html'
+    context_object_name = 'movies'
+    paginate_by = 8
 
-def movies(request):
-    movies = Movie.objects.all()
-    tags = MovieTag.objects.annotate(movies_count = Count('movie')).order_by("-movies_count")
-    return render(request,'blog/movies.html',{'movies':movies,'tags':tags,})
+    def get_queryset(self):
+        tag = get_object_or_404(MovieTag,pk = self.kwargs.get('pk'))
+        return Movie.objects.filter(tag=tag)
 
-def movie_list(request,pk):
-    tag = get_object_or_404(MovieTag,pk=pk)
-    movies = Movie.objects.filter(tag=tag)
-    tag_name = tag.name
-    return render(request,'blog/movie_list.html',{'movies':movies,'tag_name':tag_name,})
+    def get_context_data(self, **kwargs):
+        context = super(MovieListView, self).get_context_data(**kwargs)
+        context['tag_name'] = MovieTag.objects.get(pk = self.kwargs.get('pk'))
+        return context
 
 def movie_detail(request,pk):
     movie = get_object_or_404(Movie,pk=pk)

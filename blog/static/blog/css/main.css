@@ -1026,6 +1026,18 @@ pre .javascript .function {
   text-align: center;
   border-top: 1px solid #eee;
 }
+
+.pagination .page-style{
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 3px 12px;
+  border-radius:5px;
+
+}
+.pagination .end-page-style{
+  opacity: 0.4;
+}
+
 .page-number-basic,
 .pagination .prev,
 .pagination .next,

@@ -174,21 +174,37 @@
                             <!--分类盒子-->
                             {% block articlebox %}
                             {% endblock %}
-
-
-                            <!--分页部分-->
-                            <div class="pagination" style="opacity: 1; display: block;">
-                                {% if posts.has_previous %}
-                                    <a href="?page={{posts.previous_page_number }}">上一页</a>
-                                {% endif %}
-
-                                <span class="current">第{{ posts.number }}页/共{{ posts.paginator.num_pages }}页</span>
-
-                                {% if posts.has_next %}
-                                    <a href="?page={{ posts.next_page_number }}">下一页</a>
-                                {% endif %}
-                            </div>
                         {% endblock %}
+
+                        <!--分页部分-->
+                        {% if is_paginated %}
+                            <div class="pagination" style="opacity: 1;">
+                                <div>
+                                    <!--第一页-->
+                                    <a class="page-style" href="?page=1"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+
+                                    <!--上一页-->
+                                    {% if page_obj.has_previous %}
+                                    <a class="page-style" href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                                    {% else %}
+                                    <span class="end-page-style page-style"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                                    {% endif %}
+
+                                    <!--当前页/总页数-->
+                                    <span class="page-style" >{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+                                    <!--下一页-->
+                                    {% if page_obj.has_next %}
+                                    <a class="page-style" href="?page={{ page_obj.next_page_number }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                    {% else %}
+                                    <span class="end-page-style page-style"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                                    {% endif %}
+
+                                    <!--最后一页-->
+                                    <a class="page-style" href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
 
