@@ -1,108 +1,172 @@
 {% extends 'base.html' %}
 {% load highlight %}
 {% load staticfiles %}
+
 {% block article %}
     {% if query %}
-        {% for result in page.object_list %}
-            <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  <div class="post-block" style="opacity: 1; display: block;">
-    <link itemprop="mainEntityOfPage" href="{{ post.get_absolute_url }}">
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liam Huang">
-      <meta itemprop="description" content="投其所好总有所成">
-      <meta itemprop="image" content="/images/avatar/avatar.webp">
-    </span>
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向东的笔记本">
-    </span>
-      <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
-          <h2 class="post-title" itemprop="name headline">
-                <a href="{{ result.object.get_absolute_url }}" class="post-title-link" itemprop="url"><b>{% highlight result.object.title with query %}</b></a>
-          </h2>
+        {% for post in page.object_list%}
+            <section id="posts" class="posts-expand">
+                <article class="post post-type-normal">
+                    <div class="post-block posts-list" style="opacity: 1; display: block;">
 
-      </header>
-    <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
-{#          <p>{{ result.object.excerpt }}</p>#}
-          <p>{% highlight result.object.body with query %}</p>
+                        <!--文章标题-->
+                        <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
+                            <a class="label label-important" href="{% url 'blog:category' post.object.category.id %}">{{ post.object.category }}<i class="label-arrow"></i></a>
+                            <h2 class="post-title" itemprop="name headline"><a title="{{ post.object.title }}" href="{{ post.object.get_absolute_url }}" class="post-title-link" itemprop="url">{% highlight post.object.title with query %}</a></h2>
+                        </header>
 
-    </div>
-              <div class="post-meta">
-          <span class="post-time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-{#              <span class="post-meta-item-text">发表于</span>#}
-              <time itemprop="dateCreated datePublished">{{ result.object.created_time }}</time>
-                <span class="post-meta-item-icon">
-                </span>
-          </span>
-            <span class="post-category">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-{#                <span class="post-meta-item-text">分类于</span>#}
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="http://127.0.0.1:8000/category/{{ result.object.category_id }}" itemprop="url" rel="index"><span itemprop="name">{{ result.object.category }}</span></a></span>
-            </span>
+                        <!--文章摘要-->
+                        <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
+{#                              <p>{{ post.object.excerpt|slice:"1:"}}......</p>#}
+                              <p>{% highlight post.object.body with query %}</p>
+                        </div>
 
-           {#显示所属标签#}
-           <span class="post-category">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>
-               <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-               <span class="busuanzi-value" id="busuanzi_value_page_pv">
-                  {% for tag in result.object.tag.all %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
-                  {% endfor %}
-                </span>
-           </span>
+                        <!--文章信息-->
+                        <div class="post-meta">
+                            <!--发表时间-->
+                            <span class="post-time">
+                                <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
+                                <a>{{ post.object.created_time| date:"Y-m-d" }}</a>
+                            </span>
 
-        </div>
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  </article>
-        {% empty %}
-            <div class="post-block" style="opacity: 1; display: block;">
-            没有找到任何结果
-            </div>
+                            <!--文章分类-->
+                            <span class="post-category">
+                                <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span>
+                                <a href="{% url 'blog:category' post.object.category.id %}" itemprop="url" rel="index"><span itemprop="name">{{ post.object.category }}</span></a>
+                            </span>
+
+                            <!--文章标签-->
+                            <span class="post-category">
+                                <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>
+                                <span class="busuanzi-value" id="busuanzi_value_page_pv">
+                                    {% for tag in post.object.tag.all %}
+                                        <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                                    {% endfor %}
+                                </span>
+                            </span>
+                        </div>
+
+                    </div>
+                </article>
+                    {% empty %}
+                    <div class="post-block" style="opacity: 1; display: block;">
+                        没有找到任何结果
+                    </div>
+            </section>
         {% endfor %}
+        <nav class="pagination" style="opacity: 1; display: block;">
+
+            <!--第一页-->
+            <a class="page-style" href="?q={{ query }}&amp;?page=1"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+
+            {% if page.has_previous%}
+                <a class="page-style" href="?q={{ query }}&amp;page={{page.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            {% else %}
+                <span class="end-page-style page-style"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+            {% endif %}
 
 
-<!--分页部分-->
-{#<nav class="pagination" style="opacity: 1; display: block;">#}
+            <span class="page-style" class="current">{{ page.number }} of {{ page.paginator.num_pages }}</span>
+
+            {% if page.has_next %}
+                <a class="page-style" href="?q={{ query }}&amp;page={{ page.next_page_number }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            {% else %}
+                <span class="end-page-style page-style"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+            {% endif %}
+
+            <!--最后一页-->
+            <a class="page-style" href="?q={{ query }}&amp;page={{ page.paginator.num_pages }}"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+
+            {% else %}
+            <div class="post-block" style="opacity: 1; display: block;height: 620px;">请输入关键词再进行搜索~</div>
+
+        </nav>
+    {% endif %}
+{% endblock %}
+
+
+{#{% block article %}#}
+{#    {% if query %}#}
+{#        {% for result in page.object_list %}#}
+{#            <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">#}
+{#  <div class="post-block" style="opacity: 1; display: block;">#}
+{#    <link itemprop="mainEntityOfPage" href="{{ post.get_absolute_url }}">#}
+{#    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">#}
+{#      <meta itemprop="name" content="Liam Huang">#}
+{#      <meta itemprop="description" content="投其所好总有所成">#}
+{#      <meta itemprop="image" content="/images/avatar/avatar.webp">#}
+{#    </span>#}
+{#    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">#}
+{#      <meta itemprop="name" content="向东的笔记本">#}
+{#    </span>#}
+{#      <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">#}
+{#          <h2 class="post-title" itemprop="name headline">#}
+{#                <a href="{{ result.object.get_absolute_url }}" class="post-title-link" itemprop="url"><b>{% highlight result.object.title with query %}</b></a>#}
+{#          </h2>#}
 {##}
-{#    {% if page.has_previous or page.has_next %}#}
-{#    <div>#}
-{#        {% if page.has_previous %}#}
-{#            <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous#}
-{#        {% if page.has_previous %}</a>{% endif %}#}
-{#        |#}
-{#        {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next#}
-{#        &raquo;{% if page.has_next %}</a>{% endif %}#}
+{#      </header>#}
+{#    <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">#}
+{#          <p>{{ result.object.excerpt }}</p>#}
+{#          <p>{% highlight result.object.body with query %}</p>#}
+{##}
 {#    </div>#}
-{#    {% endif %}#}
+{#              <div class="post-meta">#}
+{#          <span class="post-time">#}
+{#              <span class="post-meta-item-icon">#}
+{#                <i class="fa fa-calendar-o"></i>#}
+{#              </span>#}
+{#              <span class="post-meta-item-text">发表于</span>#}
+{#              <time itemprop="dateCreated datePublished">{{ result.object.created_time }}</time>#}
+{#                <span class="post-meta-item-icon">#}
+{#                </span>#}
+{#          </span>#}
+{#            <span class="post-category">#}
+{#              <span class="post-meta-divider">|</span>#}
+{#              <span class="post-meta-item-icon">#}
+{#                <i class="fa fa-folder-o"></i>#}
+{#              </span>#}
+{#                <span class="post-meta-item-text">分类于</span>#}
+{#                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="http://127.0.0.1:8000/category/{{ result.object.category_id }}" itemprop="url" rel="index"><span itemprop="name">{{ result.object.category }}</span></a></span>#}
+{#            </span>#}
+{##}
+{#           显示所属标签#}
+{#           <span class="post-category">#}
+{#              <span class="post-meta-divider">|</span>#}
+{#              <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
+{#               <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">#}
+{#               <span class="busuanzi-value" id="busuanzi_value_page_pv">#}
+{#                  {% for tag in result.object.tag.all %}#}
+{#                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>#}
+{#                  {% endfor %}#}
+{#                </span>#}
+{#           </span>#}
+{##}
+{#        </div>#}
+{#    <footer class="post-footer">#}
+{#        <div class="post-eof"></div>#}
+{#    </footer>#}
+{#  </div>#}
+{#  </article>#}
+{#        {% empty %}#}
+{#            <div class="post-block" style="opacity: 1; display: block;">#}
+{#            没有找到任何结果#}
+{#            </div>#}
+{#        {% endfor %}#}
+{##}
+{#{% if page.has_previous or page.has_next%}#}
+{#<nav class="pagination" style="opacity: 1; display: block;">#}
+{# <a href="?q={{ query }}&amp;page={{page.previous_page_number }}">上一页</a>#}
+{# {% endif %}#}
+{# <span class="current">第{{ page.number }}页/共{{ paget.paginator.num_pages }}页</span>#}
+{# {% if paget.has_next %} <a href="?page={{ page.next_page_number }}">下一页</a>#}
+{# {% endif %}#}
 {#{% else %}#}
-{#        请输入搜索关键词，例如 django#}
+{#        <div class="post-block" style="opacity: 1; display: block;height: 620px;">#}
+{#            请输入关键词再进行搜索~#}
+{#        </div>#}
+{#  </nav>#}
+{##}
 {##}
 {#{% endif %}#}
-{#</nav>#}
-
-
-
-{% if page.has_previous or page.has_next%}
-<nav class="pagination" style="opacity: 1; display: block;">
- <a href="?q={{ query }}&amp;page={{page.previous_page_number }}">上一页</a>
- {% endif %}
-{# <span class="current">第{{ page.number }}页/共{{ paget.paginator.num_pages }}页</span>#}
- {% if paget.has_next %} <a href="?page={{ page.next_page_number }}">下一页</a>
- {% endif %}
-{% else %}
-        <div class="post-block" style="opacity: 1; display: block;height: 620px;">
-            请输入关键词再进行搜索~
-        </div>
-  </nav>
-{% endif %}
-
-{% endblock %}
+{##}
+{#{% endblock %}#}

@@ -6,10 +6,13 @@ from django.db.models import Count
 from django.views.generic import ListView
 
 class IndexView(ListView):
-    model = Post
+
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 5
+
+    def get_queryset(self):
+        return Post.objects.all().order_by('-created_time')
 
 def article(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -48,7 +51,7 @@ class TagListView(ListView):
 
     def get_queryset(self):
         tag = get_object_or_404(Tag,pk = self.kwargs.get('pk'))
-        return Post.objects.filter(tag=tag)
+        return Post.objects.filter(tag=tag).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         context = super(TagListView, self).get_context_data(**kwargs)
@@ -62,7 +65,7 @@ class CategoryView(ListView):
 
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
-        return Post.objects.filter(category=cate).order_by('created_time')
+        return Post.objects.filter(category=cate).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
@@ -76,10 +79,12 @@ class Categories(ListView):
     context_object_name = 'posts'
 
 class BooksView(ListView):
-    model = Book
     template_name = 'blog/books.html'
     context_object_name = 'books'
     paginate_by = 8
+
+    def get_queryset(self):
+        return Book.objects.all().order_by('-created_time')
 
 class BookListView(ListView):
     template_name = 'blog/book_list.html'
@@ -88,7 +93,7 @@ class BookListView(ListView):
 
     def get_queryset(self):
         tag = get_object_or_404(BookTag,pk = self.kwargs.get('pk'))
-        return Book.objects.filter(tag=tag)
+        return Book.objects.filter(tag=tag).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         context = super(BookListView, self).get_context_data(**kwargs)
@@ -109,10 +114,12 @@ def book_detail(request,pk):
     return render(request,'blog/book_detail.html',{'book':book,'tags':tags,})
 
 class MoviesView(ListView):
-    model = Movie
     template_name = 'blog/movies.html'
     context_object_name = 'movies'
     paginate_by = 8
+
+    def get_queryset(self):
+        return Movie.objects.all().order_by('-created_time')
 
 class MovieListView(ListView):
     template_name = 'blog/movies_list.html'
@@ -121,7 +128,7 @@ class MovieListView(ListView):
 
     def get_queryset(self):
         tag = get_object_or_404(MovieTag,pk = self.kwargs.get('pk'))
-        return Movie.objects.filter(tag=tag)
+        return Movie.objects.filter(tag=tag).order_by('-created_time')
 
     def get_context_data(self, **kwargs):
         context = super(MovieListView, self).get_context_data(**kwargs)
