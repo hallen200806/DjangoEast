@@ -11,3 +11,8 @@ class Comment(models.Model):
     text = models.TextField()
     comment_time = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+
+    class Meta:
+        verbose_name = "我的评论"
+        verbose_name_plural = verbose_name
+        ordering = ['-comment_time']
