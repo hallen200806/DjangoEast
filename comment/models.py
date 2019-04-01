@@ -15,4 +15,3 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "我的评论"
         verbose_name_plural = verbose_name
-        ordering = ['-comment_time']
