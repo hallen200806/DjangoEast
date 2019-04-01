@@ -23,8 +23,6 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('search/', include('haystack.urls')),
     path('mdeditor/', include('mdeditor.urls')),
-    path('mpttcomments', include('django_mptt_comments.urls')),
-    path('captcha', include('captcha.urls')),
 ]
 
 if settings.DEBUG:
