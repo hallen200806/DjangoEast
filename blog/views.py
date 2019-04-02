@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 import markdown
 from django.db.models import Count
 from django.views.generic import ListView
+from django.contrib.contenttypes.models import ContentType
+from comment.models import Comment
 
 class IndexView(ListView):
 
@@ -26,9 +28,13 @@ def article(request, pk):
     ])
     post.body = md.convert(post.body)
     post.toc = md.toc
-    #获取相关文章
+    # 获取相关文章
     relative_posts = Post.objects.filter(category_id=post.category_id).exclude(pk = pk).order_by('?')[:4]
-    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts,})
+
+    # 获取博客评论
+    blog_content_type = ContentType.objects.get_for_model(post) # 获取类型
+    comments = Comment.objects.filter(content_type=blog_content_type,object_id=post.id) # 获取所有与此类型相同的评论
+    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts,'comments':comments})
 
 class ArchivesView(ListView):
     template_name = 'blog/archives.html'

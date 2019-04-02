@@ -71,6 +71,42 @@
                 </div>
             </footer>
 
+        <div>
+            <div class="comment-area">
+                <h3 class="comment-area-title">提交评论</h3>
+                {% if user.is_authenticated  %}
+                    {{ user.username }},想说点什么？
+                    <form action="{% url 'comment:update_comment' %}" method="POST">
+                        {% csrf_token %}
+                        <textarea name="text" id="comment_text" style="width: 100%"></textarea>
+                        <input type="hidden" name="object_id" value="{{ post.pk }}">
+                        <input type="hidden" name="content_type" value="post">
+                        <input type="submit" value="提交" align="right">
+                    </form>
+                {% else %}
+                    请先登录后评论
+                    <form action="{% url 'comment:login' %}" method="POST">
+                        {% csrf_token %}
+                        <span>用户名：</span><input type="text" name = 'username' style="border: 1px solid">
+                        <span>密码：</span><input type="password" name = "password" style="border: 1px solid">
+                        <input type="submit" value="登录">
+                    </form>
+                {% endif %}
+            </div>
+
+
+            <div class="comment-area">
+                <h3 class="comment-area-title">评论列表</h3>
+                {% for comment in comments %}
+                    <div>
+                        {{ comment.user }}({{ comment.comment_time}})：
+                        {{ comment.text }}
+                    </div>
+                {% empty %}
+                    此篇文章，暂无评论，快来成为以第一个吃螃蟹的人吧~
+                {% endfor %}
+            </div>
+        </div>
         </div>
     </article>
 </div>

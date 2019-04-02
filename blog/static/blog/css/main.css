@@ -3955,5 +3955,13 @@ background:#d23f31;color:#fff;
   color: #ffffff;
 }
 
+/*评论区域*/
+div .comment-area{
+  margin-top: 2em;
+}
 
+div .comment-area-title{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.4em;
+}
 

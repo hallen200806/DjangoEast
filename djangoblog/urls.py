@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from blog import views
+from . import views
 import xadmin
 from django.conf.urls.static import static
 from django.conf import settings
@@ -23,6 +24,8 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('search/', include('haystack.urls')),
     path('mdeditor/', include('mdeditor.urls')),
+    path('comment/', include('comment.urls')),
+    path('login',views.login,name = 'login'),
 ]
 
 if settings.DEBUG:
