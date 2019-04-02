@@ -10,7 +10,7 @@ class Comment(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
 
     text = models.TextField(verbose_name="评论内容")
-    comment_time = models.DateTimeField(verbose_name="评论时间",default=timezone.now)
+    comment_time = models.DateField(auto_now=True)
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name="评论用户")
 
     class Meta:
