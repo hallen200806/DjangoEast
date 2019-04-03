@@ -36,7 +36,7 @@ def article(request, pk):
 
     # 获取博客评论
     blog_content_type = ContentType.objects.get_for_model(post) # 获取类型
-    comments = Comment.objects.filter(content_type=blog_content_type,object_id=post.id) # 获取所有与此类型相同的评论
+    comments = Comment.objects.filter(content_type=blog_content_type,object_id=post.id,parent=None) # 获取所有与此类型相同的评论
     comment_form = CommentForm(initial={'content_type':blog_content_type.model,'object_id':post.pk})
 
     context = {}

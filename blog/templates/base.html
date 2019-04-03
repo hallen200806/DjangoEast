@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="{% static '/blog/css/main.css' %}">
 <link rel="stylesheet" href="{% static '/blog/css/highlights/github.css' %}">
 <link rel="icon" type="image/png" sizes="32x32" href="{% static '/blog/image/favi.ico' %}">
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 <!--控制siderbar页面固定页面顶部-->
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
@@ -262,5 +264,7 @@
     <script src="{% static '/blog/js/affix.js' %}"></script>
     <script src="{% static '/blog/js/pisces.js' %}"></script>
     <script src="{% static '/blog/js/bootstrap.js' %}"></script>
+
+    {% block script_extends %} {% endblock %}
 </body>
 </html>

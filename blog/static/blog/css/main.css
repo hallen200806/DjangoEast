@@ -4283,3 +4283,10 @@ div .comment-area-title{
 	margin-left:auto
 }
 
+div .django-ckeditor-widget{
+  width:100%;
+}
+
+.text-danger{
+  color:#a94442
+}

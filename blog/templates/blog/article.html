@@ -76,11 +76,14 @@
                 <div class="comment-area">
                     <h3 class="comment-area-title">提交评论</h3>
                     {% if user.is_authenticated  %}
-                        <form action="{% url 'comment:update_comment' %}" method="POST">
+                        <form id = "comment_form" action="{% url 'comment:update_comment' %}" method="POST">
                             {% csrf_token %}
-                            <label >{{ user.username }},想说点什么？</label>
-                            {{comment_form }}
-                            <input type="submit" value="提交">
+{#                            <label >{{ user.username }},想说点什么？</label>#}
+                            {% for field in comment_form %}
+                                {{ field }}
+                            {% endfor %}
+                            <span id="comment_error" class="text-danger pull-left"></span>
+                            <input class="btn btn-primary pull-right" type="submit" value="提交">
                         </form>
                     {% else %}
                         请先登录后评论
@@ -93,19 +96,67 @@
                 <!--评论显示区域-->
                 <div class="comment-area">
                     <h3 class="comment-area-title">评论列表</h3>
-                    {% for comment in comments %}
-                        <div>
-                            {{ comment.user }}({{ comment.comment_time}})：
-                            {{ comment.text }}
-                        </div>
-                    {% empty %}
-                        此篇文章，暂无评论，快来成为以第一个吃螃蟹的人吧~
-                    {% endfor %}
+                    <div id="comment-list">
+                        {% for comment in comments %}
+                            <div>
+                                {{ comment.user.username }}({{ comment.comment_time|date:'Y-m-d H:n:s'}})：
+                                {{ comment.text |safe  }}
+                            </div>
+                            {% empty %}
+                                此篇文章，暂无评论，快来成为以第一个吃螃蟹的人吧~
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </article>
 </div>
+{% endblock %}
+
+{% block script_extends %}
+    <script type="text/javascript">
+        $("#comment_form").submit(function(){
+            // 清空错误内容
+            $("#comment_error").text('');
+            // 更新数据
+            if(CKEDITOR.instances['id_text'].document.getBody().getText().trim() == ''){
+                // 显示错误信息
+                $("#comment_error").text('评论内容不能为空');
+                return false;
+            }
+
+            // 更新数据到textarea
+            CKEDITOR.instances['id_text'].updateElement();
+
+            // 异步提交
+            $.ajax({
+                url : "{% url 'comment:update_comment' %}",
+                type : 'POST',
+                data : $(this).serialize(),
+                cache : false,
+                success : function(data){
+                    console.log(data);
+                    if(data['status'] == 'SUCCESS'){
+                        var comment_html = '<div>'+data['username']+
+                                            '('+data['comment_time']+')：'+data['text']+'</div>';
+                        // 插入数据
+                        $("#comment-list").prepend(comment_html);
+
+                        // 清空编辑框内容
+                        CKEDITOR.instances['id_text'].setData('');
+                    }else{
+                        // 显示错误信息
+                        $("#comment_error").text(data['message'])
+                    }
+
+                },
+                error : function (xhr){
+                    console : log(xhr);
+                },
+            });
+            return false;
+        })
+    </script>
 {% endblock %}
 
 {% block toc_sidebar %}

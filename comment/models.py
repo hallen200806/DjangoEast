@@ -2,17 +2,24 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
-import django.utils.timezone as timezone
+from ckeditor.fields import RichTextField
+
 
 class Comment(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.DO_NOTHING,verbose_name="评论来源")
     object_id = models.PositiveIntegerField(verbose_name="评论对象")
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    text = models.TextField(verbose_name="评论内容")
+    text = RichTextField(verbose_name="评论内容")
     comment_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name="评论用户")
 
+    root = models.ForeignKey('self',related_name='root_comment',null=True,on_delete=models.DO_NOTHING)
+    parent = models.ForeignKey('self',related_name='parent_comment',null=True,on_delete=models.DO_NOTHING)
+    reply_to = models.ForeignKey(User,related_name='replies',null=True,on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.text
     class Meta:
         verbose_name = "我的评论"
         verbose_name_plural = verbose_name

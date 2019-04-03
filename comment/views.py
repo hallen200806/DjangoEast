@@ -1,26 +1,32 @@
 from django.shortcuts import render,reverse,redirect
 from .models import Comment
 from django.contrib.contenttypes.models import ContentType
+from comment.form import CommentForm
+from django.http import JsonResponse
 
 # 添加评论
 def update_comment(request):
-    # 获取评论信息
-    user = request.user
-    text = request.POST.get('text','')
-    content_type = request.POST.get('content_type','')
-    object_id = int(request.POST.get('object_id',''))
-
-    # 获取评论对象
-    model_class = ContentType.objects.get(model = content_type).model_class() # 获取模型
-    model_obj = model_class.objects.get(pk = object_id) # 获取模型下的某个目标
-
-    # 写入评论
-    comment = Comment()
-    comment.text = text
-    comment.user = user
-    comment.content_object = model_obj # 疑点
-    comment.save()
-
-    # 重定向到原来的页面
     referer = request.META.get('HTTP_REFERER',reverse('blog:index')) # HTTP_REFERER是请求头的一部分，告诉服务器是从哪里来的
-    return redirect(referer)
+    comment_form = CommentForm(request.POST, user=request.user)
+
+    data = {}
+    if comment_form.is_valid():
+        # 检查通过、保存数据
+        comment = Comment()
+        comment.text = comment_form.cleaned_data['text']
+        comment.user = comment_form.cleaned_data['user']
+        comment.content_object = comment_form.cleaned_data['content_object']  # 疑点
+        comment.save()
+        # # 重定向到原来的页面
+        # return redirect(referer)
+
+        # 正确、返回数据
+        data['status'] = 'SUCCESS'
+        data['username'] = comment.user.username
+        data['comment_time'] = comment.comment_time.strftime('%Y-%m-%d %H:%M:%S')
+        data['text'] =  comment.text
+    else:
+        # return render(request,'error.html',{'error_message':comment_form.errors,'redirect_to':referer})
+        data['status'] = 'ERROR'
+        data['message'] = list(comment_form.errors.values())[0][0]
+    return JsonResponse(data)
