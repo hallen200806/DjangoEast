@@ -64,49 +64,45 @@
             <footer class="post-footer">
                 <div class="post-nav">
                     <div class="post-nav-next post-nav-item">
-                        {% for relative_post in relativa_posts %}
+                        {% for relative_post in relative_posts %}
                             <li class="relative_posts"><a class="relative_posts" href="{{ relative_post.get_absolute_url }}" title="{{ relative_post.title }}"><i class="fa fa-minus" aria-hidden="true"></i>{{ relative_post }}</a></li>
                         {% endfor %}
                     </div>
                 </div>
             </footer>
 
-        <div>
-            <div class="comment-area">
-                <h3 class="comment-area-title">提交评论</h3>
-                {% if user.is_authenticated  %}
-                    {{ user.username }},想说点什么？
-                    <form action="{% url 'comment:update_comment' %}" method="POST">
-                        {% csrf_token %}
-                        <textarea name="text" id="comment_text" style="width: 100%"></textarea>
-                        <input type="hidden" name="object_id" value="{{ post.pk }}">
-                        <input type="hidden" name="content_type" value="post">
-                        <input type="submit" value="提交" align="right">
-                    </form>
-                {% else %}
-                    请先登录后评论
-                    <form action="{% url 'comment:login' %}" method="POST">
-                        {% csrf_token %}
-                        <span>用户名：</span><input type="text" name = 'username' style="border: 1px solid">
-                        <span>密码：</span><input type="password" name = "password" style="border: 1px solid">
-                        <input type="submit" value="登录">
-                    </form>
-                {% endif %}
-            </div>
+            <div>
+                <!--评论提交区域-->
+                <div class="comment-area">
+                    <h3 class="comment-area-title">提交评论</h3>
+                    {% if user.is_authenticated  %}
+                        <form action="{% url 'comment:update_comment' %}" method="POST">
+                            {% csrf_token %}
+                            <label >{{ user.username }},想说点什么？</label>
+                            {{comment_form }}
+                            <input type="submit" value="提交">
+                        </form>
+                    {% else %}
+                        请先登录后评论
+                        <a class = "btn btn-primary" href="{% url 'blog:login' %}?from={{ request.get_full_path }}">登录</a>
+                        <span> or </span>
+                        <a class = "btn btn-danger" href="{% url 'blog:register' %}?from={{ request.get_full_path }}">注册</a>
+                    {% endif %}
+                </div>
 
-
-            <div class="comment-area">
-                <h3 class="comment-area-title">评论列表</h3>
-                {% for comment in comments %}
-                    <div>
-                        {{ comment.user }}({{ comment.comment_time}})：
-                        {{ comment.text }}
-                    </div>
-                {% empty %}
-                    此篇文章，暂无评论，快来成为以第一个吃螃蟹的人吧~
-                {% endfor %}
+                <!--评论显示区域-->
+                <div class="comment-area">
+                    <h3 class="comment-area-title">评论列表</h3>
+                    {% for comment in comments %}
+                        <div>
+                            {{ comment.user }}({{ comment.comment_time}})：
+                            {{ comment.text }}
+                        </div>
+                    {% empty %}
+                        此篇文章，暂无评论，快来成为以第一个吃螃蟹的人吧~
+                    {% endfor %}
+                </div>
             </div>
-        </div>
         </div>
     </article>
 </div>

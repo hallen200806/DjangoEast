@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404,HttpResponse,HttpResponseRedirect
+from django.shortcuts import render,get_object_or_404,HttpResponse,HttpResponseRedirect,redirect
 from .models import *
 from django.contrib.auth.models import User
 import markdown
@@ -6,6 +6,9 @@ from django.db.models import Count
 from django.views.generic import ListView
 from django.contrib.contenttypes.models import ContentType
 from comment.models import Comment
+from djangoblog.form import LoginForm,RegForm
+from django.contrib import auth
+from comment.form import CommentForm
 
 class IndexView(ListView):
 
@@ -34,7 +37,16 @@ def article(request, pk):
     # 获取博客评论
     blog_content_type = ContentType.objects.get_for_model(post) # 获取类型
     comments = Comment.objects.filter(content_type=blog_content_type,object_id=post.id) # 获取所有与此类型相同的评论
-    return render(request, 'blog/article.html', {'post': post,'author': author,'category': category,'relativa_posts':relative_posts,'comments':comments})
+    comment_form = CommentForm(initial={'content_type':blog_content_type.model,'object_id':post.pk})
+
+    context = {}
+    context['post'] = post
+    context['author'] = author
+    context['category'] = category
+    context['relative_posts'] = relative_posts
+    context['comments'] = comments
+    context['comment_form'] = comment_form
+    return render(request, 'blog/article.html', context)
 
 class ArchivesView(ListView):
     template_name = 'blog/archives.html'
@@ -154,4 +166,50 @@ def movie_detail(request,pk):
 
     tags = MovieTag.objects.annotate(movies_count = Count('movie')).order_by('-movies_count')
     return render(request,'blog/movie_detail.html',{'movie':movie,'tags':tags,})
+
+
+# 显示登录页面、进行登录操作
+def login(request):
+    # 此处只有登录的操作，验证的部分在forms.py完成
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user = login_form.cleaned_data['user']
+            auth.login(request, user)
+            return redirect(request.GET.get('from',reverse('blog:index'))) # 重定向到上一个页面
+    else:
+        login_form = LoginForm()
+    context = {}
+    context['login_form'] = login_form
+    return render(request, 'blog/login.html', context)
+
+
+# 显示注册页面、进行注册操作
+def register(request):
+    if request.method == 'POST':
+        reg_form = RegForm(request.POST)
+        if reg_form.is_valid():
+            username = reg_form.cleaned_data['username']
+            password = reg_form.cleaned_data['password']
+            email = reg_form.cleaned_data['email']
+
+            # 注册用户
+            user = User()
+            user.username = username
+            user.email = email
+            user.set_password(password)
+            user.save()
+
+            # 注册后自动登录
+            user = auth.authenticate(username=username,password=password)
+            auth.login(request,user)
+
+            # 跳转到进入注册页面之前的页面
+            return redirect(request.GET.get('from',reverse('blog:index')))  # 重定向到上一个页面
+
+    else:
+        reg_form = RegForm()
+    context = {}
+    context['reg_form'] = reg_form
+    return render(request,'blog/register.html',context)
 

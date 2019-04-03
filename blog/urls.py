@@ -23,4 +23,8 @@ urlpatterns = [
     path('movies/', views.MoviesView.as_view(), name ='movies' ),
     path('movie_detail/<int:pk>', views.movie_detail, name='movie_detail'),
     path('movie_list/<int:pk>', views.MovieListView.as_view(), name='movie_list'),
+
+    path('login/',views.login,name='login'),
+    path('register/',views.register,name='register'),
+
 ]

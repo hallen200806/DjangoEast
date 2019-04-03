@@ -25,7 +25,6 @@ urlpatterns = [
     path('search/', include('haystack.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('comment/', include('comment.urls')),
-    path('login',views.login,name = 'login'),
 ]
 
 if settings.DEBUG:

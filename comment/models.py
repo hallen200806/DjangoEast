@@ -10,9 +10,10 @@ class Comment(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
 
     text = models.TextField(verbose_name="评论内容")
-    comment_time = models.DateField(auto_now=True)
+    comment_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING,verbose_name="评论用户")
 
     class Meta:
         verbose_name = "我的评论"
         verbose_name_plural = verbose_name
+        ordering = ['-comment_time']
