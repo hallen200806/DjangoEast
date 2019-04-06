@@ -20,4 +20,4 @@ def update_comment(request):
             comment.parent = parent
             comment.reply_to = parent.user
         comment.save()
-    return redirect(referer)
+    return redirect(referer+'#comment')
