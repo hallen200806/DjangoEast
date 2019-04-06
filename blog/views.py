@@ -203,3 +203,5 @@ def register(request):
     context['reg_form'] = reg_form
     return render(request,'blog/register.html',context)
 
+def messages(request):
+    return render(request,'blog/messages.html',{})
