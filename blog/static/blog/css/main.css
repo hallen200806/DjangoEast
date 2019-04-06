@@ -1011,16 +1011,16 @@ pre .javascript .function {
   /*width: 1.285714285714286em;*/
   /*text-align: left;*/
 /*}*/
-/*.btn-bar {*/
-  /*display: block;*/
-  /*width: 22px;*/
-  /*height: 2px;*/
-  /*background: #555;*/
-  /*border-radius: 1px;*/
-/*}*/
-/*.btn-bar+.btn-bar {*/
-  /*margin-top: 4px;*/
-/*}*/
+.btn-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #555;
+  border-radius: 1px;
+}
+.btn-bar+.btn-bar {
+  margin-top: 4px;
+}
 
 /*按钮相关*/
 
@@ -4288,5 +4288,122 @@ div .django-ckeditor-widget{
 }
 
 .text-danger{
-  color:#a94442
+  color:#d23f31;
+}
+
+div #comment_list img {
+  display: initial!important;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+div .comment{
+  overflow: hidden;
+  padding-bottom: 0.5em;
+  border-bottom: 1px #ddd solid;
+  margin-top: 1.5em;
+}
+
+div .comment:last-child{
+  border-bottom: none;
+}
+
+div .reply{
+  margin-left: 2em;
+  border-top: 1px dashed #ccc;
+}
+
+div #comment_list a{
+  color: #d23f31;
+}
+
+div #reply_content_container {
+    border: 1px solid #d1d1d1;
+    border-bottom: none;
+    background-color: #f8f8f8;
+    overflow: hidden;
+    padding: 1em 1em 0.5em;
+}
+p#reply_title {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 0.5em;
+}
+
+div .comment_body{
+  margin-left: 80px;
+}
+
+div .comment_content{
+    min-height: 64px;
+    padding: 0.2em;
+    border-radius: 6px;
+}
+
+div .comment .comment_reply li{
+    padding-top: 0.7em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px #ddd dashed;
+    list-style-type: none;
+}
+
+div .comment .comment_reply li:last-child{
+    border-bottom: none;
+}
+
+div .comment .comment_bottom{
+    text-align: right;
+    padding-right: 0.3em;
+}
+
+div .comment .comment_bottom span{
+  color: #aaa;
+  margin-right:10px;
+}
+
+.comment .reply_body .comment_bottom{
+  padding-top: 0.5em;
+}
+
+div .comment .comment_name{
+  color:#00a67c;
+}
+
+div .comment .user_avatar{
+    border-radius: 6px;
+    width: 64px;
+    height: 64px;
+}
+div .comment .reply_avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    float: left;
+    margin-top: 4px;
+}
+
+div .comment .user_name{
+    font-size: 70%;
+    margin-top: 0.5em;
+    word-break: break-all;
+    font-weight: bolder;
+}
+
+div .comment .comment_user{
+    width: 70px;
+    text-align: center;
+    float: left;
+}
+
+div .comment p{
+  margin:0 0 10px;
+}
+
+div .comment .comment_reply{
+    /*border-top: 1px #ddd dashed;*/
+    padding-top: 0.2em;
+}
+
+div .reply_body{
+  margin-left: 40px;
 }

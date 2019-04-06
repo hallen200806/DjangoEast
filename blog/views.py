@@ -4,11 +4,8 @@ from django.contrib.auth.models import User
 import markdown
 from django.db.models import Count
 from django.views.generic import ListView
-from django.contrib.contenttypes.models import ContentType
-from comment.models import Comment
 from djangoblog.form import LoginForm,RegForm
 from django.contrib import auth
-from comment.form import CommentForm
 
 class IndexView(ListView):
 
@@ -34,18 +31,11 @@ def article(request, pk):
     # 获取相关文章
     relative_posts = Post.objects.filter(category_id=post.category_id).exclude(pk = pk).order_by('?')[:4]
 
-    # 获取博客评论
-    blog_content_type = ContentType.objects.get_for_model(post) # 获取类型
-    comments = Comment.objects.filter(content_type=blog_content_type,object_id=post.id,parent=None) # 获取所有与此类型相同的评论
-    comment_form = CommentForm(initial={'content_type':blog_content_type.model,'object_id':post.pk})
-
     context = {}
     context['post'] = post
     context['author'] = author
     context['category'] = category
     context['relative_posts'] = relative_posts
-    context['comments'] = comments
-    context['comment_form'] = comment_form
     return render(request, 'blog/article.html', context)
 
 class ArchivesView(ListView):

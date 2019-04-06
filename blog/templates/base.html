@@ -21,7 +21,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false,"b2t":true,"scrollpercent":true},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -69,6 +69,7 @@
                           <span class="btn-bar"></span>
                           <span class="btn-bar"></span>
                           <span class="btn-bar"></span>
+{#                            <i class="fa fa-home fa-lg" aria-hidden="true"></i>#}
                         </button>
                     </div>
                 </div>
@@ -147,8 +148,8 @@
                                             <div class="post-meta">
                                                 <!--发表时间-->
                                                 <span class="post-time">
-                                                    <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
-                                                    <a>{{ post.created_time| date:"Y-m-d" }}</a>
+{#                                                    <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>#}
+                                                    日期：{{ post.created_time| date:"Y-m-d" }}
                                                 </span>
 
 {#                                                <!--文章分类-->#}
@@ -159,11 +160,25 @@
 
                                                 <!--文章标签-->
                                                 <span class="post-category">
-                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>
-                                                    <span class="busuanzi-value" id="busuanzi_value_page_pv">
+{#                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
+                                                    <span class="busuanzi-value" id="busuanzi_value_page_pv">标签：
                                                         {% for tag in post.tag.all %}
                                                             <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
                                                         {% endfor %}
+                                                    </span>
+                                                </span>
+
+                                                <span class="post-views">
+{#                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
+                                                    <span class="busuanzi-value" id="busuanzi_value_page_pv">
+                                                        阅读({{ post.views }})
+                                                    </span>
+                                                </span>
+
+                                                <span class="post-comments">
+{#                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
+                                                    <span class="busuanzi-value" id="busuanzi_value_page_pv">
+                                                        评论({% get_comment_count post %})
                                                     </span>
                                                 </span>
                                             </div>
