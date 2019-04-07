@@ -148,19 +148,11 @@
                                             <div class="post-meta">
                                                 <!--发表时间-->
                                                 <span class="post-time">
-{#                                                    <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>#}
                                                     日期：{{ post.created_time| date:"Y-m-d" }}
                                                 </span>
 
-{#                                                <!--文章分类-->#}
-{#                                                <span class="post-category">#}
-{#                                                    <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span>#}
-{#                                                    <a href="{% url 'blog:category' post.category.id %}" itemprop="url" rel="index"><span itemprop="name">{{ post.category }}</span></a>#}
-{#                                                </span>#}
-
                                                 <!--文章标签-->
                                                 <span class="post-category">
-{#                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
                                                     <span class="busuanzi-value" id="busuanzi_value_page_pv">标签：
                                                         {% for tag in post.tag.all %}
                                                             <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
@@ -168,15 +160,15 @@
                                                     </span>
                                                 </span>
 
+                                                <!--阅读次数-->
                                                 <span class="post-views">
-{#                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
                                                     <span class="busuanzi-value" id="busuanzi_value_page_pv">
                                                         阅读({{ post.views }})
                                                     </span>
                                                 </span>
 
+                                                <!--评论次数-->
                                                 <span class="post-comments">
-{#                                                    <span class="post-meta-item-icon"><i class="fa fa-tags"></i></span>#}
                                                     <span class="busuanzi-value" id="busuanzi_value_page_pv">
                                                         评论({% get_comment_count post %})
                                                     </span>
