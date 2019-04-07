@@ -204,4 +204,5 @@ def register(request):
     return render(request,'blog/register.html',context)
 
 def messages(request):
-    return render(request,'blog/messages.html',{})
+    messages = Messages.objects.get(pk=1)
+    return render(request,'blog/messages.html',{'messages':messages})
