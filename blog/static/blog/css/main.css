@@ -3630,7 +3630,7 @@ ul.breadcrumb li+li:last-child {
     line-height:25px;
     display:block;
     /*margin-bottom: 20px;*/
-    font-weight:normal;
+    font-weight:bold;
   }
 }
 
