@@ -140,7 +140,7 @@
                                             </header>
 
                                             <!--文章摘要-->
-                                            <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
+                                            <div class="post-excerpt">
                                                   <p>{{ post.excerpt|slice:"1:"}}......</p>
                                             </div>
 
@@ -152,7 +152,7 @@
                                                 </span>
 
                                                 <!--文章标签-->
-                                                <span class="post-category">
+                                                <span class="post-tags">
                                                     <span class="busuanzi-value" id="busuanzi_value_page_pv">标签：
                                                         {% for tag in post.tag.all %}
                                                             <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
