@@ -4117,31 +4117,22 @@ background:#d23f31;color:#fff;
 	line-height:1.125rem
 }
 @media (max-width: 767px) {
-  .site_sidebar{
+  .content-sidebar{
     display: none;
   }
 }
-.site_sidebar{
+.content-siderbar{
   width: 240px;
   float: left;
   margin-top: 467px;
   /*background: #fff;*/
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
 }
 
-.tag_siderbar{
+.siderbar{
   width: 240px;
   float: left;
-  /*margin-top: 430px;*/
   background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
-}
-
-.toc_siderbar{
-  width: 240px;
-  float: left;
-  margin-top: 6px;
-  background: #fff;
+  margin-bottom: 6px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
 }
 
@@ -4445,9 +4436,4 @@ div .reply_body{
   opacity: 1;
   display: block;
   transform: translateY(0px);
-}
-@media (max-width: 767px) {
-  /*.post-excerpt{*/
-    /*display: none;*/
-  /*}*/
 }
