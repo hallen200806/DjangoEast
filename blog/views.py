@@ -206,6 +206,3 @@ def register(request):
 def messages(request):
     messages = Messages.objects.get(pk=1)
     return render(request,'blog/messages.html',{'messages':messages})
-
-def val(request):
-    return HttpResponse('20190412120443129xi0sdyft6scyp00tiebj5t47v97im1g1fk3yqje2n7j13mv')

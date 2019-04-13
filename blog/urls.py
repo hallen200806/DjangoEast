@@ -28,6 +28,4 @@ urlpatterns = [
     path('register/',views.register,name='register'),
 
     path('messages/',views.messages,name='messages'),
-    path('.well-known/pki-validation/fileauth.txt',views.val,name="val")
-
 ]
