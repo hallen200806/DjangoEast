@@ -208,4 +208,4 @@ def messages(request):
     return render(request,'blog/messages.html',{'messages':messages})
 
 def val(request):
-    return HttpResponse('20190411091642539rzw9zp8hc3jgt9rspfn4ghryse83dkbng60irdnk9r7eee1')
+    return HttpResponse('20190412120443129xi0sdyft6scyp00tiebj5t47v97im1g1fk3yqje2n7j13mv')
