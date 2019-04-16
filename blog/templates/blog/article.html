@@ -2,76 +2,76 @@
 {% load blog_tags %}
 {% load staticfiles %}
 
-{% block meta %}
-<title>{{ post.title }}</title>
-<meta name="description" content="{{ post.excerpt }}"/>
-<meta name="keywords" content="{% for tag in post.tag.all %}{{ tag.name }},{% endfor %}"/>
-{% endblock %}
-
-{% block article %}
-<div id="posts" class="posts-expand">
-    <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-        <div class="post-block article_post" style="opacity: 1; display: block;">
-            <!--文章头部信息-->
-            <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
-                <!--文章标题-->
-                <h2>{{ post.title }}</h2>
-
-                <!--发布信息-->
-                <div class="article-post-meta">
-                    <!--发布时间-->
-                    <span class="post-time">
-                        <span itemprop="dateCreated datePublished" >日期：{{ post.created_time }}</span>
-                    </span>
-
-                    <!--文章分类-->
-                    <span class="post-category">
-                        <span itemprop="about" >分类：<a href="{% url 'blog:category' post.category.id %}" itemprop="url" rel="index"><span itemprop="name">{{ category.name }}</span></a></span>
-                    </span>
-
-                    <!--文章标签-->
-                    <span class="post-tags">
-                        <span class="busuanzi-value" id="busuanzi_value_page_pv">标签：
-                            {% for tag in post.tag.all %}
-                                <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
-                            {% endfor %}
-                        </span>
-                    </span>
-
-                    <!--阅读次数-->
-                    <span class="post-views">
-                        <span class="busuanzi-value" id="busuanzi_value_page_pv">阅读（{{ post.views }}）</span>
-                    </span>
-
-                    <!--评论次数-->
-                    <span class="post-tags">
-                        <span class="busuanzi-value" id="busuanzi_value_page_pv">
-                            评论({% get_comment_count post %})
-                        </span>
-                    </span>
-
-
-                </div>
-            </header>
-
-            <!--文章内容-->
-            <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
-                {% autoescape off %}
-                    {{ post.body }}
-                {% endautoescape %}
-            </div>
-
-            <!--文章底部信息-->
-            <footer class="post-footer">
-                <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
-                        {% for relative_post in relative_posts %}
-                            <li class="relative_posts"><a class="relative_posts" href="{{ relative_post.get_absolute_url }}" title="{{ relative_post.title }}"><i class="fa fa-minus" aria-hidden="true"></i>{{ relative_post }}</a></li>
-                        {% endfor %}
-                    </div>
-                </div>
-            </footer>
-
+{#{% block meta %}#}
+{#<title>{{ post.title }}</title>#}
+{#<meta name="description" content="{{ post.excerpt }}"/>#}
+{#<meta name="keywords" content="{% for tag in post.tag.all %}{{ tag.name }},{% endfor %}"/>#}
+{#{% endblock %}#}
+{##}
+{#{% block article %}#}
+{#<div id="posts" class="posts-expand">#}
+{#    <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">#}
+{#        <div class="post-block article_post" style="opacity: 1; display: block;">#}
+{#            <!--文章头部信息-->#}
+{#            <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">#}
+{#                <!--文章标题-->#}
+{#                <h2>{{ post.title }}</h2>#}
+{##}
+{#                <!--发布信息-->#}
+{#                <div class="article-post-meta">#}
+{#                    <!--发布时间-->#}
+{#                    <span class="post-time">#}
+{#                        <span itemprop="dateCreated datePublished" >日期：{{ post.created_time }}</span>#}
+{#                    </span>#}
+{##}
+{#                    <!--文章分类-->#}
+{#                    <span class="post-category">#}
+{#                        <span itemprop="about" >分类：<a href="{% url 'blog:category' post.category.id %}" itemprop="url" rel="index"><span itemprop="name">{{ category.name }}</span></a></span>#}
+{#                    </span>#}
+{##}
+{#                    <!--文章标签-->#}
+{#                    <span class="post-tags">#}
+{#                        <span class="busuanzi-value" id="busuanzi_value_page_pv">标签：#}
+{#                            {% for tag in post.tag.all %}#}
+{#                                <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>#}
+{#                            {% endfor %}#}
+{#                        </span>#}
+{#                    </span>#}
+{##}
+{#                    <!--阅读次数-->#}
+{#                    <span class="post-views">#}
+{#                        <span class="busuanzi-value" id="busuanzi_value_page_pv">阅读（{{ post.views }}）</span>#}
+{#                    </span>#}
+{##}
+{#                    <!--评论次数-->#}
+{#                    <span class="post-tags">#}
+{#                        <span class="busuanzi-value" id="busuanzi_value_page_pv">#}
+{#                            评论({% get_comment_count post %})#}
+{#                        </span>#}
+{#                    </span>#}
+{##}
+{##}
+{#                </div>#}
+{#            </header>#}
+{##}
+{#            <!--文章内容-->#}
+{#            <div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">#}
+{#                {% autoescape off %}#}
+{#                    {{ post.body }}#}
+{#                {% endautoescape %}#}
+{#            </div>#}
+{##}
+{#            <!--文章底部信息-->#}
+{#            <footer class="post-footer">#}
+{#                <div class="post-nav">#}
+{#                    <div class="post-nav-next post-nav-item">#}
+{#                        {% for relative_post in relative_posts %}#}
+{#                            <li class="relative_posts"><a class="relative_posts" href="{{ relative_post.get_absolute_url }}" title="{{ relative_post.title }}"><i class="fa fa-minus" aria-hidden="true"></i>{{ relative_post }}</a></li>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                </div>#}
+{#            </footer>#}
+{##}
 {#            <!--评论提交区域-->#}
 {#            <div class="comment-area">#}
 {#                <h3 class="comment-area-title">提交评论</h3>#}
@@ -173,53 +173,53 @@
 {#                    {% endfor %}#}
 {#                </div>#}
 {#            </div>#}
-        </div>
-    </article>
-</div>
-
-
-
-{% endblock %}
-
-{% block script_extends %}
-    <script type="text/javascript">
-            function reply(reply_comment_id){
-            // 设置值
-            $('#reply_comment_id').val(reply_comment_id);
-            var html = $("#comment_" + reply_comment_id).html();
-            $('#reply_content').html(html);
-            $('#reply_content_container').show();
-            $('html').animate({scrollTop: $('#comment_form').offset().top - 60}, 300, function(){
-                CKEDITOR.instances['id_text'].focus();
-            });
-        }
-
-        $("#comment_form").submit(function(){
-            // 清空错误内容
-            $("#comment_error").text('');
-            // 更新数据
-            if(CKEDITOR.instances['id_text'].document.getBody().getText().trim() === ''){
-                // 显示错误信息
-                $("#comment_error").text('评论内容不能为空');
-                return false;
-            }
-        });
-
-    </script>
-{% endblock %}
-
-{% block toc_sidebar %}
-    <div class="toc_siderbar" >
-        <div class="widget git_tag">
-            <div class="title">
-                <h3>文章目录</h3>
-            </div>
-            <div class="post-toc" style="max-height: 448px;">
-                {% autoescape off %}
-                {{ post.toc }}
-                {% endautoescape %}
-            </div>
-        </div>
-    </div>
-{% endblock %}
+{#        </div>#}
+{#    </article>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block script_extends %}#}
+{#    <script type="text/javascript">#}
+{#            function reply(reply_comment_id){#}
+{#            // 设置值#}
+{#            $('#reply_comment_id').val(reply_comment_id);#}
+{#            var html = $("#comment_" + reply_comment_id).html();#}
+{#            $('#reply_content').html(html);#}
+{#            $('#reply_content_container').show();#}
+{#            $('html').animate({scrollTop: $('#comment_form').offset().top - 60}, 300, function(){#}
+{#                CKEDITOR.instances['id_text'].focus();#}
+{#            });#}
+{#        }#}
+{##}
+{#        $("#comment_form").submit(function(){#}
+{#            // 清空错误内容#}
+{#            $("#comment_error").text('');#}
+{#            // 更新数据#}
+{#            if(CKEDITOR.instances['id_text'].document.getBody().getText().trim() === ''){#}
+{#                // 显示错误信息#}
+{#                $("#comment_error").text('评论内容不能为空');#}
+{#                return false;#}
+{#            }#}
+{#        });#}
+{##}
+{#    </script>#}
+{#{% endblock %}#}
+{##}
+{#{% block toc_sidebar %}#}
+{#    <div class="toc_siderbar" >#}
+{#        <div class="widget git_tag">#}
+{#            <div class="title">#}
+{#                <h3>文章目录</h3>#}
+{#            </div>#}
+{#            <div class="post-toc" style="max-height: 448px;">#}
+{#                {% autoescape off %}#}
+{#                {{ post.toc }}#}
+{#                {% endautoescape %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
 
