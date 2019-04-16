@@ -24,11 +24,11 @@ httplib2==0.12.1
 jdcal==1.4
 jieba==0.39
 Markdown==3.0.1
-mysqlclient==1.4.2.post1
 odfpy==1.4.0
 openpyxl==2.6.0
 Pillow==5.4.1
 Pygments==2.3.1
+PyMySQL==0.9.3
 python-memcached==1.59
 pytz==2017.2
 PyYAML==3.13
