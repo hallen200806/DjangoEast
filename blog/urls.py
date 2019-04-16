@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
 
     path('archives/', views.ArchivesView.as_view(),name='archives'),
-    path('articles/<int:pk>', views.article, name='article'),
+    path('post/<int:pk>', views.article, name='article'),
 
     path('category/<int:pk>', views.CategoryView.as_view(), name='category'),
     path('categories/', views.Categories.as_view(), name='categories'),
