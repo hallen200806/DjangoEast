@@ -72,107 +72,107 @@
                 </div>
             </footer>
 
-            <!--评论提交区域-->
-            <div class="comment-area">
-                <h3 class="comment-area-title">提交评论</h3>
-                {% if user.is_authenticated  %}
-                    <form id = "comment_form" action="{% url 'comment:update_comment' %}" method="POST">
-
-                        <div id="reply_content_container" style="display:none;">
-                            <p id="reply_title">回复：</p>
-                            <div id="reply_content"></div>
-                        </div>
-
-                        {% csrf_token %}
-                        {% get_comment_form post as comment_form%}
-
-                        {% for field in comment_form %}
-                            {{ field }}
-                        {% endfor %}
-
-                        <span id="comment_error" class="text-danger pull-left"></span>
-                        <input class="btn btn-primary pull-right" type="submit" value="评论">
-                    </form>
-                {% else %}
-                    请先登录后评论
-                    <a class = "btn btn-primary" href="{% url 'blog:login' %}?from={{ request.get_full_path }}">登录</a>
-                    <span> or </span>
-                    <a class = "btn btn-danger" href="{% url 'blog:register' %}?from={{ request.get_full_path }}">注册</a>
-                {% endif %}
-            </div>
-
-            <!--评论显示区域-->
-            <div class="comment-area">
-                <h3 class="comment-area-title" id="comment">评论列表</h3>
-                <div id="comment_list">
-                    {% get_comments_list post as comments %}
-                    {% for comment in comments %}
-                        <div id="root_{{ comment.pk }}" class="comment">
-                            <div class="comment_user">
-                                {% ifequal comment.user.username 'reborn' %}
-                                    <img class="user_avatar" src="{% static 'blog/image/touxiang.jpg' %}" alt="{{ comment.user.username }}" style="border: 1px solid #ccc">
-                                    <span class="user_name comment_name">
-                                        <span style="color: #d23f31;">博主</span>
-                                    </span>
-                                {% else %}
-                                    <img class="user_avatar" src="{% static 'blog/image/touxiang.png' %}" alt="{{ comment.user.username }}" style="border: 1px solid #ccc">
-                                    <span class="user_name comment_name">
-                                        <span >{{ comment.user.username }}</span>
-                                    </span>
-                                {% endifequal %}
-                            </div>
-                            <div class="comment_body">
-
-                                <div class="comment_content" id="comment_{{ comment.pk }}">
-                                    {{ comment.text|safe }}
-                                </div>
-
-                                <p class="comment_bottom">
-                                    <span class="">{{ comment.comment_time|date:'Y-m-d H:i:s'}}</span>
-                                    <span class="reply_button"><a class="" href="javascript:reply({{ comment.pk }})">回复</a></span>
-                                </p>
-
-                                {% if reply.user.username is  null %}
-                                <ul class="comment_reply">
-                                    {% for reply in comment.root_comment.all %}
-                                        <li class="reply">
-                                            {% ifequal reply.user.username 'reborn' %}
-                                                <img class="reply_avatar" src="{% static 'blog/image/touxiang.jpg' %}" alt="{{ reply.user.username }}" style="border: 1px solid #ccc">
-                                                <div class="reply_body">
-                                                    <p>
-                                                        <span class="comment_name reply_name" style="color: #d23f31;">博主</span>
-                                            {% else %}
-                                                <img class="reply_avatar" src="{% static 'blog/image/touxiang.png' %}" alt="{{ reply.user.username }}">
-                                                <div class="reply_body">
-                                                    <p>
-                                                        <span class="comment_name reply_name">{{ reply.user.username }}</span>
-                                            {% endifequal %}
-                                                    <span><i class="fa fa-share" aria-hidden="true"></i></span>
-                                            {% ifequal reply.reply_to.username 'reborn' %}
-                                                    <span class="comment_name" style="color: #d23f31;">博主:</span>
-                                            {% else %}
-                                                    <span class="comment_name">{{ reply.reply_to.username }}:</span>
-                                            {% endifequal %}
-                                                    </p>
-                                                <div class = "reply_content" id="comment_{{ reply.pk }}">
-                                                    {{ reply.text|safe }}
-                                                </div>
-                                                 <p class="comment_bottom">
-                                                    <span>{{ reply.comment_time|date:'Y-m-d H:i:s'}}</span>
-                                                    <span><a href="javascript:reply({{ reply.pk }})">回复</a></span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </div>
-                        </div>
-                     {% empty %}
-                            此篇文章暂无评论，快来说两句吧！
-                    {% endfor %}
-                </div>
-            </div>
+{#            <!--评论提交区域-->#}
+{#            <div class="comment-area">#}
+{#                <h3 class="comment-area-title">提交评论</h3>#}
+{#                {% if user.is_authenticated  %}#}
+{#                    <form id = "comment_form" action="{% url 'comment:update_comment' %}" method="POST">#}
+{##}
+{#                        <div id="reply_content_container" style="display:none;">#}
+{#                            <p id="reply_title">回复：</p>#}
+{#                            <div id="reply_content"></div>#}
+{#                        </div>#}
+{##}
+{#                        {% csrf_token %}#}
+{#                        {% get_comment_form post as comment_form%}#}
+{##}
+{#                        {% for field in comment_form %}#}
+{#                            {{ field }}#}
+{#                        {% endfor %}#}
+{##}
+{#                        <span id="comment_error" class="text-danger pull-left"></span>#}
+{#                        <input class="btn btn-primary pull-right" type="submit" value="评论">#}
+{#                    </form>#}
+{#                {% else %}#}
+{#                    请先登录后评论#}
+{#                    <a class = "btn btn-primary" href="{% url 'blog:login' %}?from={{ request.get_full_path }}">登录</a>#}
+{#                    <span> or </span>#}
+{#                    <a class = "btn btn-danger" href="{% url 'blog:register' %}?from={{ request.get_full_path }}">注册</a>#}
+{#                {% endif %}#}
+{#            </div>#}
+{##}
+{#            <!--评论显示区域-->#}
+{#            <div class="comment-area">#}
+{#                <h3 class="comment-area-title" id="comment">评论列表</h3>#}
+{#                <div id="comment_list">#}
+{#                    {% get_comments_list post as comments %}#}
+{#                    {% for comment in comments %}#}
+{#                        <div id="root_{{ comment.pk }}" class="comment">#}
+{#                            <div class="comment_user">#}
+{#                                {% ifequal comment.user.username 'reborn' %}#}
+{#                                    <img class="user_avatar" src="{% static 'blog/image/touxiang.jpg' %}" alt="{{ comment.user.username }}" style="border: 1px solid #ccc">#}
+{#                                    <span class="user_name comment_name">#}
+{#                                        <span style="color: #d23f31;">博主</span>#}
+{#                                    </span>#}
+{#                                {% else %}#}
+{#                                    <img class="user_avatar" src="{% static 'blog/image/touxiang.png' %}" alt="{{ comment.user.username }}" style="border: 1px solid #ccc">#}
+{#                                    <span class="user_name comment_name">#}
+{#                                        <span >{{ comment.user.username }}</span>#}
+{#                                    </span>#}
+{#                                {% endifequal %}#}
+{#                            </div>#}
+{#                            <div class="comment_body">#}
+{##}
+{#                                <div class="comment_content" id="comment_{{ comment.pk }}">#}
+{#                                    {{ comment.text|safe }}#}
+{#                                </div>#}
+{##}
+{#                                <p class="comment_bottom">#}
+{#                                    <span class="">{{ comment.comment_time|date:'Y-m-d H:i:s'}}</span>#}
+{#                                    <span class="reply_button"><a class="" href="javascript:reply({{ comment.pk }})">回复</a></span>#}
+{#                                </p>#}
+{##}
+{#                                {% if reply.user.username is  null %}#}
+{#                                <ul class="comment_reply">#}
+{#                                    {% for reply in comment.root_comment.all %}#}
+{#                                        <li class="reply">#}
+{#                                            {% ifequal reply.user.username 'reborn' %}#}
+{#                                                <img class="reply_avatar" src="{% static 'blog/image/touxiang.jpg' %}" alt="{{ reply.user.username }}" style="border: 1px solid #ccc">#}
+{#                                                <div class="reply_body">#}
+{#                                                    <p>#}
+{#                                                        <span class="comment_name reply_name" style="color: #d23f31;">博主</span>#}
+{#                                            {% else %}#}
+{#                                                <img class="reply_avatar" src="{% static 'blog/image/touxiang.png' %}" alt="{{ reply.user.username }}">#}
+{#                                                <div class="reply_body">#}
+{#                                                    <p>#}
+{#                                                        <span class="comment_name reply_name">{{ reply.user.username }}</span>#}
+{#                                            {% endifequal %}#}
+{#                                                    <span><i class="fa fa-share" aria-hidden="true"></i></span>#}
+{#                                            {% ifequal reply.reply_to.username 'reborn' %}#}
+{#                                                    <span class="comment_name" style="color: #d23f31;">博主:</span>#}
+{#                                            {% else %}#}
+{#                                                    <span class="comment_name">{{ reply.reply_to.username }}:</span>#}
+{#                                            {% endifequal %}#}
+{#                                                    </p>#}
+{#                                                <div class = "reply_content" id="comment_{{ reply.pk }}">#}
+{#                                                    {{ reply.text|safe }}#}
+{#                                                </div>#}
+{#                                                 <p class="comment_bottom">#}
+{#                                                    <span>{{ reply.comment_time|date:'Y-m-d H:i:s'}}</span>#}
+{#                                                    <span><a href="javascript:reply({{ reply.pk }})">回复</a></span>#}
+{#                                                </p>#}
+{#                                            </div>#}
+{#                                        </li>#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                                {% endif %}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                     {% empty %}#}
+{#                            此篇文章暂无评论，快来说两句吧！#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </article>
 </div>
