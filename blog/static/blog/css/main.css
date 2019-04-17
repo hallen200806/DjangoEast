@@ -4117,7 +4117,7 @@ background:#d23f31;color:#fff;
 	line-height:1.125rem
 }
 @media (max-width: 767px) {
-  .content-sidebar{
+  .content-siderbar{
     display: none;
   }
 }
