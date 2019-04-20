@@ -44,7 +44,8 @@
 <body lang="zh-CN">
     <div class="container sidebar-position-left page-home">
         <!--页面顶部黑线-->
-        <div class="headband"></div>
+        <div class="headband">
+        </div>
 
         <!--LOGO & 导航栏-->
         <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -260,38 +261,6 @@
 
                     {% endblock %}
                 </div>
-                <!--侧边栏-->
-{#                <div class="site_sidebar">#}
-{#                    {% block sidebar %}#}
-{#                        {% block tag_sidebar %}#}
-{#                            <div class="tag_siderbar" >#}
-{#                            <div class="widget git_tag">#}
-{#                                <div class="title"><h3>热门标签</h3></div>#}
-{#                                <div class="git_tags">#}
-{#                                    {% get_posts_tags as tags %}#}
-{#                                    {% for tag in tags %}#}
-{#                                        <a href="{{ tag.get_absolute_url  }}">{{ tag.name }}</a>#}
-{#                                    {% endfor %}#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        {% endblock %}#}
-{#                        #}
-{#                        {% block toc_sidebar %}#}
-{#                        {% endblock %}#}
-{##}
-{#                        {% block wechat_sidebar %}#}
-{#                            <div class="wechat_siderbar" >#}
-{#                                <div class="widget git_tag">#}
-{#                                    <div class="title"><h3>微信公众号</h3></div>#}
-{#                                    <div class="git_tags">#}
-{#                                        <img class="wechat_img" src="{% static 'blog/image/wechat.jpg' %}" alt="微信公众号">#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endblock %}#}
-{#                    {% endblock %}#}
-{#                </div>#}
             </div>
             </div>
 
@@ -305,7 +274,6 @@
                     <span class="with-love" id="animate"><i class="fa fa-user"></i></span>
                     <span class="author" itemprop="copyrightHolder">向东的笔记本</span>
                 </div>
-
                 <!--CNZZ博客统计-->
                 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277198197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277198197%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
             </div>
@@ -319,7 +287,6 @@
     <script src="{% static '/blog/js/bootstrap.js' %}"></script>
 
     {% block script_extends %} {% endblock %}
-
 
 </body>
 </html>

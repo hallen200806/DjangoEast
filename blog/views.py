@@ -14,7 +14,7 @@ class IndexView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        return Post.objects.all().order_by('-created_time')
+        return Post.objects.all().order_by('-pk')
 
 def article(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -92,7 +92,7 @@ class BooksView(ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        return Book.objects.all().order_by('-created_time')
+        return Book.objects.all().order_by('-pk')
 
 class BookListView(ListView):
     template_name = 'blog/book_list.html'

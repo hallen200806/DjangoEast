@@ -4092,14 +4092,15 @@ background:#d23f31;color:#fff;
 	height:25px;
 	font-weight:800;
 	font-size:.875rem;
-	line-height:1.5625rem
+	line-height:1.5625rem;
+    text-align: center;
 }
 .card-item p {
 	overflow:hidden;
-	height:40px;
+	/*height:40px;*/
 	font-weight:400;
 	font-size:.75rem;
-	line-height:1.25rem
+	line-height:.8rem;
 }
 .card-item .cardpricebtn {
 	margin:10px 0 15px;
