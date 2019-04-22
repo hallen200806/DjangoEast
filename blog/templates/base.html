@@ -74,38 +74,18 @@
                     </div>
                 </div>
                 <!--导航栏-->
-                <nav class="site-nav">
+                <nav class="site-nav main-inner">
                     <ul id="menu" class="menu">
-                        <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:index' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+                        {% get_meanList as means %}
+                        <li class="menu-item" style="opacity: 1; transform: translateY(0px);">
+                            <a href="{% url 'blog:index' %}" ><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a>
                         </li>
-                        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:archives' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章归档 <span class="badge">{% get_total_posts %}</span> </a>
-                        </li>
+                        {% for mean in means %}
+                            <li class="menu-item" style="opacity: 1; transform: translateY(0px);">
+                                <a href="{% url 'blog:index' %}{{ mean.link }}"><i class="menu-item-icon fa-fw {{ mean.icon }}"></i><br>{{ mean.title }}</a>
+                            </li>
+                        {% endfor %}
 
-                        <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:categories' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类目录<span class="badge">{% get_total_categories %}</span></a>
-                        </li>
-
-                        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:tags' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签大全<span class="badge">{% get_total_tags %}</span></a>
-                        </li>
-
-                        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:books' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-book" aria-hidden="true"></i> <br>我的书单<span class="badge">{% get_total_books %}</span></a>
-                        </li>
-
-                        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:movies' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-film" aria-hidden="true"></i> <br>我的影单<span class="badge">{% get_total_movies %}</span></a>
-                        </li>
-
-                        <li class="menu-item menu-item-札记-&amp;-留言板" style="opacity: 1; transform: translateY(0px);">
-                            <a href="{% url 'blog:messages' %}" rel="section"><i class="menu-item-icon fa fa-fw fa-sticky-note"></i> <br>给我留言</a>
-                        </li>
-
-                        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
-                            <a href="" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于网站</a>
-                        </li>
 
 {#                        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">#}
 {#                            <form action="{% url 'haystack_search' %}"/>#}
@@ -114,7 +94,14 @@
 {#                                <span class="button"><input type="submit"  value="搜索" /></span>#}
 {#                            </form>#}
 {#                        </li>#}
+                    <li class="menu-item login-regi" style="opacity: 1; transform: translateY(0px);">
+                        <a href="{% url 'blog:login' %}?from={{ request.get_full_path }}">登录</a>
+                    </li>
+                    <li class="menu-item login-regi" style="opacity: 1; transform: translateY(0px);">
+                        <a href="{% url 'blog:register' %}?from={{ request.get_full_path }}">注册</a>
+                    </li>
                     </ul>
+
                 </nav>
             </div>
         </header>
@@ -219,6 +206,8 @@
 
                 <!--左侧侧边栏-->
                 <div class = "content-siderbar">
+                    {% block toc_sidebar %}{% endblock %}
+
                     {% block sidebar %}
                         {% block tag_sidebar %}
                             <div class="siderbar" >
@@ -233,8 +222,6 @@
                             </div>
                         </div>
                         {% endblock %}
-
-                        {% block toc_sidebar %}{% endblock %}
 
                         {% block wechat_sidebar %}
                             <div class="siderbar" >
@@ -267,7 +254,7 @@
 
         <!--底部信息-->
         <footer id="footer" class="footer">
-            <div class="footer-inner">
+            <div class="footer-inner main-inner">
                 <div class="copyright">© <span itemprop="copyrightYear">2019</span>
                     <span class="post-meta-divider">|</span>
                     <span class="with-love" id="animate"><i class="fa fa-user"></i></span>

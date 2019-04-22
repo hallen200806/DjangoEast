@@ -79,3 +79,8 @@ def get_comments_list(obj):
     content_type = ContentType.objects.get_for_model(obj)
     comments = Comment.objects.filter(content_type=content_type, object_id=obj.id, parent=None).order_by('-comment_time')  # 获取所有与此类型相同的评论
     return comments
+
+@register.simple_tag
+def get_meanList():
+    means = MeanList.objects.all().order_by('pk')
+    return means

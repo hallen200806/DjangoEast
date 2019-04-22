@@ -1567,7 +1567,7 @@ a.btn.disabled,fieldset[disabled] a.btn {
 .menu {
   margin-top: 10px!important;
   padding-left: 0;
-  text-align: center;
+  text-align: left;
 }
 .menu .menu-item {
   display: inline-block;
@@ -1848,7 +1848,7 @@ a.btn.disabled,fieldset[disabled] a.btn {
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: #00a67c;
+  color: #444;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -2530,7 +2530,7 @@ a.btn.disabled,fieldset[disabled] a.btn {
   border: none;
 }
 .footer-inner {
-  text-align: center;
+  /*text-align: center;*/
 }
 .with-love {
   display: inline-block;
@@ -3169,7 +3169,7 @@ ul.breadcrumb li+li:last-child {
   float: left;
   box-sizing: border-box;
   padding: 40px;
-  width: calc(100% - 252px);
+  width: 860px;
   background: #fff;
   min-height: 700px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
@@ -3212,7 +3212,7 @@ ul.breadcrumb li+li:last-child {
   display: none;
 }
 .footer-inner {
-  padding-left: 260px;
+  /*padding-left: 260px;*/
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .footer-inner {
@@ -3314,6 +3314,7 @@ ul.breadcrumb li+li:last-child {
   position: relative;
   box-sizing: border-box;
   padding: 2px 20px;
+  padding-left: 0;
   text-align: left;
   line-height: inherit;
   transition-property: background-color;
@@ -4133,14 +4134,14 @@ background:#d23f31;color:#fff;
   }
 }
 .content-siderbar{
-  width: 240px;
+  width: 290px;
   float: right;
   /*margin-top: 467px;*/
   /*background: #fff;*/
 }
 
 .siderbar{
-  width: 240px;
+  width: 290px;
   float: left;
   background: #fff;
   margin-bottom: 6px;
@@ -4191,9 +4192,9 @@ background:#d23f31;color:#fff;
 	background-color:#f60
 }
 .git_tags a {
-	width: auto;
+	width: 40%;
 	display:inline-block;
-	/*margin:0 5px 5px 0;*/
+	margin:0 5px 5px 0;
 	padding:2px 6px;
 	background-color:#000000;
 	color:#fff;
@@ -4201,7 +4202,7 @@ background:#d23f31;color:#fff;
 	opacity:.9;
 	filter:alpha(opacity=80);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 
 }
 .git_tags a:hover {
@@ -4447,4 +4448,8 @@ div .reply_body{
   opacity: 1;
   display: block;
   transform: translateY(0px);
+}
+
+.login-regi{
+  float: right;
 }
