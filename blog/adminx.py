@@ -87,8 +87,8 @@ xadmin.site.register(MovieCategory,MovieCategoryAdmin)
 xadmin.site.register(Movie,MovieAdmin)
 xadmin.site.register(MovieTag,MovieTagAdmin)
 
-xadmin.site.register(MeanList,MeanListAdmin)
 
+xadmin.site.register(MeanList,MeanListAdmin)
 # 修改xadmin的基础配置
 class BaseSetting(object):
     # 允许使用主题
