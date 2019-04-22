@@ -214,7 +214,7 @@ class Course(models.Model):
 	title = models.CharField(max_length=100,verbose_name="教程名称")
 	cover = models.ImageField(upload_to='course',verbose_name="上传封面",blank=True)
 	views = models.PositiveIntegerField(default=0, verbose_name="阅读量")
-	category = models.ForeignKey(Category, verbose_name='教程分类', on_delete=models.DO_NOTHING)
+	category = models.CharField(max_length=100,verbose_name="教程分类")
 	introduce = models.CharField(max_length=200,verbose_name="教程简介",blank=True)
 	status = models.CharField(max_length=50,verbose_name="更新状态")
 	created_time = models.DateTimeField(null=True, verbose_name='创建时间', default=timezone.now)

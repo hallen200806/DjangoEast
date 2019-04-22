@@ -76,7 +76,7 @@ class MeanListAdmin(object):
     model_icon = 'fa fa-list'
 
 class CourseAdmin(object):
-    list_display = ['id','title','visits','category','created_time','comments','number']
+    list_display = ['id','title','views','category','created_time','comments','number']
     model_icon = 'fa fa-gift'
 
 xadmin.site.register(Post,PostAdmin)
