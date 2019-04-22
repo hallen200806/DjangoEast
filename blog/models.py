@@ -199,11 +199,3 @@ class Messages(models.Model):
 		verbose_name = "网站留言"
 		verbose_name_plural = verbose_name
 
-class MeanList(models.Model):
-	title = models.CharField(max_length=100,verbose_name="菜单名称")
-	link = models.CharField(max_length=100,verbose_name="菜单链接",blank=True,null=True,)
-	icon = models.CharField(max_length=100,verbose_name="菜单图标",blank=True,null=True,)
-
-	class Meta:
-		verbose_name = "菜单栏"
-		verbose_name_plural = verbose_name
