@@ -70,7 +70,7 @@ class MovieTagAdmin(object):
     search_fields = ['name']
     model_icon = 'fa fa-film'
 
-class MeanAdmin(object):
+class MeanListAdmin(object):
     list_display = ['id','title','link','icon']
     search_field = ['title']
     model_icon = 'fa fa-list'
@@ -87,7 +87,7 @@ xadmin.site.register(MovieCategory,MovieCategoryAdmin)
 xadmin.site.register(Movie,MovieAdmin)
 xadmin.site.register(MovieTag,MovieTagAdmin)
 
-xadmin.site.register(Mean,MeanAdmin)
+xadmin.site.register(MeanList,MeanListAdmin)
 
 # 修改xadmin的基础配置
 class BaseSetting(object):
