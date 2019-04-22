@@ -206,3 +206,7 @@ def register(request):
 def messages(request):
     messages = Messages.objects.get(pk=1)
     return render(request,'blog/messages.html',{'messages':messages})
+
+
+def courses(request):
+    pass
