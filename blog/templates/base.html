@@ -77,29 +77,23 @@
                 <nav class="site-nav main-inner">
                     <ul id="menu" class="menu">
                         {% get_meanList as means %}
-                        <li class="menu-item" style="opacity: 1; transform: translateY(0px);">
+                        <li class="menu-item">
                             <a href="{% url 'blog:index' %}" ><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a>
                         </li>
                         {% for mean in means %}
-                            <li class="menu-item" style="opacity: 1; transform: translateY(0px);">
+                            <li class="menu-item">
                                 <a href="{% url 'blog:index' %}{{ mean.link }}"><i class="menu-item-icon fa-fw {{ mean.icon }}"></i><br>{{ mean.title }}</a>
                             </li>
                         {% endfor %}
 
 
-{#                        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">#}
-{#                            <form action="{% url 'haystack_search' %}"/>#}
-{#                                <input type="hidden"  />#}
-{#                                <span class="search"><input type="text" name="q"  placeholder="请输入关键词" autocomplete="off"/></span>#}
-{#                                <span class="button"><input type="submit"  value="搜索" /></span>#}
-{#                            </form>#}
-{#                        </li>#}
-                    <li class="menu-item login-regi" style="opacity: 1; transform: translateY(0px);">
-                        <a href="{% url 'blog:login' %}?from={{ request.get_full_path }}">登录</a>
-                    </li>
-                    <li class="menu-item login-regi" style="opacity: 1; transform: translateY(0px);">
-                        <a href="{% url 'blog:register' %}?from={{ request.get_full_path }}">注册</a>
-                    </li>
+                        <li class="menu-item mean-right">
+                            <form action="{% url 'haystack_search' %}" class="search-form"/>
+                                <input type="search" name="q"  placeholder="搜索..." autocomplete="off"/>
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </li>
+
                     </ul>
 
                 </nav>

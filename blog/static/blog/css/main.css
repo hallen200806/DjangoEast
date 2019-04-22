@@ -2524,10 +2524,15 @@ a.btn.disabled,fieldset[disabled] a.btn {
 }
 .footer {
   font-size: 14px;
-  color: #999;
+  color: #ccc;
+  background-color: #303438;
+  margin-top: 10px;
 }
 .footer img {
   border: none;
+}
+.footer a {
+  color:#ccc;
 }
 .footer-inner {
   /*text-align: center;*/
@@ -3098,7 +3103,7 @@ ul.breadcrumb li+li:last-child {
 @media (min-width: 1200px) {
   .header {
     /*width: 1160px;*/
-    height:80px;
+    height:70px;
   }
 }
 @media (min-width: 1600px) {
@@ -3306,8 +3311,8 @@ ul.breadcrumb li+li:last-child {
   border-bottom-color: #fff;
 }
 .menu .menu-item {
-  /*display: block;*/
   margin: 0;
+  opacity: 1;
 }
 .menu .menu-item a,
 .menu .menu-item span.exturl {
@@ -3761,55 +3766,55 @@ ul.breadcrumb li+li:last-child {
   /*height: 30px;*/
 /*}*/
 
-input {font-size:14px;font-family:arial;border: none;background:none;}
-    /*--这里设置输入框文字字体，并设置输入框背景和边框为无--*/
-span.search {float:left;
-    /*--将输入框放在span中并设置浮动--*/
-padding:0;
-margin-top: 5px;
-margin-bottom:15px;
-margin-left:22px;
-width:140px;height:36px;
-    /*--设置输入框的外层元素宽度和高度--*/
-background:#fafafa;color: #9e9c9c;
-    /*--设置背景颜色和输入框文字颜色--*/
-border: 2px solid #d23f31;
-border-top-left-radius:5px;
-border-bottom-left-radius:5px;
-    /*--设置边框，并将左上角和左下角设置圆角--*/
-}
-span.search input {
+/*input {font-size:14px;font-family:arial;border: none;background:none;}*/
+    /*!*--这里设置输入框文字字体，并设置输入框背景和边框为无--*!*/
+/*span.search {float:left;*/
+    /*!*--将输入框放在span中并设置浮动--*!*/
+/*padding:0;*/
+/*margin-top: 5px;*/
+/*margin-bottom:15px;*/
+/*margin-left:22px;*/
+/*width:140px;height:36px;*/
+    /*!*--设置输入框的外层元素宽度和高度--*!*/
+/*background:#fafafa;color: #9e9c9c;*/
+    /*!*--设置背景颜色和输入框文字颜色--*!*/
+/*border: 2px solid #d23f31;*/
+/*border-top-left-radius:5px;*/
+/*border-bottom-left-radius:5px;*/
+    /*!*--设置边框，并将左上角和左下角设置圆角--*!*/
+/*}*/
+/*span.search input {*/
 
-width: 240px;height:36px;
-    /*--设置输入框本身的宽度和高度--*/
-line-height:36px;
-    /*--设置输入框行距和高度相等以便垂直居中--*/
-padding:0 5px;
-    /*--设置输入框本身离外层的内边距，输入文字更美观--*/
-outline:none;
-    /*--为了美观，将获取焦点时的轮廓线去掉--*/
-}
-span.button {float:left;
-    /*--设置提交按钮放在span中并设置浮动--*/
-margin-top: 5px;
-padding:0;
-border: 2px solid #d23f31;
-border-top-right-radius:5px;
-border-bottom-right-radius:5px;
-    /*--设置边框，并将右上角和右下角设置圆角--*/
-}
-span.button input {
+/*width: 240px;height:36px;*/
+    /*!*--设置输入框本身的宽度和高度--*!*/
+/*line-height:36px;*/
+    /*!*--设置输入框行距和高度相等以便垂直居中--*!*/
+/*padding:0 5px;*/
+    /*!*--设置输入框本身离外层的内边距，输入文字更美观--*!*/
+/*outline:none;*/
+    /*!*--为了美观，将获取焦点时的轮廓线去掉--*!*/
+/*}*/
+/*span.button {float:left;*/
+    /*!*--设置提交按钮放在span中并设置浮动--*!*/
+/*margin-top: 5px;*/
+/*padding:0;*/
+/*border: 2px solid #d23f31;*/
+/*border-top-right-radius:5px;*/
+/*border-bottom-right-radius:5px;*/
+    /*!*--设置边框，并将右上角和右下角设置圆角--*!*/
+/*}*/
+/*span.button input {*/
 
-height:36px;
-line-height:36px;
-    /*--设置按钮本身的高度，行距和高度相等以便垂直居中--*/
-padding:0 12px;
-    /*--为了美观，适当设置按钮文字的左右边距--*/
-background:#d23f31;color:#fff;
-    /*--将提交按钮的背景颜色设置与边框颜色相同--*/
-}
-::-webkit-input-placeholder {color:#ccc;}
-    /*--设置输入框内默认文字的颜色--*/
+/*height:36px;*/
+/*line-height:36px;*/
+    /*!*--设置按钮本身的高度，行距和高度相等以便垂直居中--*!*/
+/*padding:0 12px;*/
+    /*!*--为了美观，适当设置按钮文字的左右边距--*!*/
+/*background:#d23f31;color:#fff;*/
+    /*!*--将提交按钮的背景颜色设置与边框颜色相同--*!*/
+/*}*/
+/*::-webkit-input-placeholder {color:#ccc;}*/
+    /*!*--设置输入框内默认文字的颜色--*!*/
 
 /*文章页底部相关文章样式*/
 .relative_posts{
@@ -4450,6 +4455,29 @@ div .reply_body{
   transform: translateY(0px);
 }
 
-.login-regi{
+.mean-right{
   float: right;
+  margin-top: 5px!important;
+}
+
+.search-form{
+  margin-right: -1.5rem;
+}
+
+.search-form input[type=search] {
+    background-color: #f8f9fa;
+    outline: 0;
+    font-size: 85%;
+    padding: 7px 25px 7px 10px;
+    width: 200px;
+    border: 1px solid #f8f9fa;
+    border-radius: 3px;
+}
+
+.search-form button[type=submit] {
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    right: 30px;
+    padding: 0;
 }
