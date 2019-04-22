@@ -44,8 +44,7 @@
 <body lang="zh-CN">
     <div class="container sidebar-position-left page-home">
         <!--页面顶部黑线-->
-        <div class="headband">
-        </div>
+{#        <div class="headband"></div>#}
 
         <!--LOGO & 导航栏-->
         <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -108,13 +107,13 @@
                             <a href="" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于网站</a>
                         </li>
 
-                        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
-                            <form action="{% url 'haystack_search' %}"/>
-                                <input type="hidden"  />
-                                <span class="search"><input type="text" name="q"  placeholder="请输入关键词" autocomplete="off"/></span>
-                                <span class="button"><input type="submit"  value="搜索" /></span>
-                            </form>
-                        </li>
+{#                        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">#}
+{#                            <form action="{% url 'haystack_search' %}"/>#}
+{#                                <input type="hidden"  />#}
+{#                                <span class="search"><input type="text" name="q"  placeholder="请输入关键词" autocomplete="off"/></span>#}
+{#                                <span class="button"><input type="submit"  value="搜索" /></span>#}
+{#                            </form>#}
+{#                        </li>#}
                     </ul>
                 </nav>
             </div>
@@ -136,7 +135,7 @@
 
                                             <!--文章标题-->
                                             <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
-                                                <a class="label label-important" href="{% url 'blog:category' post.category.id %}">{{ post.category }}<i class="label-arrow"></i></a>
+{#                                                <a class="label label-important" href="{% url 'blog:category' post.category.id %}">{{ post.category }}<i class="label-arrow"></i></a>#}
                                                 <h2 class="post-title" itemprop="name headline"><a title="{{ post.title }}" href="{{ post.get_absolute_url }}" class="post-title-link" itemprop="url">{{ post.title | slice:":50" }}</a></h2>
                                             </header>
 
