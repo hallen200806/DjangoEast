@@ -11,7 +11,7 @@
 - 更多功能，敬请期待......
 
 ## 2. 本地安装
-###2.1 下载网站到本地
+### 2.1 下载网站到本地
 ```bash
 git clone https://github.com/mxdshr/DjangoEast.git
 ```
