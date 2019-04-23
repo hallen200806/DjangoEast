@@ -46,7 +46,7 @@ python manage.py runserver 127.0.0.1:8000
 ```
 ## 3. 线上部署
 请参考：[(超详细)Django线上部署教程：腾讯云+Ubuntu+Django+Uwsgi](https://www.eastnotes.com/post/29)
-##4.更新日志
+## 4.更新日志
 ### 2019.3.7
 - 文章目录去掉无序列表的圆点
 - 修改相关文章的文章标题的显示效果
