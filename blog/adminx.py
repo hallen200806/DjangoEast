@@ -75,7 +75,7 @@ class MeanListAdmin(object):
     search_field = ['title']
     model_icon = 'fa fa-list'
 
-class CourseAdmin(object):
+class CoursesAdmin(object):
     list_display = ['id','title','views','category','created_time','comments','numbers']
     model_icon = 'fa fa-gift'
 
@@ -93,7 +93,7 @@ xadmin.site.register(MovieTag,MovieTagAdmin)
 
 xadmin.site.register(MeanList,MeanListAdmin)
 
-xadmin.site.register(Course,CourseAdmin)
+xadmin.site.register(Courses,CoursesAdmin)
 # 修改xadmin的基础配置
 class BaseSetting(object):
     # 允许使用主题

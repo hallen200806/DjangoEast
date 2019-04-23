@@ -210,7 +210,7 @@ class MeanList(models.Model):
 
 
 
-class Course(models.Model):
+class Courses(models.Model):
 	title = models.CharField(max_length=100,verbose_name="教程名称")
 	cover = models.ImageField(upload_to='course',verbose_name="上传封面",blank=True)
 	views = models.PositiveIntegerField(default=0, verbose_name="阅读量")
@@ -225,3 +225,6 @@ class Course(models.Model):
 	class Meta:
 		verbose_name = "教程列表"
 		verbose_name_plural = verbose_name
+
+	def get_absolute_url(self):
+		return reverse('blog:course', kwargs={'pk': self.pk})

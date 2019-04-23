@@ -208,5 +208,13 @@ def messages(request):
     return render(request,'blog/messages.html',{'messages':messages})
 
 
-def courses(request):
-    pass
+class CoursesView(ListView):
+    template_name = 'blog/courses.html'
+    context_object_name = 'courses'
+
+    def get_queryset(self):
+        return Courses.objects.all().order_by('-created_time')
+
+def course(request,pk):
+    course = get_object_or_404(Courses, pk=pk)
+    return render(request, 'blog/course.html', context={'course':course})

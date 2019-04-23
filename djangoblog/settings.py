@@ -41,14 +41,49 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'haystack',
-    # 'DjangoUeditor'
-    'mdeditor', #富文本编辑器
-    'fancybox', #图片弹窗插件
+    'mdeditor',
     'gunicorn',
+    'comment',
+    'ckeditor',
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_CONFIGS = {
+    'comment_ckeditor': {
+        'toolbar': 'custom',
+        'toolbar_custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ["TextColor", "BGColor", 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ["Smiley", "SpecialChar", 'Blockquote','CodeSnippet'],
+        ],
+        'width': 'auto',
+        'height': '180',
+        'tabSpaces': 4,
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
+
+        'extraPlugins': ','.join(['codesnippet', 'uploadimage', 'widget', 'lineutils', ]),
+
+    },
+
+    'default': {
+        'toolbar': 'custom',
+        'toolbar_custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ["TextColor", "BGColor", 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ["Smiley", "SpecialChar", 'Blockquote'],
+        ],
+        'width': 'auto',
+        'height': '180',
+        'tabSpaces': 4,
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
+    }
+}
+
 
 
 HAYSTACK_CONNECTIONS = {
@@ -57,9 +92,11 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     },
 }
-# HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 5
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
+# 缓存时间
+CACHE_MIDDLEWARE_SECONDS=900
 
 
 MIDDLEWARE = [
@@ -69,10 +106,18 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware', # django-debug-tool
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 缓存全站
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoblog.urls'
+
+# django debug tool
+INTERNAL_IPS = ("127.0.0.1",)
 
 TEMPLATES = [
     {
@@ -100,23 +145,17 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Database Name',
-        'USER':'MySQL User Name',
-        'PASSWORD':'MySQL Password',
+        'NAME': '数据库名',
+        'USER':'数据库账户名',
+        'PASSWORD':'数据库账户密码',
         'PORT':'3306',
         'HOST':'localhost',
     }
 }
 
-# 部署时使用下面的配置
+DEBUG = True
 
-DEBUG = False
-ALLOWED_HOSTS = ['*']
-
-# 本地开发使用下面的配置
-# DEBUG = True
-# ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = []
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -156,3 +195,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
