@@ -521,11 +521,19 @@ body {
 }
 .footer {
   padding: 20px 0;
+  padding-bottom: 0;
 }
 .footer-inner {
   box-sizing: border-box;
   margin: 0px auto;
   width: calc(100% - 20px);
+}
+.footer-bottom{
+    float: right;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    margin-top: -0.3em;
 }
 @media (min-width: 1200px) {
   .container .footer-inner {
@@ -3607,6 +3615,7 @@ ul.breadcrumb li+li:last-child {
 }
 .footer {
   bottom: auto;
+  height: 160px;
 }
 .sub-menu {
   border-bottom: initial !important;
@@ -4148,7 +4157,7 @@ ul.breadcrumb li+li:last-child {
   width: 290px;
   float: left;
   background: #fff;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
 }
 
@@ -4224,8 +4233,7 @@ ul.breadcrumb li+li:last-child {
 }
 
 .wechat_img{
-  margin-left: -6px;
-
+  /*margin-left: -6px;*/
 }
 
 /*.article_post{*/
@@ -4585,4 +4593,63 @@ div .reply_body{
 
 .course .cardpricebtn .cardbuy {
     background-color: #2196F3;
+}
+
+.footer-col{
+  width: 33.3%;
+  float: left;
+}
+
+.footer-col .title{
+  position: relative;
+  margin-left: 0;
+  margin-right: 100px;
+  height: 30px;
+  border-bottom: 1px solid #b9b9b9;
+}
+.social-media {
+    width: 50px;
+    height: 50px;
+    float: left;
+    background-color: #555;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    color: #fff;
+    font-size:.7em;
+}
+.social-media .social-item{
+  margin-left: 8.4px;
+  margin-top: 10px;
+}
+.social-media .social-github{
+  margin-left: 10.5px;
+  margin-top: 10px;
+}
+
+.social-media .social-item .social-font{
+  font-size: 1.0em;
+}
+
+.social{
+  /*padding: 10px 10px 10px 20px;*/
+}
+
+.git_categories{
+   padding: 10px 10px 10px 20px;
+}
+
+
+.git_categories a{
+    width: 40%;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    padding: 2px 6px;
+    background-color: #000000;
+    color: #fff;
+    line-height: 1.3125rem;
+    opacity: .9;
+    filter: alpha(opacity=80);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+    /* border-radius: 5px; */
 }

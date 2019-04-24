@@ -200,12 +200,41 @@
 
                 <!--左侧侧边栏-->
                 <div class = "content-siderbar">
-                    {% block toc_sidebar %}{% endblock %}
+
 
                     {% block sidebar %}
+                        {% block toc_sidebar %}{% endblock %}
+
+                        {% block social_sidebar %}
+                            <div class="siderbar">
+                                <div class="title"><h3>社交账号</h3>
+                                    <div class="social">
+                                        <a target="_blank" href="https://github.com/mxdshr/DjangoEast"><div class="social-media"><i class="fa fa-github fa-3x social-github" aria-hidden="true"></i></div></a>
+                                        <a target="_blank" href="https://weibo.com/u/6537577736/"><div class="social-media"><i class="fa fa-weibo fa-3x social-item" aria-hidden="true"></i></div></a>
+                                        <a target="_blank" href="https://www.zhihu.com/people/sylax8"><div class="social-media"><i class="fa  fa-3x social-item" aria-hidden="true"><span class="social-font">知</span></i></div></a>
+                                        <a target="_blank" href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=783342105"><div class="social-media"><i class="fa fa-qq fa-3x social-item" aria-hidden="true"></i></div></a>
+                                    </div>
+                                </div>
+                        </div>
+                        {% endblock %}
+
+                        {% block category_sidebar %}
+                            <div class="siderbar">
+                                <div class="widget git_tag">
+                                    <div class="title"><h3>文章分类</h3></div>
+                                        <div class="git_tags">
+                                                {% get_category as categories %}
+                                                {% for category in categories %}
+                                                    <a>{{ category.name }}</a>
+                                                {% endfor %}
+                                        </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+
                         {% block tag_sidebar %}
                             <div class="siderbar" >
-                            <div class="widget git_tag">
+                                <div class="widget git_tag">
                                 <div class="title"><h3>热门标签</h3></div>
                                 <div class="git_tags">
                                     {% get_posts_tags as tags %}
@@ -214,50 +243,47 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                        </div>
-                        {% endblock %}
-
-                        {% block wechat_sidebar %}
-                            <div class="siderbar" >
-                                <div class="widget git_tag">
-                                    <div class="title"><h3>微信公众号</h3></div>
-                                    <div class="git_tags">
-                                        <img class="wechat_img" src="{% static 'blog/image/wechat.jpg' %}" alt="微信公众号">
-                                    </div>
-                                </div>
                             </div>
                         {% endblock %}
-
-                       {% block links %}
-                            <div class="siderbar" >
-                                <div class="widget git_tag">
-                                    <div class="title"><h3>友情链接</h3></div>
-                                    <div class="git_tags">
-                                        <a href="https://www.dusaiphoto.com/" title="杜赛的个人网站" target="_blank">杜赛的个人网站</a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endblock %}
-
                     {% endblock %}
                 </div>
             </div>
             </div>
-
         </main>
 
         <!--底部信息-->
         <footer id="footer" class="footer">
             <div class="footer-inner main-inner">
-                <div class="copyright">© <span itemprop="copyrightYear">2019</span>
-                    <span class="post-meta-divider">|</span>
-                    <span class="with-love" id="animate"><i class="fa fa-user"></i></span>
-                    <span class="author" itemprop="copyrightHolder">向东的笔记本</span>
+                <div class="footer-col">
+                        <div class="content">
+                        <h4 class="title">关于本站</h4>
+                        <p>1. 本站于 2019-03-05 开始上线</p>
+                        <p>2. 基于Django2.0和Python3.6开发</p>
+                        <p>3. 使用Ubuntu+Uwsgi+Nginx部署于腾讯云</p>
+                        </div>
                 </div>
-                <!--CNZZ博客统计-->
-                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277198197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277198197%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+                <div class="footer-col">
+                        <div class="content">
+                        <h4 class="title">联系站长</h4>
+                        <p>1. 微信号：reborn0502</p>
+                        <p>2. 公众号：程序员向东</p>
+                        <p>3. <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277198197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277198197%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                        </div>
+                </div>
+                <div class="footer-col">
+                    <div class="content">
+                        <h4 class="title">友情链接</h4>
+                        <p><a href="https://www.dusaiphoto.com/" target="_blank">1. 杜赛的个人网站</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span itemprop="copyrightYear">© 2019 向东的笔记本</span>
+                <span class="post-meta-divider">|</span>
+                <span><a href="http://www.miitbeian.gov.cn">京ICP备19000727号-1</a></span>
             </div>
         </footer>
+
     </div>
     <script src="{% static '/blog/js/index.js' %}"></script>
     <script src="{% static '/blog/js/velocity.ui.min.js' %}"></script>

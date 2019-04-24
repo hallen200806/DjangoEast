@@ -84,3 +84,8 @@ def get_comments_list(obj):
 def get_meanList():
     means = MeanList.objects.all().order_by('pk')
     return means
+
+@register.simple_tag
+def get_category():
+    categories = Category.objects.all()
+    return  categories
