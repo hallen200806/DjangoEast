@@ -1713,8 +1713,9 @@ a.btn.disabled,fieldset[disabled] a.btn {
 .posts-expand .post-body h6:hover .header-anchor {
   visibility: visible;
 }
-.posts-expand .post-body ul li {
-  list-style: circle;
+.posts-expand .post-body a {
+  /*list-style: circle;*/
+  color: #0e84b5;
 }
 .posts-expand .post-body img {
   box-sizing: border-box;
@@ -3224,9 +3225,6 @@ ul.breadcrumb li+li:last-child {
 .sidebar-toggle {
   display: none;
 }
-.footer-inner {
-  /*padding-left: 260px;*/
-}
 @media (min-width: 768px) and (max-width: 991px) {
   .footer-inner {
     width: auto;
@@ -3236,9 +3234,12 @@ ul.breadcrumb li+li:last-child {
 }
 @media (max-width: 767px) {
   .footer-inner {
-    width: auto;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    display: none;
+  }
+
+  .footer{
+    height: 0!important;
+    padding: 0;
   }
 }
 .sidebar-position-right .header-inner {

@@ -68,6 +68,7 @@ class Post(models.Model):
 	class Meta:
 		verbose_name="文章列表"
 		verbose_name_plural = verbose_name
+		ordering= ['-pk']
 
 class BookCategory(models.Model):
 	name = models.CharField(max_length=100,verbose_name="分类名称")
