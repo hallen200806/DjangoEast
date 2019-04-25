@@ -19,7 +19,7 @@ from django.conf import settings
 from django.urls import path,include
 
 from werobot.contrib.django import make_view
-from . import robot
+from robot import robot
 
 urlpatterns = [
     path('admin/', xadmin.site.urls,name="admin"),
