@@ -32,5 +32,4 @@ urlpatterns = [
     path('courses/',views.CoursesView.as_view(),name='courses'),
     path('course/<int:pk>',views.course,name='course'),
 
-    path('wechat',views.wechat,name='wechat')
 ]
