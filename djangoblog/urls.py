@@ -27,7 +27,7 @@ urlpatterns = [
     path('search/', include('haystack.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('comment/', include('comment.urls')),
-    # path('robot/',make_view(robot)),
+    path('robot/',make_view(robot)),
 
 ]
 
