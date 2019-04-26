@@ -4,4 +4,6 @@ from werobot import WeRoBot
 robot = WeRoBot(token='weixin')
 @robot.handler
 def hello(message):
-    return 'Hello world'
+    msg = message
+    if message == 'python':
+        return '想学python啊'
