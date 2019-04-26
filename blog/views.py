@@ -11,7 +11,7 @@ from django.contrib import auth
 class IndexView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 10
+    paginate_by = 7
 
     def get_queryset(self):
         return Post.objects.all()
